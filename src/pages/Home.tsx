@@ -113,7 +113,7 @@ export default function Home() {
         
         <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="animate-fade-in">
-            <h1 className="text-4xl lg:text-6xl xl:text-7xl font-bold leading-tight mb-6">
+            <h1 className="text-5xl lg:text-7xl xl:text-8xl font-bold leading-tight mb-6">
               Transform Your Vision Into<br />
               <span className="text-gradient">Stunning Visual Communication</span>
             </h1>
