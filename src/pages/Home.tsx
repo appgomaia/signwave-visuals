@@ -16,7 +16,7 @@ import {
 import { PageLayout } from "@/components/layout/PageLayout";
 import { GlassCard } from "@/components/ui/glass-card";
 import { GlassButton } from "@/components/ui/glass-button";
-import heroImage from "@/assets/hero-signage.jpg";
+import heroImage from "@/assets/signage-business-hero.jpg";
 
 const features = [
   {
@@ -101,56 +101,57 @@ export default function Home() {
     <PageLayout>
       {/* Hero Section */}
       <section className="relative py-20 lg:py-32 overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="animate-fade-in">
-              <h1 className="text-4xl lg:text-6xl xl:text-7xl font-bold leading-tight mb-6">
-                Transform Your Vision Into{" "}
-                <span className="text-gradient">Stunning Visual Communication</span>
-              </h1>
-              <p className="text-xl text-muted-foreground mb-8 leading-relaxed">
-                Professional signage solutions that make your brand stand out. 
-                From custom business signs to digital displays, we bring your vision to life.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 mb-12">
-                <GlassButton variant="hero" size="xl" asChild>
-                  <Link to="/products">
-                    Explore Products
-                    <ArrowRight className="ml-2 h-5 w-5" />
-                  </Link>
-                </GlassButton>
-                <GlassButton variant="outline" size="xl" asChild>
-                  <Link to="/contact">Get Free Quote</Link>
-                </GlassButton>
-              </div>
-              
-              {/* Stats */}
-              <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
-                {stats.map((stat, index) => (
-                  <div key={stat.label} className="text-center lg:text-left">
-                    <div className="text-2xl lg:text-3xl font-bold text-gradient mb-1">
-                      {stat.value}
-                    </div>
-                    <div className="text-sm text-muted-foreground">
-                      {stat.label}
-                    </div>
-                  </div>
-                ))}
-              </div>
+        {/* Background Hero Image */}
+        <div className="absolute inset-0 z-0">
+          <img
+            src={heroImage}
+            alt="Professional signage solutions by FBRSigns"
+            className="w-full h-full object-cover opacity-20"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-background/90 via-background/80 to-background/90" />
+        </div>
+        
+        <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <div className="animate-fade-in">
+            <h1 className="text-4xl lg:text-6xl xl:text-7xl font-bold leading-tight mb-6">
+              Transform Your Vision Into{" "}
+              <span className="text-gradient">Stunning Visual Communication</span>
+            </h1>
+            <p className="text-xl text-muted-foreground mb-8 leading-relaxed max-w-3xl mx-auto">
+              Professional signage solutions that make your brand stand out. 
+              From custom business signs to digital displays, we bring your vision to life.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 mb-12 justify-center">
+              <GlassButton variant="hero" size="xl" asChild>
+                <Link to="/products">
+                  Explore Products
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </Link>
+              </GlassButton>
+              <GlassButton variant="outline" size="xl" asChild>
+                <Link to="/contact">Get Free Quote</Link>
+              </GlassButton>
             </div>
             
-            <div className="relative animate-scale-in">
-              <GlassCard variant="hero" className="overflow-hidden">
-                <img
-                  src={heroImage}
-                  alt="Professional signage solutions by FBRSigns"
-                  className="w-full h-full object-cover rounded-lg"
-                />
-              </GlassCard>
-              <div className="absolute -top-4 -right-4 w-24 h-24 bg-gradient-primary rounded-full opacity-20 animate-glow" />
+            {/* Stats */}
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 max-w-2xl mx-auto">
+              {stats.map((stat, index) => (
+                <div key={stat.label} className="text-center">
+                  <div className="text-2xl lg:text-3xl font-bold text-gradient mb-1">
+                    {stat.value}
+                  </div>
+                  <div className="text-sm text-muted-foreground">
+                    {stat.label}
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </div>
+        
+        {/* Decorative Elements */}
+        <div className="absolute top-1/4 left-8 w-16 h-16 bg-gradient-primary rounded-full opacity-10 animate-glow" />
+        <div className="absolute bottom-1/4 right-8 w-20 h-20 bg-gradient-secondary rounded-full opacity-15 animate-glow" />
       </section>
 
       {/* Features Section */}
