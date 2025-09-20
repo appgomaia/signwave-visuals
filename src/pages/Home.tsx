@@ -17,6 +17,11 @@ import { PageLayout } from "@/components/layout/PageLayout";
 import { GlassCard } from "@/components/ui/glass-card";
 import { GlassButton } from "@/components/ui/glass-button";
 import heroImage from "@/assets/signage-business-hero.jpg";
+import galleryStorefront from "@/assets/gallery-storefront-sign.jpg";
+import galleryDigitalLED from "@/assets/gallery-digital-led.jpg";
+import galleryVehicleWrap from "@/assets/gallery-vehicle-wrap.jpg";
+import galleryTradeShow from "@/assets/gallery-trade-show.jpg";
+import galleryIlluminated from "@/assets/gallery-illuminated-sign.jpg";
 
 const features = [
   {
@@ -75,6 +80,15 @@ const featuredProducts = [
   }
 ];
 
+const galleryImages = [
+  { src: galleryStorefront, alt: "Professional storefront business signs" },
+  { src: galleryDigitalLED, alt: "LED digital display signage" },
+  { src: galleryVehicleWrap, alt: "Vehicle wrap advertising solutions" },
+  { src: galleryTradeShow, alt: "Trade show exhibition displays" },
+  { src: galleryIlluminated, alt: "Illuminated business signage" },
+  { src: heroImage, alt: "Custom signage solutions" }
+];
+
 const testimonials = [
   {
     name: "Sarah Johnson",
@@ -101,14 +115,26 @@ export default function Home() {
     <PageLayout>
       {/* Hero Section */}
       <section className="relative py-20 lg:py-32 overflow-hidden">
-        {/* Background Hero Image */}
+        {/* Background Gallery */}
         <div className="absolute inset-0 z-0">
-          <img
-            src={heroImage}
-            alt="Professional signage solutions by FBRSigns"
-            className="w-full h-full object-cover opacity-20"
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-background/90 via-background/80 to-background/90" />
+          <div className="grid grid-cols-3 h-full gap-2 opacity-15">
+            {galleryImages.map((image, index) => (
+              <div
+                key={index}
+                className="relative overflow-hidden"
+                style={{
+                  animationDelay: `${index * 0.5}s`
+                }}
+              >
+                <img
+                  src={image.src}
+                  alt={image.alt}
+                  className="w-full h-full object-cover animate-float"
+                />
+              </div>
+            ))}
+          </div>
+          <div className="absolute inset-0 bg-gradient-to-r from-background/95 via-background/85 to-background/95" />
         </div>
         
         <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -131,18 +157,6 @@ export default function Home() {
               <GlassButton variant="outline" size="xl" asChild>
                 <Link to="/contact">Get Free Quote</Link>
               </GlassButton>
-            </div>
-            
-            {/* Featured Image */}
-            <div className="relative max-w-2xl mx-auto mb-12 animate-scale-in">
-              <GlassCard variant="hero" className="overflow-hidden">
-                <img
-                  src={heroImage}
-                  alt="Professional signage solutions showcase by FBRSigns"
-                  className="w-full h-64 lg:h-80 object-cover rounded-lg"
-                />
-              </GlassCard>
-              <div className="absolute -top-4 -right-4 w-24 h-24 bg-gradient-primary rounded-full opacity-20 animate-glow" />
             </div>
             
             {/* Stats */}
