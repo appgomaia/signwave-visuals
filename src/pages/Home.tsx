@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { 
   ArrowRight, 
@@ -22,6 +22,11 @@ import galleryDigitalLED from "@/assets/gallery-digital-led.jpg";
 import galleryVehicleWrap from "@/assets/gallery-vehicle-wrap.jpg";
 import galleryTradeShow from "@/assets/gallery-trade-show.jpg";
 import galleryIlluminated from "@/assets/gallery-illuminated-sign.jpg";
+import heroBg1 from "@/assets/hero-bg-1.jpg";
+import heroBg2 from "@/assets/hero-bg-2.jpg";
+import heroBg3 from "@/assets/hero-bg-3.jpg";
+import heroBg4 from "@/assets/hero-bg-4.jpg";
+import heroBg5 from "@/assets/hero-bg-5.jpg";
 
 const features = [
   {
@@ -80,6 +85,14 @@ const featuredProducts = [
   }
 ];
 
+const heroBgImages = [
+  heroBg1,
+  heroBg2, 
+  heroBg3,
+  heroBg4,
+  heroBg5
+];
+
 const galleryImages = [
   { src: galleryStorefront, alt: "Professional storefront business signs" },
   { src: galleryDigitalLED, alt: "LED digital display signage" },
@@ -111,30 +124,54 @@ const testimonials = [
 ];
 
 export default function Home() {
+  const [currentBgIndex, setCurrentBgIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentBgIndex((prevIndex) => (prevIndex + 1) % heroBgImages.length);
+    }, 4000); // Change every 4 seconds
+
+    return () => clearInterval(interval);
+  }, []);
   return (
     <PageLayout>
       {/* Hero Section */}
       <section className="relative py-20 lg:py-32 overflow-hidden">
-        {/* Background Gallery */}
+        {/* Rotating Background Images */}
         <div className="absolute inset-0 z-0">
-          <div className="grid grid-cols-3 h-full gap-2 opacity-15">
-            {galleryImages.map((image, index) => (
-              <div
-                key={index}
-                className="relative overflow-hidden"
-                style={{
-                  animationDelay: `${index * 0.5}s`
-                }}
-              >
-                <img
-                  src={image.src}
-                  alt={image.alt}
-                  className="w-full h-full object-cover animate-float"
-                />
-              </div>
-            ))}
+          {heroBgImages.map((bgImage, index) => (
+            <div
+              key={index}
+              className={`absolute inset-0 transition-opacity duration-2000 ease-in-out ${
+                index === currentBgIndex ? 'opacity-30' : 'opacity-0'
+              }`}
+            >
+              <img
+                src={bgImage}
+                alt="Dynamic background"
+                className="w-full h-full object-cover hero-bg-animate"
+              />
+            </div>
+          ))}
+          
+          {/* Animated Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-r from-background/95 via-background/80 to-background/95" />
+          
+          {/* Floating Particles Effect */}
+          <div className="absolute inset-0">
+            <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-primary/40 rounded-full particle-animate" 
+                 style={{ animationDelay: '0s' }} />
+            <div className="absolute top-3/4 right-1/4 w-1 h-1 bg-secondary/60 rounded-full particle-animate" 
+                 style={{ animationDelay: '1s' }} />
+            <div className="absolute top-1/2 left-3/4 w-1.5 h-1.5 bg-accent/50 rounded-full particle-animate" 
+                 style={{ animationDelay: '2s' }} />
+            <div className="absolute top-1/6 right-1/3 w-1 h-1 bg-primary/30 rounded-full particle-animate" 
+                 style={{ animationDelay: '3s' }} />
+            <div className="absolute bottom-1/4 left-1/6 w-1.5 h-1.5 bg-secondary/40 rounded-full particle-animate" 
+                 style={{ animationDelay: '4s' }} />
+            <div className="absolute top-3/4 left-2/3 w-1 h-1 bg-accent/60 rounded-full particle-animate" 
+                 style={{ animationDelay: '5s' }} />
           </div>
-          <div className="absolute inset-0 bg-gradient-to-r from-background/95 via-background/85 to-background/95" />
         </div>
         
         <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
