@@ -133,6 +133,18 @@ export default function Home() {
               </GlassButton>
             </div>
             
+            {/* Featured Image */}
+            <div className="relative max-w-2xl mx-auto mb-12 animate-scale-in">
+              <GlassCard variant="hero" className="overflow-hidden">
+                <img
+                  src={heroImage}
+                  alt="Professional signage solutions showcase by FBRSigns"
+                  className="w-full h-64 lg:h-80 object-cover rounded-lg"
+                />
+              </GlassCard>
+              <div className="absolute -top-4 -right-4 w-24 h-24 bg-gradient-primary rounded-full opacity-20 animate-glow" />
+            </div>
+            
             {/* Stats */}
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 max-w-2xl mx-auto">
               {stats.map((stat, index) => (
