@@ -12,32 +12,32 @@ import { supabase } from '@/integrations/supabase/client';
 import { Mail, Phone, Building, FileText } from 'lucide-react';
 
 const quoteSchema = z.object({
-  name: z.string().min(2, 'Nome deve ter pelo menos 2 caracteres'),
-  email: z.string().email('Email inválido'),
-  phone: z.string().min(10, 'Telefone deve ter pelo menos 10 dígitos'),
+  name: z.string().min(2, 'Name must be at least 2 characters'),
+  email: z.string().email('Invalid email'),
+  phone: z.string().min(10, 'Phone must be at least 10 digits'),
   company: z.string().optional(),
-  projectType: z.string().min(1, 'Selecione o tipo de projeto'),
-  description: z.string().min(20, 'Descrição deve ter pelo menos 20 caracteres'),
-  budget: z.string().min(1, 'Selecione uma faixa de orçamento'),
+  projectType: z.string().min(1, 'Select a project type'),
+  description: z.string().min(20, 'Description must be at least 20 characters'),
+  budget: z.string().min(1, 'Select a budget range'),
 });
 
 type QuoteFormData = z.infer<typeof quoteSchema>;
 
 const projectTypes = [
-  'Placas Comerciais',
-  'Sinalização Digital',
-  'Adesivos Veiculares',
-  'Stands e Displays',
-  'Sinalização Industrial',
-  'Outros',
+  'Commercial Signs',
+  'Digital Signage',
+  'Vehicle Wraps',
+  'Stands and Displays',
+  'Industrial Signage',
+  'Other',
 ];
 
 const budgetRanges = [
-  'Até R$ 1.000',
-  'R$ 1.000 - R$ 5.000',
-  'R$ 5.000 - R$ 10.000',
-  'R$ 10.000 - R$ 25.000',
-  'Acima de R$ 25.000',
+  'Up to $1,000',
+  '$1,000 - $5,000',
+  '$5,000 - $10,000',
+  '$10,000 - $25,000',
+  'Above $25,000',
 ];
 
 export const QuoteRequestForm: React.FC = () => {
@@ -72,16 +72,16 @@ export const QuoteRequestForm: React.FC = () => {
       }
       
       toast({
-        title: "Orçamento solicitado com sucesso!",
-        description: "Entraremos em contato em até 24 horas.",
+        title: "Quote requested successfully!",
+        description: "We will contact you within 24 hours.",
       });
       
       reset();
     } catch (error) {
       console.error('Quote submission error:', error);
       toast({
-        title: "Erro ao solicitar orçamento",
-        description: "Tente novamente em alguns minutos.",
+        title: "Error requesting quote",
+        description: "Please try again in a few minutes.",
         variant: "destructive",
       });
     }
@@ -90,9 +90,9 @@ export const QuoteRequestForm: React.FC = () => {
   return (
     <GlassCard className="p-8">
       <div className="mb-8 text-center">
-        <h2 className="text-3xl font-bold mb-4">Solicite seu Orçamento</h2>
+        <h2 className="text-3xl font-bold mb-4">Request Your Quote</h2>
         <p className="text-muted-foreground">
-          Preencha o formulário abaixo e receba uma proposta personalizada em até 24 horas
+          Fill out the form below and receive a personalized proposal within 24 hours
         </p>
       </div>
 
@@ -101,12 +101,12 @@ export const QuoteRequestForm: React.FC = () => {
           <div className="space-y-2">
             <Label htmlFor="name" className="flex items-center gap-2">
               <Building className="h-4 w-4" />
-              Nome Completo *
+              Full Name *
             </Label>
             <Input
               id="name"
               {...register('name')}
-              placeholder="Seu nome completo"
+              placeholder="Your full name"
               className={errors.name ? 'border-destructive' : ''}
             />
             {errors.name && (
@@ -123,7 +123,7 @@ export const QuoteRequestForm: React.FC = () => {
               id="email"
               type="email"
               {...register('email')}
-              placeholder="seu@email.com"
+              placeholder="your@email.com"
               className={errors.email ? 'border-destructive' : ''}
             />
             {errors.email && (
@@ -134,12 +134,12 @@ export const QuoteRequestForm: React.FC = () => {
           <div className="space-y-2">
             <Label htmlFor="phone" className="flex items-center gap-2">
               <Phone className="h-4 w-4" />
-              Telefone *
+              Phone *
             </Label>
             <Input
               id="phone"
               {...register('phone')}
-              placeholder="(11) 99999-9999"
+              placeholder="(555) 123-4567"
               className={errors.phone ? 'border-destructive' : ''}
             />
             {errors.phone && (
@@ -148,22 +148,22 @@ export const QuoteRequestForm: React.FC = () => {
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="company">Empresa</Label>
+            <Label htmlFor="company">Company</Label>
             <Input
               id="company"
               {...register('company')}
-              placeholder="Nome da empresa (opcional)"
+              placeholder="Company name (optional)"
             />
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="projectType">Tipo de Projeto *</Label>
+            <Label htmlFor="projectType">Project Type *</Label>
             <select
               id="projectType"
               {...register('projectType')}
               className="w-full px-3 py-2 bg-background border border-input rounded-md focus:outline-none focus:ring-2 focus:ring-ring"
             >
-              <option value="">Selecione o tipo de projeto</option>
+              <option value="">Select project type</option>
               {projectTypes.map((type) => (
                 <option key={type} value={type}>
                   {type}
@@ -176,13 +176,13 @@ export const QuoteRequestForm: React.FC = () => {
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="budget">Faixa de Orçamento *</Label>
+            <Label htmlFor="budget">Budget Range *</Label>
             <select
               id="budget"
               {...register('budget')}
               className="w-full px-3 py-2 bg-background border border-input rounded-md focus:outline-none focus:ring-2 focus:ring-ring"
             >
-              <option value="">Selecione a faixa de orçamento</option>
+              <option value="">Select budget range</option>
               {budgetRanges.map((range) => (
                 <option key={range} value={range}>
                   {range}
@@ -198,12 +198,12 @@ export const QuoteRequestForm: React.FC = () => {
         <div className="space-y-2">
           <Label htmlFor="description" className="flex items-center gap-2">
             <FileText className="h-4 w-4" />
-            Descrição do Projeto *
+            Project Description *
           </Label>
           <Textarea
             id="description"
             {...register('description')}
-            placeholder="Descreva detalhadamente seu projeto, incluindo dimensões, materiais desejados, prazos e qualquer informação relevante..."
+            placeholder="Describe your project in detail, including dimensions, desired materials, deadlines and any relevant information..."
             rows={6}
             className={errors.description ? 'border-destructive' : ''}
           />
@@ -219,7 +219,7 @@ export const QuoteRequestForm: React.FC = () => {
             size="lg"
             disabled={isSubmitting}
           >
-            {isSubmitting ? 'Enviando...' : 'Solicitar Orçamento'}
+            {isSubmitting ? 'Sending...' : 'Request Quote'}
           </GlassButton>
         </div>
       </form>
