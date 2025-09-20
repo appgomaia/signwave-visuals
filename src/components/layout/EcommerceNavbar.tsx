@@ -27,7 +27,7 @@ export const EcommerceNavbar: React.FC<EcommerceNavbarProps> = ({ onCartOpen }) 
     { href: "/", label: "Home" },
     { href: "/about", label: "Sobre" },
     { href: "/services", label: "Serviços" },
-    { href: "/products", label: "Produtos" },
+    { href: "/ecommerce", label: "Products" },
     { href: "/portfolio", label: "Portfolio" },
     { href: "/contact", label: "Contato" },
   ];

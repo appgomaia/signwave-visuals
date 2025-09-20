@@ -55,7 +55,7 @@ export default function EcommercePage() {
   const renderContent = () => {
     switch (currentView) {
       case 'products':
-        return <Products onProductSelect={handleProductSelect} />;
+        return <Products onProductSelect={handleProductSelect} useLayout={false} />;
       
       case 'product-details':
         return selectedProduct ? (
