@@ -30,9 +30,9 @@ export const ProductCard: React.FC<ProductCardProps> = ({
   const { addItem } = useCart();
 
   const formatPrice = (price: number) => {
-    return new Intl.NumberFormat('pt-BR', {
+    return new Intl.NumberFormat('en-US', {
       style: 'currency',
-      currency: 'BRL'
+      currency: 'USD'
     }).format(price);
   };
 
@@ -107,7 +107,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
         )}
         
         {/* Price and Actions */}
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-0">
+        <div className="flex flex-col gap-3">
           <div className="flex flex-col">
             <span className="text-xl sm:text-2xl font-bold text-gradient">
               {formatPrice(product.price)}
