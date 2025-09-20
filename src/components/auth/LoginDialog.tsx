@@ -39,8 +39,8 @@ export const LoginDialog: React.FC<LoginDialogProps> = ({ children }) => {
       
       // Simulate successful login
       toast({
-        title: "Login realizado com sucesso!",
-        description: "Redirecionando para o dashboard...",
+        title: "Login successful!",
+        description: "Redirecting to dashboard...",
       });
       
       setIsOpen(false);
@@ -51,8 +51,8 @@ export const LoginDialog: React.FC<LoginDialogProps> = ({ children }) => {
       
     } catch (error) {
       toast({
-        title: "Erro no login",
-        description: "Verifique suas credenciais e tente novamente.",
+        title: "Login error",
+        description: "Check your credentials and try again.",
         variant: "destructive",
       });
     } finally {
@@ -62,8 +62,8 @@ export const LoginDialog: React.FC<LoginDialogProps> = ({ children }) => {
 
   const handleForgotPassword = () => {
     toast({
-      title: "Recuperação de senha",
-      description: "Funcionalidade em desenvolvimento. Entre em contato conosco.",
+      title: "Password Recovery",
+      description: "Feature under development. Please contact us.",
     });
   };
 
@@ -76,7 +76,7 @@ export const LoginDialog: React.FC<LoginDialogProps> = ({ children }) => {
         <DialogHeader>
           <DialogTitle className="flex items-center gap-2 text-center">
             <User className="h-5 w-5" />
-            Acesso ao Dashboard
+            Dashboard Access
           </DialogTitle>
         </DialogHeader>
         
@@ -92,7 +92,7 @@ export const LoginDialog: React.FC<LoginDialogProps> = ({ children }) => {
               type="email"
               value={formData.email}
               onChange={handleInputChange}
-              placeholder="seu@email.com"
+              placeholder="your@email.com"
               required
             />
           </div>
@@ -100,7 +100,7 @@ export const LoginDialog: React.FC<LoginDialogProps> = ({ children }) => {
           <div className="space-y-2">
             <Label htmlFor="password" className="flex items-center gap-2">
               <Lock className="h-4 w-4" />
-              Senha
+              Password
             </Label>
             <Input
               id="password"
@@ -120,7 +120,7 @@ export const LoginDialog: React.FC<LoginDialogProps> = ({ children }) => {
               className="w-full"
               disabled={isLoading}
             >
-              {isLoading ? 'Entrando...' : 'Entrar'}
+              {isLoading ? 'Signing in...' : 'Sign In'}
             </GlassButton>
             
             <Button
@@ -129,15 +129,15 @@ export const LoginDialog: React.FC<LoginDialogProps> = ({ children }) => {
               size="sm"
               onClick={handleForgotPassword}
             >
-              Esqueci minha senha
+              Forgot Password
             </Button>
           </div>
         </form>
         
         <div className="text-center text-sm text-muted-foreground mt-4">
-          Não tem uma conta?{' '}
+          Don't have an account?{' '}
           <Button variant="link" size="sm" className="p-0 h-auto">
-            Entre em contato conosco
+            Sign up
           </Button>
         </div>
       </DialogContent>
