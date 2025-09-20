@@ -91,15 +91,15 @@ export default function EcommercePage() {
                   />
                 </svg>
               </div>
-              <h1 className="text-2xl font-bold mb-4">Pedido Realizado!</h1>
+              <h1 className="text-2xl font-bold mb-4">Order Placed!</h1>
               <p className="text-muted-foreground mb-8">
-                Obrigado pela sua compra. Você receberá um email de confirmação em breve.
+                Thank you for your purchase. You will receive a confirmation email shortly.
               </p>
               <button
                 onClick={handleBackToProducts}
                 className="inline-flex items-center px-6 py-3 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors"
               >
-                Continuar Comprando
+                Continue Shopping
               </button>
             </div>
           </div>

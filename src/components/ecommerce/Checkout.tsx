@@ -17,25 +17,30 @@ import { supabase } from '@/integrations/supabase/client';
 
 const checkoutSchema = z.object({
   // Customer Information
-  customerName: z.string().min(2, 'Nome deve ter pelo menos 2 caracteres'),
-  customerEmail: z.string().email('Email inválido'),
-  customerPhone: z.string().min(10, 'Telefone deve ter pelo menos 10 dígitos'),
+  customerName: z.string().min(2, 'Name must be at least 2 characters'),
+  customerEmail: z.string().email('Invalid email'),
+  customerPhone: z.string().min(10, 'Phone must be at least 10 digits'),
   customerCompany: z.string().optional(),
+  password: z.string().min(8, 'Password must be at least 8 characters'),
+  confirmPassword: z.string().min(8, 'Password confirmation is required'),
   
   // Shipping Address
-  street: z.string().min(5, 'Endereço deve ter pelo menos 5 caracteres'),
-  number: z.string().min(1, 'Número é obrigatório'),
+  street: z.string().min(5, 'Address must be at least 5 characters'),
+  number: z.string().min(1, 'Number is required'),
   complement: z.string().optional(),
-  neighborhood: z.string().min(2, 'Bairro é obrigatório'),
-  city: z.string().min(2, 'Cidade é obrigatória'),
-  state: z.string().min(2, 'Estado é obrigatório'),
-  zipCode: z.string().min(8, 'CEP deve ter 8 dígitos'),
+  neighborhood: z.string().min(2, 'Neighborhood is required'),
+  city: z.string().min(2, 'City is required'),
+  state: z.string().min(2, 'State is required'),
+  zipCode: z.string().min(5, 'ZIP code must be at least 5 digits'),
   
   // Payment
   paymentMethod: z.enum(['credit_card', 'bank_transfer', 'pix']),
   
   // Additional
   notes: z.string().optional()
+}).refine((data) => data.password === data.confirmPassword, {
+  message: "Passwords don't match",
+  path: ["confirmPassword"],
 });
 
 type CheckoutForm = z.infer<typeof checkoutSchema>;
@@ -57,17 +62,17 @@ export const Checkout: React.FC<CheckoutProps> = ({ onBack, onSuccess }) => {
   });
 
   const formatPrice = (price: number) => {
-    return new Intl.NumberFormat('pt-BR', {
+    return new Intl.NumberFormat('en-US', {
       style: 'currency',
-      currency: 'BRL'
+      currency: 'USD'
     }).format(price);
   };
 
   const onSubmit = async (data: CheckoutForm) => {
     if (state.items.length === 0) {
       toast({
-        title: "Carrinho vazio",
-        description: "Adicione itens ao carrinho antes de finalizar a compra.",
+        title: "Empty Cart",
+        description: "Add items to cart before checkout.",
         variant: "destructive"
       });
       return;
@@ -98,7 +103,7 @@ export const Checkout: React.FC<CheckoutProps> = ({ onBack, onSuccess }) => {
           payment_method: data.paymentMethod,
           shipping_address: shippingAddress,
           notes: data.notes || '',
-          status: 'Pendente'
+          status: 'Pending'
         })
         .select()
         .single();
@@ -124,8 +129,8 @@ export const Checkout: React.FC<CheckoutProps> = ({ onBack, onSuccess }) => {
       clearCart();
       
       toast({
-        title: "Pedido realizado com sucesso!",
-        description: `Seu pedido #${order.invoice_number || order.id.slice(0, 8)} foi criado. Você receberá um email de confirmação em breve.`
+        title: "Order placed successfully!",
+        description: `Your order #${order.invoice_number || order.id.slice(0, 8)} has been created. You will receive a confirmation email shortly.`
       });
 
       onSuccess();
@@ -133,8 +138,8 @@ export const Checkout: React.FC<CheckoutProps> = ({ onBack, onSuccess }) => {
     } catch (error: any) {
       console.error('Checkout error:', error);
       toast({
-        title: "Erro ao processar pedido",
-        description: error.message || "Tente novamente ou entre em contato conosco.",
+        title: "Error processing order",
+        description: error.message || "Please try again or contact us.",
         variant: "destructive"
       });
     } finally {
@@ -145,13 +150,13 @@ export const Checkout: React.FC<CheckoutProps> = ({ onBack, onSuccess }) => {
   if (state.items.length === 0) {
     return (
       <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 py-16 text-center">
-        <h1 className="text-2xl font-bold mb-4">Carrinho Vazio</h1>
+        <h1 className="text-2xl font-bold mb-4">Empty Cart</h1>
         <p className="text-muted-foreground mb-8">
-          Adicione produtos ao seu carrinho antes de finalizar a compra.
+          Add products to your cart before checkout.
         </p>
         <Button onClick={onBack}>
           <ArrowLeft className="h-4 w-4 mr-2" />
-          Voltar às Compras
+          Back to Shopping
         </Button>
       </div>
     );
@@ -163,9 +168,9 @@ export const Checkout: React.FC<CheckoutProps> = ({ onBack, onSuccess }) => {
         <div className="flex items-center gap-4 mb-8">
           <Button variant="ghost" onClick={onBack}>
             <ArrowLeft className="h-4 w-4 mr-2" />
-            Voltar
+            Back
           </Button>
-          <h1 className="text-3xl font-bold">Finalizar Compra</h1>
+          <h1 className="text-3xl font-bold">Checkout</h1>
         </div>
 
         <div className="grid lg:grid-cols-3 gap-8">
@@ -177,7 +182,7 @@ export const Checkout: React.FC<CheckoutProps> = ({ onBack, onSuccess }) => {
                 <GlassCard className="p-6">
                   <div className="flex items-center gap-2 mb-6">
                     <User className="h-5 w-5 text-primary" />
-                    <h2 className="text-xl font-semibold">Informações do Cliente</h2>
+                    <h2 className="text-xl font-semibold">Customer Information</h2>
                   </div>
                   
                   <div className="grid md:grid-cols-2 gap-4">
@@ -186,7 +191,7 @@ export const Checkout: React.FC<CheckoutProps> = ({ onBack, onSuccess }) => {
                       name="customerName"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Nome Completo *</FormLabel>
+                          <FormLabel>Full Name *</FormLabel>
                           <FormControl>
                             <Input {...field} className="glass-input" />
                           </FormControl>
@@ -214,9 +219,9 @@ export const Checkout: React.FC<CheckoutProps> = ({ onBack, onSuccess }) => {
                       name="customerPhone"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Telefone *</FormLabel>
+                          <FormLabel>Phone *</FormLabel>
                           <FormControl>
-                            <Input {...field} className="glass-input" placeholder="(11) 99999-9999" />
+                            <Input {...field} className="glass-input" placeholder="+1 (555) 123-4567" />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -228,9 +233,37 @@ export const Checkout: React.FC<CheckoutProps> = ({ onBack, onSuccess }) => {
                       name="customerCompany"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Empresa (Opcional)</FormLabel>
+                          <FormLabel>Company (Optional)</FormLabel>
                           <FormControl>
                             <Input {...field} className="glass-input" />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                    
+                    <FormField
+                      control={form.control}
+                      name="password"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Password *</FormLabel>
+                          <FormControl>
+                            <Input type="password" {...field} className="glass-input" />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                    
+                    <FormField
+                      control={form.control}
+                      name="confirmPassword"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Confirm Password *</FormLabel>
+                          <FormControl>
+                            <Input type="password" {...field} className="glass-input" />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -243,7 +276,7 @@ export const Checkout: React.FC<CheckoutProps> = ({ onBack, onSuccess }) => {
                 <GlassCard className="p-6">
                   <div className="flex items-center gap-2 mb-6">
                     <MapPin className="h-5 w-5 text-primary" />
-                    <h2 className="text-xl font-semibold">Endereço de Entrega</h2>
+                    <h2 className="text-xl font-semibold">Shipping Address</h2>
                   </div>
                   
                   <div className="space-y-4">
@@ -252,13 +285,13 @@ export const Checkout: React.FC<CheckoutProps> = ({ onBack, onSuccess }) => {
                         control={form.control}
                         name="street"
                         render={({ field }) => (
-                          <FormItem className="md:col-span-2">
-                            <FormLabel>Rua/Avenida *</FormLabel>
-                            <FormControl>
-                              <Input {...field} className="glass-input" />
-                            </FormControl>
-                            <FormMessage />
-                          </FormItem>
+                        <FormItem className="md:col-span-2">
+                          <FormLabel>Street Address *</FormLabel>
+                          <FormControl>
+                            <Input {...field} className="glass-input" />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
                         )}
                       />
                       
@@ -266,13 +299,13 @@ export const Checkout: React.FC<CheckoutProps> = ({ onBack, onSuccess }) => {
                         control={form.control}
                         name="number"
                         render={({ field }) => (
-                          <FormItem>
-                            <FormLabel>Número *</FormLabel>
-                            <FormControl>
-                              <Input {...field} className="glass-input" />
-                            </FormControl>
-                            <FormMessage />
-                          </FormItem>
+                        <FormItem>
+                          <FormLabel>Number *</FormLabel>
+                          <FormControl>
+                            <Input {...field} className="glass-input" />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
                         )}
                       />
                       
@@ -280,13 +313,13 @@ export const Checkout: React.FC<CheckoutProps> = ({ onBack, onSuccess }) => {
                         control={form.control}
                         name="complement"
                         render={({ field }) => (
-                          <FormItem>
-                            <FormLabel>Complemento</FormLabel>
-                            <FormControl>
-                              <Input {...field} className="glass-input" />
-                            </FormControl>
-                            <FormMessage />
-                          </FormItem>
+                        <FormItem>
+                          <FormLabel>Apartment/Suite</FormLabel>
+                          <FormControl>
+                            <Input {...field} className="glass-input" />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
                         )}
                       />
                     </div>
@@ -296,13 +329,13 @@ export const Checkout: React.FC<CheckoutProps> = ({ onBack, onSuccess }) => {
                         control={form.control}
                         name="neighborhood"
                         render={({ field }) => (
-                          <FormItem>
-                            <FormLabel>Bairro *</FormLabel>
-                            <FormControl>
-                              <Input {...field} className="glass-input" />
-                            </FormControl>
-                            <FormMessage />
-                          </FormItem>
+                        <FormItem>
+                          <FormLabel>Neighborhood *</FormLabel>
+                          <FormControl>
+                            <Input {...field} className="glass-input" />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
                         )}
                       />
                       
@@ -310,13 +343,13 @@ export const Checkout: React.FC<CheckoutProps> = ({ onBack, onSuccess }) => {
                         control={form.control}
                         name="city"
                         render={({ field }) => (
-                          <FormItem>
-                            <FormLabel>Cidade *</FormLabel>
-                            <FormControl>
-                              <Input {...field} className="glass-input" />
-                            </FormControl>
-                            <FormMessage />
-                          </FormItem>
+                        <FormItem>
+                          <FormLabel>City *</FormLabel>
+                          <FormControl>
+                            <Input {...field} className="glass-input" />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
                         )}
                       />
                       
@@ -324,13 +357,13 @@ export const Checkout: React.FC<CheckoutProps> = ({ onBack, onSuccess }) => {
                         control={form.control}
                         name="state"
                         render={({ field }) => (
-                          <FormItem>
-                            <FormLabel>Estado *</FormLabel>
-                            <FormControl>
-                              <Input {...field} className="glass-input" placeholder="SP" />
-                            </FormControl>
-                            <FormMessage />
-                          </FormItem>
+                        <FormItem>
+                          <FormLabel>State *</FormLabel>
+                          <FormControl>
+                            <Input {...field} className="glass-input" placeholder="CA" />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
                         )}
                       />
                     </div>
@@ -340,9 +373,9 @@ export const Checkout: React.FC<CheckoutProps> = ({ onBack, onSuccess }) => {
                       name="zipCode"
                       render={({ field }) => (
                         <FormItem className="md:w-48">
-                          <FormLabel>CEP *</FormLabel>
+                          <FormLabel>ZIP Code *</FormLabel>
                           <FormControl>
-                            <Input {...field} className="glass-input" placeholder="00000-000" />
+                            <Input {...field} className="glass-input" placeholder="12345" />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -355,7 +388,7 @@ export const Checkout: React.FC<CheckoutProps> = ({ onBack, onSuccess }) => {
                 <GlassCard className="p-6">
                   <div className="flex items-center gap-2 mb-6">
                     <CreditCard className="h-5 w-5 text-primary" />
-                    <h2 className="text-xl font-semibold">Forma de Pagamento</h2>
+                    <h2 className="text-xl font-semibold">Payment Method</h2>
                   </div>
                   
                   <FormField
@@ -371,15 +404,15 @@ export const Checkout: React.FC<CheckoutProps> = ({ onBack, onSuccess }) => {
                           >
                             <div className="flex items-center space-x-2 p-3 rounded-lg border border-border/50 hover:border-primary/50">
                               <RadioGroupItem value="pix" id="pix" />
-                              <Label htmlFor="pix" className="flex-1 cursor-pointer">PIX (Aprovação Instantânea)</Label>
+                              <Label htmlFor="pix" className="flex-1 cursor-pointer">PIX (Instant Approval)</Label>
                             </div>
                             <div className="flex items-center space-x-2 p-3 rounded-lg border border-border/50 hover:border-primary/50">
                               <RadioGroupItem value="bank_transfer" id="bank_transfer" />
-                              <Label htmlFor="bank_transfer" className="flex-1 cursor-pointer">Transferência Bancária</Label>
+                              <Label htmlFor="bank_transfer" className="flex-1 cursor-pointer">Bank Transfer</Label>
                             </div>
                             <div className="flex items-center space-x-2 p-3 rounded-lg border border-border/50 hover:border-primary/50">
                               <RadioGroupItem value="credit_card" id="credit_card" />
-                              <Label htmlFor="credit_card" className="flex-1 cursor-pointer">Cartão de Crédito</Label>
+                              <Label htmlFor="credit_card" className="flex-1 cursor-pointer">Credit Card</Label>
                             </div>
                           </RadioGroup>
                         </FormControl>
@@ -396,12 +429,12 @@ export const Checkout: React.FC<CheckoutProps> = ({ onBack, onSuccess }) => {
                     name="notes"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Observações (Opcional)</FormLabel>
+                        <FormLabel>Notes (Optional)</FormLabel>
                         <FormControl>
                           <Textarea 
                             {...field} 
                             className="glass-input min-h-20"
-                            placeholder="Informações adicionais sobre o pedido..."
+                            placeholder="Additional information about your order..."
                           />
                         </FormControl>
                         <FormMessage />
@@ -417,7 +450,7 @@ export const Checkout: React.FC<CheckoutProps> = ({ onBack, onSuccess }) => {
                   size="lg"
                   disabled={isSubmitting}
                 >
-                  {isSubmitting ? "Processando..." : "Finalizar Pedido"}
+                  {isSubmitting ? "Processing..." : "Place Order"}
                 </GlassButton>
               </form>
             </Form>
@@ -426,7 +459,7 @@ export const Checkout: React.FC<CheckoutProps> = ({ onBack, onSuccess }) => {
           {/* Order Summary */}
           <div className="lg:col-span-1">
             <GlassCard className="p-6 sticky top-8">
-              <h2 className="text-xl font-semibold mb-6">Resumo do Pedido</h2>
+              <h2 className="text-xl font-semibold mb-6">Order Summary</h2>
               
               <div className="space-y-4">
                 {state.items.map((item) => (
