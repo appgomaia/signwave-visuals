@@ -35,7 +35,7 @@ const footerSections = {
     { name: "Contact", href: "/contact" },
     { name: "FAQs", href: "/faq" },
     { name: "Support", href: "/support" },
-    { name: "Privacy Policy", href: "/privacy" },
+    { name: "Privacy Policy", href: "/privacy-policy" },
   ],
 };
 
@@ -164,10 +164,10 @@ export const GlassFooter = () => {
               © 2024 FBRSigns. All rights reserved.
             </p>
             <div className="flex space-x-6">
-              <Link to="/terms" className="text-sm text-muted-foreground hover:text-primary transition-colors duration-200">
+              <Link to="/terms-of-service" className="text-sm text-muted-foreground hover:text-primary transition-colors duration-200">
                 Terms of Service
               </Link>
-              <Link to="/privacy" className="text-sm text-muted-foreground hover:text-primary transition-colors duration-200">
+              <Link to="/privacy-policy" className="text-sm text-muted-foreground hover:text-primary transition-colors duration-200">
                 Privacy Policy
               </Link>
               <Link to="/cookies" className="text-sm text-muted-foreground hover:text-primary transition-colors duration-200">

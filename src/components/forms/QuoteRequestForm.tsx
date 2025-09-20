@@ -8,6 +8,7 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import { toast } from '@/hooks/use-toast';
+import { supabase } from '@/integrations/supabase/client';
 import { Mail, Phone, Building, FileText } from 'lucide-react';
 
 const quoteSchema = z.object({
@@ -51,11 +52,24 @@ export const QuoteRequestForm: React.FC = () => {
 
   const onSubmit = async (data: QuoteFormData) => {
     try {
-      // TODO: Replace with actual API endpoint
-      console.log('Quote request data:', data);
-      
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      const { error } = await supabase
+        .from('orcamentos')
+        .insert({
+          nome: data.name,
+          email: data.email,
+          telefone: data.phone,
+          empresa: data.company || null,
+          servico: data.projectType,
+          descricao: data.description,
+          orcamento_estimado: null, // Will be filled by admin
+          status: 'pendente',
+          prioridade: 'media',
+        });
+
+      if (error) {
+        console.error('Error submitting quote:', error);
+        throw error;
+      }
       
       toast({
         title: "Orçamento solicitado com sucesso!",
@@ -64,6 +78,7 @@ export const QuoteRequestForm: React.FC = () => {
       
       reset();
     } catch (error) {
+      console.error('Quote submission error:', error);
       toast({
         title: "Erro ao solicitar orçamento",
         description: "Tente novamente em alguns minutos.",
