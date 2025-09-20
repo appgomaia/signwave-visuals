@@ -4,7 +4,6 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
 import { useCart } from '@/hooks/useCart';
-import { PageLayout } from '@/components/layout/PageLayout';
 import { GlassCard } from '@/components/ui/glass-card';
 import { GlassButton } from '@/components/ui/glass-button';
 import { Button } from '@/components/ui/button';
@@ -145,24 +144,21 @@ export const Checkout: React.FC<CheckoutProps> = ({ onBack, onSuccess }) => {
 
   if (state.items.length === 0) {
     return (
-      <PageLayout>
-        <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 py-16 text-center">
-          <h1 className="text-2xl font-bold mb-4">Carrinho Vazio</h1>
-          <p className="text-muted-foreground mb-8">
-            Adicione produtos ao seu carrinho antes de finalizar a compra.
-          </p>
-          <Button onClick={onBack}>
-            <ArrowLeft className="h-4 w-4 mr-2" />
-            Voltar às Compras
-          </Button>
-        </div>
-      </PageLayout>
+      <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 py-16 text-center">
+        <h1 className="text-2xl font-bold mb-4">Carrinho Vazio</h1>
+        <p className="text-muted-foreground mb-8">
+          Adicione produtos ao seu carrinho antes de finalizar a compra.
+        </p>
+        <Button onClick={onBack}>
+          <ArrowLeft className="h-4 w-4 mr-2" />
+          Voltar às Compras
+        </Button>
+      </div>
     );
   }
 
   return (
-    <PageLayout>
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 pt-24">
         {/* Header */}
         <div className="flex items-center gap-4 mb-8">
           <Button variant="ghost" onClick={onBack}>
@@ -482,6 +478,5 @@ export const Checkout: React.FC<CheckoutProps> = ({ onBack, onSuccess }) => {
           </div>
         </div>
       </div>
-    </PageLayout>
   );
 };
