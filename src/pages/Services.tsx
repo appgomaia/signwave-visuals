@@ -1,0 +1,316 @@
+import React from "react";
+import { Link } from "react-router-dom";
+import { 
+  Palette, 
+  Printer, 
+  Wrench, 
+  Headphones, 
+  ArrowRight, 
+  CheckCircle,
+  Clock,
+  Award,
+  Zap
+} from "lucide-react";
+import { PageLayout } from "@/components/layout/PageLayout";
+import { GlassCard } from "@/components/ui/glass-card";
+import { GlassButton } from "@/components/ui/glass-button";
+
+const services = [
+  {
+    icon: Palette,
+    title: "Design Services",
+    description: "Custom logo design, branding, and layout design tailored to your business needs.",
+    features: [
+      "Custom Logo Design",
+      "Brand Identity Development", 
+      "Layout & Mockup Creation",
+      "Color Scheme Consultation"
+    ],
+    process: [
+      "Initial Consultation",
+      "Concept Development", 
+      "Design Refinement",
+      "Final Approval"
+    ],
+    timeline: "3-5 business days",
+    startingPrice: "$199"
+  },
+  {
+    icon: Printer,
+    title: "Production Services",
+    description: "High-quality printing, cutting, and fabrication using state-of-the-art equipment.",
+    features: [
+      "Digital Printing",
+      "Vinyl Cutting & Application",
+      "Metal Fabrication",
+      "Lamination & Finishing"
+    ],
+    process: [
+      "File Preparation",
+      "Material Selection",
+      "Production",
+      "Quality Control"
+    ],
+    timeline: "2-7 business days",
+    startingPrice: "$99"
+  },
+  {
+    icon: Wrench,
+    title: "Installation Services",
+    description: "Professional mounting, electrical work, and setup by certified technicians.",
+    features: [
+      "Professional Mounting",
+      "Electrical Connections",
+      "Site Preparation",
+      "Safety Compliance"
+    ],
+    process: [
+      "Site Survey",
+      "Installation Planning",
+      "Professional Installation",
+      "Final Testing"
+    ],
+    timeline: "1-3 business days",
+    startingPrice: "$149"
+  },
+  {
+    icon: Headphones,
+    title: "Maintenance Services",
+    description: "Ongoing cleaning, repairs, updates, and support to keep your signage looking perfect.",
+    features: [
+      "Regular Cleaning",
+      "Repair Services",
+      "Content Updates",
+      "24/7 Support"
+    ],
+    process: [
+      "Maintenance Schedule",
+      "Regular Inspections",
+      "Preventive Care",
+      "Emergency Repairs"
+    ],
+    timeline: "Ongoing",
+    startingPrice: "$79/month"
+  }
+];
+
+const processSteps = [
+  {
+    step: "01",
+    title: "Consultation",
+    description: "We discuss your needs, vision, and budget to create the perfect solution."
+  },
+  {
+    step: "02", 
+    title: "Design & Planning",
+    description: "Our team creates custom designs and detailed project plans for your approval."
+  },
+  {
+    step: "03",
+    title: "Production",
+    description: "We manufacture your signage using premium materials and cutting-edge technology."
+  },
+  {
+    step: "04",
+    title: "Installation",
+    description: "Professional installation ensures your signage is mounted perfectly and safely."
+  },
+  {
+    step: "05",
+    title: "Support",
+    description: "Ongoing maintenance and support keeps your signage looking its best."
+  }
+];
+
+const whyChooseUs = [
+  {
+    icon: Award,
+    title: "Industry Expertise",
+    description: "15+ years of experience in visual communication and signage solutions."
+  },
+  {
+    icon: Zap,
+    title: "Fast Turnaround",
+    description: "Quick production times without compromising on quality or attention to detail."
+  },
+  {
+    icon: CheckCircle,
+    title: "Quality Guarantee",
+    description: "We stand behind our work with comprehensive warranties and quality assurance."
+  },
+  {
+    icon: Clock,
+    title: "On-Time Delivery",
+    description: "Reliable project timelines and delivery schedules you can count on."
+  }
+];
+
+export default function Services() {
+  return (
+    <PageLayout>
+      {/* Header */}
+      <section className="py-20 lg:py-32">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h1 className="text-4xl lg:text-6xl font-bold mb-6">
+              Our <span className="text-gradient">Services</span>
+            </h1>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+              Comprehensive signage solutions from concept to completion. 
+              We handle every aspect of your project with expertise and care.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Services Grid */}
+      <section className="py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid md:grid-cols-2 gap-8">
+            {services.map((service, index) => {
+              const Icon = service.icon;
+              return (
+                <GlassCard key={service.title} variant="interactive" className="group">
+                  <div className="flex items-center mb-6">
+                    <div className="w-16 h-16 rounded-xl bg-gradient-primary flex items-center justify-center shadow-glow group-hover:shadow-glow-secondary transition-all duration-300 mr-4">
+                      <Icon className="h-8 w-8 text-white" />
+                    </div>
+                    <div>
+                      <h3 className="text-2xl font-semibold">{service.title}</h3>
+                      <p className="text-gradient font-semibold">Starting at {service.startingPrice}</p>
+                    </div>
+                  </div>
+                  
+                  <p className="text-muted-foreground mb-6">{service.description}</p>
+                  
+                  <div className="grid md:grid-cols-2 gap-6 mb-6">
+                    <div>
+                      <h4 className="font-semibold mb-3">Features Included:</h4>
+                      <ul className="space-y-2">
+                        {service.features.map((feature, idx) => (
+                          <li key={idx} className="flex items-center text-sm">
+                            <CheckCircle className="h-4 w-4 text-success mr-2 flex-shrink-0" />
+                            {feature}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                    
+                    <div>
+                      <h4 className="font-semibold mb-3">Our Process:</h4>
+                      <ul className="space-y-2">
+                        {service.process.map((step, idx) => (
+                          <li key={idx} className="flex items-center text-sm">
+                            <span className="w-6 h-6 rounded-full bg-gradient-primary text-white text-xs flex items-center justify-center mr-2 flex-shrink-0">
+                              {idx + 1}
+                            </span>
+                            {step}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-center justify-between pt-4 border-t border-glass-neutral/20">
+                    <div className="flex items-center text-sm text-muted-foreground">
+                      <Clock className="h-4 w-4 mr-2" />
+                      {service.timeline}
+                    </div>
+                    <GlassButton variant="outline" size="sm">
+                      Get Quote
+                      <ArrowRight className="ml-2 h-4 w-4" />
+                    </GlassButton>
+                  </div>
+                </GlassCard>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* Process Section */}
+      <section className="py-20 lg:py-32">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl lg:text-5xl font-bold mb-6">
+              Our <span className="text-gradient">Process</span>
+            </h2>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+              From initial consultation to final installation, we guide you through 
+              every step of creating your perfect signage solution.
+            </p>
+          </div>
+          
+          <div className="grid md:grid-cols-5 gap-8">
+            {processSteps.map((step, index) => (
+              <div key={step.step} className="text-center group">
+                <div className="relative mb-6">
+                  <div className="w-20 h-20 mx-auto rounded-full bg-gradient-primary flex items-center justify-center shadow-glow group-hover:shadow-glow-secondary transition-all duration-300">
+                    <span className="text-2xl font-bold text-white">{step.step}</span>
+                  </div>
+                  {index < processSteps.length - 1 && (
+                    <div className="hidden md:block absolute top-10 left-full w-full h-0.5 bg-gradient-primary opacity-30" />
+                  )}
+                </div>
+                <h3 className="text-xl font-semibold mb-3">{step.title}</h3>
+                <p className="text-muted-foreground text-sm">{step.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Why Choose Us */}
+      <section className="py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl lg:text-5xl font-bold mb-6">
+              Why Choose <span className="text-gradient">FBRSigns</span>
+            </h2>
+          </div>
+          
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {whyChooseUs.map((item, index) => {
+              const Icon = item.icon;
+              return (
+                <GlassCard key={item.title} className="text-center group">
+                  <div className="w-16 h-16 mx-auto mb-6 rounded-xl bg-gradient-secondary flex items-center justify-center shadow-glow-secondary group-hover:shadow-glow transition-all duration-300">
+                    <Icon className="h-8 w-8 text-white" />
+                  </div>
+                  <h3 className="text-xl font-semibold mb-4">{item.title}</h3>
+                  <p className="text-muted-foreground">{item.description}</p>
+                </GlassCard>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-20 lg:py-32">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <GlassCard variant="hero">
+            <h2 className="text-3xl lg:text-5xl font-bold mb-6">
+              Ready to Get <span className="text-gradient">Started?</span>
+            </h2>
+            <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
+              Let's discuss your project and create a custom solution that perfectly 
+              fits your needs and budget.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <GlassButton variant="hero" size="xl" asChild>
+                <Link to="/contact">
+                  Get Free Consultation
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </Link>
+              </GlassButton>
+              <GlassButton variant="outline" size="xl" asChild>
+                <Link to="/portfolio">View Our Work</Link>
+              </GlassButton>
+            </div>
+          </GlassCard>
+        </div>
+      </section>
+    </PageLayout>
+  );
+}
