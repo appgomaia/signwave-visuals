@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ShoppingCart, User } from "lucide-react";
 import { GlassButton } from "@/components/ui/glass-button";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { LoginDialog } from "@/components/auth/LoginDialog";
+import { useCart } from "@/hooks/useCart";
 import { cn } from "@/lib/utils";
 import fbrSignsLogo from "@/assets/fbrsigns-logo.png";
 
@@ -19,6 +23,7 @@ export const GlassNavbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
+  const { state } = useCart();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -68,11 +73,36 @@ export const GlassNavbar = () => {
             ))}
           </div>
 
-          {/* CTA Buttons */}
+          {/* Action Buttons */}
           <div className="hidden md:flex items-center space-x-4">
-            <GlassButton variant="outline" size="sm">
-              Get Quote
-            </GlassButton>
+            {/* Cart Button */}
+            <Link to="/ecommerce">
+              <Button variant="ghost" size="icon" className="relative">
+                <ShoppingCart className="h-5 w-5" />
+                {state.itemCount > 0 && (
+                  <Badge 
+                    variant="destructive" 
+                    className="absolute -top-1 -right-1 h-5 w-5 flex items-center justify-center p-0 text-xs"
+                  >
+                    {state.itemCount > 99 ? '99+' : state.itemCount}
+                  </Badge>
+                )}
+              </Button>
+            </Link>
+            
+            {/* Login Button */}
+            <LoginDialog>
+              <GlassButton variant="outline" size="sm">
+                <User className="h-4 w-4 mr-2" />
+                Dashboard
+              </GlassButton>
+            </LoginDialog>
+            
+            <Link to="/quote-request">
+              <GlassButton variant="outline" size="sm">
+                Orçamento
+              </GlassButton>
+            </Link>
             <GlassButton variant="hero" size="sm">
               Start Project
             </GlassButton>
@@ -111,9 +141,32 @@ export const GlassNavbar = () => {
               </Link>
             ))}
             <div className="pt-4 space-y-3">
-              <GlassButton variant="outline" className="w-full" size="lg">
-                Get Quote
-              </GlassButton>
+              {/* Mobile Cart */}
+              <Link to="/ecommerce" onClick={() => setIsOpen(false)}>
+                <Button variant="outline" className="w-full justify-center" size="lg">
+                  <ShoppingCart className="h-4 w-4 mr-2" />
+                  Carrinho
+                  {state.itemCount > 0 && (
+                    <Badge variant="destructive" className="ml-2">
+                      {state.itemCount}
+                    </Badge>
+                  )}
+                </Button>
+              </Link>
+              
+              {/* Mobile Login */}
+              <LoginDialog>
+                <GlassButton variant="outline" className="w-full" size="lg">
+                  <User className="h-4 w-4 mr-2" />
+                  Dashboard
+                </GlassButton>
+              </LoginDialog>
+              
+              <Link to="/quote-request" onClick={() => setIsOpen(false)}>
+                <GlassButton variant="outline" className="w-full" size="lg">
+                  Solicitar Orçamento
+                </GlassButton>
+              </Link>
               <GlassButton variant="hero" className="w-full" size="lg">
                 Start Project
               </GlassButton>
