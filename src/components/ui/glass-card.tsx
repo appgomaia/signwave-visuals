@@ -12,10 +12,10 @@ const GlassCard = React.forwardRef<HTMLDivElement, GlassCardProps>(
       <div
         ref={ref}
         className={cn(
-          "glass-card m-2.5",
+          "glass-card m-2.5 p-2.5",
           variant === "interactive" && "cursor-pointer hover:scale-[1.02]",
-          variant === "hero" && "p-8 lg:p-12 shadow-glass-lg",
-          variant === "default" && "p-6",
+          variant === "hero" && "!p-8 lg:!p-12 shadow-glass-lg",
+          variant === "default" && "!p-6",
           className
         )}
         {...props}
