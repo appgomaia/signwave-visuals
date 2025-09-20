@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, Zap } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { GlassButton } from "@/components/ui/glass-button";
 import { cn } from "@/lib/utils";
+import fbrSignsLogo from "@/assets/fbrsigns-logo.png";
 
 const navigation = [
   { name: "Home", href: "/" },
@@ -40,11 +41,12 @@ export const GlassNavbar = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <Link to="/" className="flex items-center space-x-2 group">
-            <div className="p-2 rounded-lg bg-gradient-primary shadow-glow group-hover:shadow-glow-secondary transition-all duration-300">
-              <Zap className="h-6 w-6 text-white" />
-            </div>
-            <span className="text-2xl font-bold text-gradient">FBRSigns</span>
+          <Link to="/" className="flex items-center group">
+            <img 
+              src={fbrSignsLogo} 
+              alt="FBRSigns Logo" 
+              className="h-10 w-auto transition-all duration-300 group-hover:scale-105"
+            />
           </Link>
 
           {/* Desktop Navigation */}
