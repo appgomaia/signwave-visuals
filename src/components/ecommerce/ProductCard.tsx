@@ -49,11 +49,17 @@ export const ProductCard: React.FC<ProductCardProps> = ({
   return (
     <GlassCard 
       variant="interactive" 
-      className={`group ${viewMode === "list" ? "flex gap-6" : ""}`}
+      className={`group ${
+        viewMode === "list" 
+          ? "flex flex-col sm:flex-row gap-4 sm:gap-6" 
+          : ""
+      }`}
     >
       {/* Product Image */}
       <div className={`${
-        viewMode === "list" ? "w-48 flex-shrink-0" : "mb-6"
+        viewMode === "list" 
+          ? "w-full sm:w-48 sm:flex-shrink-0 h-48 sm:h-auto" 
+          : "mb-4 sm:mb-6"
       } aspect-square rounded-lg overflow-hidden bg-muted relative`}>
         <img
           src={product.image_url || "/placeholder.svg"}
@@ -68,14 +74,14 @@ export const ProductCard: React.FC<ProductCardProps> = ({
         {(product.categories?.name || product.category) && (
           <Badge 
             variant="secondary" 
-            className="absolute top-2 left-2 bg-background/90 backdrop-blur-sm"
+            className="absolute top-2 left-2 bg-background/90 backdrop-blur-sm text-xs"
           >
             {product.categories?.name || product.category}
           </Badge>
         )}
 
-        {/* Rating */}
-        <div className="absolute top-2 right-2 flex items-center gap-1 bg-background/90 backdrop-blur-sm rounded-full px-2 py-1">
+        {/* Rating - Hidden on small screens */}
+        <div className="absolute top-2 right-2 hidden sm:flex items-center gap-1 bg-background/90 backdrop-blur-sm rounded-full px-2 py-1">
           {[1, 2, 3, 4, 5].map((star) => (
             <Star 
               key={star} 
@@ -87,9 +93,9 @@ export const ProductCard: React.FC<ProductCardProps> = ({
       </div>
       
       {/* Product Details */}
-      <div className="flex-1">
+      <div className="flex-1 min-w-0">
         <div className="mb-3">
-          <h3 className="text-xl font-semibold group-hover:text-primary transition-colors line-clamp-2">
+          <h3 className="text-lg sm:text-xl font-semibold group-hover:text-primary transition-colors line-clamp-2">
             {product.name}
           </h3>
         </div>
@@ -101,9 +107,9 @@ export const ProductCard: React.FC<ProductCardProps> = ({
         )}
         
         {/* Price and Actions */}
-        <div className="flex items-center justify-between">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-0">
           <div className="flex flex-col">
-            <span className="text-2xl font-bold text-gradient">
+            <span className="text-xl sm:text-2xl font-bold text-gradient">
               {formatPrice(product.price)}
             </span>
             {product.unit && (
@@ -113,36 +119,53 @@ export const ProductCard: React.FC<ProductCardProps> = ({
             )}
           </div>
           
-          <div className="flex gap-2">
+          <div className="flex flex-col sm:flex-row gap-2 sm:gap-2">
             {onViewDetails && (
               <GlassButton 
                 variant="outline" 
                 size="sm"
                 onClick={onViewDetails}
-                className="whitespace-nowrap"
+                className="whitespace-nowrap min-h-[44px] sm:min-h-auto"
               >
                 <Eye className="h-4 w-4 mr-2" />
-                {viewMode === 'list' ? 'Ver Detalhes' : 'Ver'}
+                <span className="hidden sm:inline">
+                  {viewMode === 'list' ? 'Ver Detalhes' : 'Ver'}
+                </span>
+                <span className="sm:hidden">Ver</span>
               </GlassButton>
             )}
             <GlassButton 
               variant="default" 
               size="sm"
               onClick={handleAddToCart}
-              className="whitespace-nowrap"
+              className="whitespace-nowrap min-h-[44px] sm:min-h-auto"
             >
               <ShoppingCart className="h-4 w-4 mr-2" />
-              {viewMode === 'list' ? 'Adicionar ao Carrinho' : 'Adicionar'}
+              <span className="hidden sm:inline">
+                {viewMode === 'list' ? 'Adicionar ao Carrinho' : 'Adicionar'}
+              </span>
+              <span className="sm:hidden">Adicionar</span>
             </GlassButton>
           </div>
         </div>
         
+        {/* Rating for mobile - shown below actions */}
+        <div className="flex sm:hidden items-center gap-1 mt-3 text-xs text-muted-foreground">
+          {[1, 2, 3, 4, 5].map((star) => (
+            <Star 
+              key={star} 
+              className="h-3 w-3 fill-yellow-400 text-yellow-400" 
+            />
+          ))}
+          <span className="ml-1">(4.8)</span>
+        </div>
+        
         {/* Additional Info for List View */}
         {viewMode === 'list' && (
-          <div className="flex items-center gap-4 mt-4 text-xs text-muted-foreground">
+          <div className="flex flex-wrap items-center gap-2 sm:gap-4 mt-4 text-xs text-muted-foreground">
             <span>✓ Entrega Rápida</span>
             <span>✓ Garantia Inclusa</span>
-            <span>✓ Instalação Profissional</span>
+            <span className="hidden sm:inline">✓ Instalação Profissional</span>
           </div>
         )}
       </div>
