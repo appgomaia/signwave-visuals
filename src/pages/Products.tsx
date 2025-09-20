@@ -6,11 +6,55 @@ import { GlassCard } from "@/components/ui/glass-card";
 import { GlassButton } from "@/components/ui/glass-button";
 import { Input } from "@/components/ui/input";
 import { supabase } from "@/integrations/supabase/client";
+import { useCart } from "@/hooks/useCart";
 
-export default function Products() {
+interface Product {
+  id: string;
+  name: string;
+  description?: string;
+  detailed_description?: string;
+  price: number;
+  image_url?: string;
+  additional_images?: string[];
+  category?: string;
+  unit?: string;
+  specifications?: any; // Changed from Record<string, any> to any for compatibility
+  material?: string;
+  dimensions?: string;
+  warranty_info?: string;
+  installation_info?: string;
+  lead_time_days?: number;
+  min_quantity?: number;
+  max_quantity?: number;
+  categories?: { name: string };
+}
+
+interface ProductsProps {
+  onProductSelect?: (product: Product) => void;
+}
+
+export default function Products({ onProductSelect }: ProductsProps) {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("All Products");
   const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
+  const { addItem } = useCart();
+
+  const formatPrice = (price: number) => {
+    return new Intl.NumberFormat('pt-BR', {
+      style: 'currency',
+      currency: 'BRL'
+    }).format(price);
+  };
+
+  const handleAddToCart = (product: Product) => {
+    addItem({
+      id: product.id,
+      name: product.name,
+      price: product.price,
+      image_url: product.image_url,
+      unit: product.unit
+    });
+  };
 
   // Fetch categories from Supabase
   const { data: categories = [], isLoading: categoriesLoading } = useQuery({
@@ -172,7 +216,7 @@ export default function Products() {
                     
                     <div className="flex items-center justify-between">
                       <span className="text-2xl font-bold text-gradient">
-                        ${product.price}
+                        {formatPrice(product.price)}
                         {product.unit && (
                           <span className="text-sm text-muted-foreground ml-1">
                             /{product.unit}
@@ -180,13 +224,23 @@ export default function Products() {
                         )}
                       </span>
                       <div className="flex gap-2">
-                        <GlassButton variant="outline" size="sm">
-                          <Eye className="h-4 w-4 mr-2" />
-                          View
-                        </GlassButton>
-                        <GlassButton variant="default" size="sm">
+                        {onProductSelect && (
+                          <GlassButton 
+                            variant="outline" 
+                            size="sm"
+                            onClick={() => onProductSelect(product)}
+                          >
+                            <Eye className="h-4 w-4 mr-2" />
+                            Ver Detalhes
+                          </GlassButton>
+                        )}
+                        <GlassButton 
+                          variant="default" 
+                          size="sm"
+                          onClick={() => handleAddToCart(product)}
+                        >
                           <ShoppingCart className="h-4 w-4 mr-2" />
-                          Add to Cart
+                          Adicionar
                         </GlassButton>
                       </div>
                     </div>

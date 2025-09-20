@@ -8,6 +8,7 @@ import fbrSignsLogo from "@/assets/fbrsigns-logo.png";
 const navigation = [
   { name: "Home", href: "/" },
   { name: "Products", href: "/products" },
+  { name: "Loja", href: "/ecommerce" },
   { name: "Services", href: "/services" },
   { name: "Portfolio", href: "/portfolio" },
   { name: "About", href: "/about" },
