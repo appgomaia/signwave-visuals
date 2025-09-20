@@ -11,8 +11,7 @@ import fbrSignsLogo from "@/assets/fbrsigns-logo.png";
 
 const navigation = [
   { name: "Home", href: "/" },
-  { name: "Products", href: "/products" },
-  { name: "Loja", href: "/ecommerce" },
+  { name: "Products", href: "/ecommerce" },
   { name: "Services", href: "/services" },
   { name: "Portfolio", href: "/portfolio" },
   { name: "About", href: "/about" },
@@ -100,7 +99,7 @@ export const GlassNavbar = () => {
             
             <Link to="/quote-request">
               <GlassButton variant="outline" size="sm">
-                Orçamento
+                Get a quote
               </GlassButton>
             </Link>
             <GlassButton variant="hero" size="sm">
@@ -164,7 +163,7 @@ export const GlassNavbar = () => {
               
               <Link to="/quote-request" onClick={() => setIsOpen(false)}>
                 <GlassButton variant="outline" className="w-full" size="lg">
-                  Solicitar Orçamento
+                  Get a quote
                 </GlassButton>
               </Link>
               <GlassButton variant="hero" className="w-full" size="lg">
