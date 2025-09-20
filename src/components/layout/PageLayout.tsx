@@ -5,9 +5,10 @@ import { GlassFooter } from "./GlassFooter";
 interface PageLayoutProps {
   children: React.ReactNode;
   className?: string;
+  onCartOpen?: () => void;
 }
 
-export const PageLayout: React.FC<PageLayoutProps> = ({ children, className = "" }) => {
+export const PageLayout: React.FC<PageLayoutProps> = ({ children, className = "", onCartOpen }) => {
   return (
     <div className="min-h-screen gradient-bg">
       {/* Floating Background Elements */}
@@ -17,7 +18,7 @@ export const PageLayout: React.FC<PageLayoutProps> = ({ children, className = ""
         <div className="absolute bottom-20 left-1/4 w-80 h-80 bg-gradient-primary rounded-full opacity-10 blur-3xl animate-float float-delay-2" />
       </div>
 
-      <GlassNavbar />
+      <GlassNavbar onCartOpen={onCartOpen} />
       
       <main className={`relative pt-16 ${className}`}>
         {children}

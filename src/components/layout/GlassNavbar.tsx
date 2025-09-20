@@ -18,7 +18,11 @@ const navigation = [
   { name: "Contact", href: "/contact" },
 ];
 
-export const GlassNavbar = () => {
+interface GlassNavbarProps {
+  onCartOpen?: () => void;
+}
+
+export const GlassNavbar: React.FC<GlassNavbarProps> = ({ onCartOpen }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
@@ -75,19 +79,28 @@ export const GlassNavbar = () => {
           {/* Action Buttons */}
           <div className="hidden md:flex items-center space-x-4">
             {/* Cart Button */}
-            <Link to="/ecommerce">
-              <Button variant="ghost" size="icon" className="relative">
-                <ShoppingCart className="h-5 w-5" />
-                {state.itemCount > 0 && (
-                  <Badge 
-                    variant="destructive" 
-                    className="absolute -top-1 -right-1 h-5 w-5 flex items-center justify-center p-0 text-xs"
-                  >
-                    {state.itemCount > 99 ? '99+' : state.itemCount}
-                  </Badge>
-                )}
-              </Button>
-            </Link>
+            <Button 
+              variant="ghost" 
+              size="icon" 
+              className="relative"
+              onClick={() => {
+                if (onCartOpen) {
+                  onCartOpen();
+                } else {
+                  window.location.href = '/ecommerce';
+                }
+              }}
+            >
+              <ShoppingCart className="h-5 w-5" />
+              {state.itemCount > 0 && (
+                <Badge 
+                  variant="destructive" 
+                  className="absolute -top-1 -right-1 h-5 w-5 flex items-center justify-center p-0 text-xs"
+                >
+                  {state.itemCount > 99 ? '99+' : state.itemCount}
+                </Badge>
+              )}
+            </Button>
             
             {/* Login Button */}
             <LoginDialog>
@@ -141,17 +154,27 @@ export const GlassNavbar = () => {
             ))}
             <div className="pt-4 space-y-3">
               {/* Mobile Cart */}
-              <Link to="/ecommerce" onClick={() => setIsOpen(false)}>
-                <Button variant="outline" className="w-full justify-center" size="lg">
-                  <ShoppingCart className="h-4 w-4 mr-2" />
-                  Carrinho
-                  {state.itemCount > 0 && (
-                    <Badge variant="destructive" className="ml-2">
-                      {state.itemCount}
-                    </Badge>
-                  )}
-                </Button>
-              </Link>
+              <Button 
+                variant="outline" 
+                className="w-full justify-center" 
+                size="lg"
+                onClick={() => {
+                  setIsOpen(false);
+                  if (onCartOpen) {
+                    onCartOpen();
+                  } else {
+                    window.location.href = '/ecommerce';
+                  }
+                }}
+              >
+                <ShoppingCart className="h-4 w-4 mr-2" />
+                Carrinho
+                {state.itemCount > 0 && (
+                  <Badge variant="destructive" className="ml-2">
+                    {state.itemCount}
+                  </Badge>
+                )}
+              </Button>
               
               {/* Mobile Login */}
               <LoginDialog>

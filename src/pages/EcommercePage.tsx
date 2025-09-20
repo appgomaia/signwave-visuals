@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
-import { EcommerceNavbar } from '@/components/layout/EcommerceNavbar';
+import { PageLayout } from '@/components/layout/PageLayout';
 import { CartSidebar } from '@/components/ecommerce/CartSidebar';
 import { ProductDetails } from '@/components/ecommerce/ProductDetails';
 import { Checkout } from '@/components/ecommerce/Checkout';
-import { GlassFooter } from '@/components/layout/GlassFooter';
 import Products from '@/pages/Products';
 
 type ViewMode = 'products' | 'product-details' | 'checkout' | 'success';
@@ -112,9 +111,7 @@ export default function EcommercePage() {
   };
 
   return (
-    <div className="min-h-screen bg-background">
-      <EcommerceNavbar onCartOpen={() => setIsCartOpen(true)} />
-      
+    <PageLayout onCartOpen={() => setIsCartOpen(true)}>
       {renderContent()}
       
       <CartSidebar 
@@ -122,8 +119,6 @@ export default function EcommercePage() {
         onClose={() => setIsCartOpen(false)}
         onCheckout={handleCheckout}
       />
-      
-      {currentView !== 'checkout' && currentView !== 'success' && <GlassFooter />}
-    </div>
+    </PageLayout>
   );
 }
