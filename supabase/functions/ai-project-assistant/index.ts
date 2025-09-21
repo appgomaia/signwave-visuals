@@ -1,38 +1,55 @@
 import "https://deno.land/x/xhr@0.1.0/mod.ts";
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
+import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
 
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
   'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
 };
 
-const SYSTEM_PROMPT = `You are a friendly, professional virtual assistant for FBRSigns, a creative marketing and print company that produces signs, banners, personalized t-shirts, and other promotional materials. Your goal is to help customers clearly express their needs, even if they are not sure how to explain their project.
+// Function to create system prompt with product information
+const createSystemPrompt = (products: any[]) => {
+  const productCategories = [...new Set(products.map(p => p.category).filter(Boolean))];
+  const productList = products.map(p => 
+    `• ${p.name} - ${p.description || 'Professional signage solution'}${p.price ? ` (Starting at $${p.price})` : ''}`
+  ).join('\n');
+
+  return `You are a friendly, professional virtual assistant for FBRSigns, a creative marketing and print company. Your goal is to help customers clearly express their needs and match them with our available products and services.
+
+AVAILABLE PRODUCT CATEGORIES:
+${productCategories.map(cat => `• ${cat}`).join('\n')}
+
+AVAILABLE PRODUCTS & SERVICES:
+${productList}
 
 TONE: Welcoming, patient, and solution-oriented. Use simple, encouraging language that helps clients feel confident in describing what they want.
 
 INSTRUCTIONS:
 1. Greet the customer warmly and assure them that you will help shape their idea into a concrete project.
 2. Ask guiding questions step by step, avoiding overwhelming them with too many details at once.
-3. Provide examples when necessary to make choices easier.
-4. Confirm understanding after each step.
+3. When customers mention general needs, suggest specific products from our catalog that might fit.
+4. Provide examples from our actual product offerings when necessary to make choices easier.
+5. Confirm understanding after each step.
 
 KEY QUESTIONS TO GUIDE THE CONVERSATION:
-• What type of product are you interested in? (Sign, banner, t-shirt, stickers, flyers, etc.)
+• What type of product are you interested in? (Reference our available categories and products)
 • Where and how will you use it? (Event, store, campaign, personal use, giveaway, etc.)
 • Do you already have a design or logo, or would you like us to help create one?
-• What size or format are you imagining? (Small/medium/large, horizontal/vertical, standard t-shirt sizes, etc.)
+• What size or format are you imagining? (Reference product specifications when available)
 • Do you have a preferred color scheme or style? (Bold, minimalist, colorful, elegant, fun, etc.)
-• Approximately how many units do you need?
+• Approximately how many units do you need? (Consider minimum quantities from our products)
 • Do you have a deadline or event date we should keep in mind?
-• Is there a budget range you'd like us to consider?
+• Is there a budget range you'd like us to consider? (Reference our product pricing when available)
 
 IMPORTANT: 
 - Ask ONE question at a time to avoid overwhelming the customer
 - Be conversational and friendly
-- If they seem unsure, provide helpful examples
-- Once you have enough information, summarize their project and offer to connect them with our team
+- When customers seem unsure, suggest specific products from our catalog as examples
+- Use our actual product names and descriptions to help guide their choices
+- Once you have enough information, summarize their project matching it to our available products
 
 Keep responses concise but helpful. Always end with a clear next step or question.`;
+};
 
 serve(async (req) => {
   // Handle CORS preflight requests
@@ -51,6 +68,24 @@ serve(async (req) => {
     if (!openAIApiKey) {
       throw new Error('OpenAI API key not configured');
     }
+
+    // Initialize Supabase client
+    const supabaseUrl = Deno.env.get('SUPABASE_URL')!;
+    const supabaseServiceKey = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!;
+    const supabase = createClient(supabaseUrl, supabaseServiceKey);
+
+    // Fetch available products
+    const { data: products, error: productsError } = await supabase
+      .from('products')
+      .select('name, description, category, price, specifications, dimensions, material')
+      .order('category', { ascending: true });
+
+    if (productsError) {
+      console.error('Error fetching products:', productsError);
+    }
+
+    // Create system prompt with product information
+    const systemPrompt = createSystemPrompt(products || []);
 
     // Check if this is a project summary request
     if (action === 'summarize') {
@@ -83,10 +118,10 @@ Format this as a clear, professional project brief that our team can use to prov
       body: JSON.stringify({
         model: 'gpt-4o-mini',
         messages: [
-          { role: 'system', content: SYSTEM_PROMPT },
+          { role: 'system', content: systemPrompt },
           ...messages
         ],
-        max_tokens: 500,
+        max_tokens: 600,
         temperature: 0.7,
       }),
     });
