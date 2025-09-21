@@ -111,13 +111,10 @@ export const GlassNavbar: React.FC<GlassNavbarProps> = ({ onCartOpen }) => {
             </LoginDialog>
             
             <Link to="/quote-request">
-              <GlassButton variant="outline" size="sm">
+              <GlassButton variant="default" size="sm">
                 Get a quote
               </GlassButton>
             </Link>
-            <GlassButton variant="hero" size="sm">
-              Start Project
-            </GlassButton>
           </div>
 
           {/* Mobile menu button */}
@@ -185,13 +182,10 @@ export const GlassNavbar: React.FC<GlassNavbarProps> = ({ onCartOpen }) => {
               </LoginDialog>
               
               <Link to="/quote-request" onClick={() => setIsOpen(false)}>
-                <GlassButton variant="outline" className="w-full" size="lg">
+                <GlassButton variant="default" className="w-full" size="lg">
                   Get a quote
                 </GlassButton>
               </Link>
-              <GlassButton variant="hero" className="w-full" size="lg">
-                Start Project
-              </GlassButton>
             </div>
           </div>
         </div>
