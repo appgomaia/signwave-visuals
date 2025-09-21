@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { GlassCard } from '@/components/ui/glass-card';
@@ -200,9 +200,9 @@ export const AIProjectAssistant: React.FC<AIProjectAssistantProps> = ({
             </div>
             AI Project Assistant
           </DialogTitle>
-          <p className="text-muted-foreground">
+          <DialogDescription>
             Let our AI assistant help you define your perfect signage project
-          </p>
+          </DialogDescription>
         </DialogHeader>
 
         <div className="flex-1 flex flex-col min-h-0">

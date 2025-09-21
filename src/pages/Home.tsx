@@ -190,25 +190,11 @@ export default function Home() {
               From custom business signs to digital displays, we bring your vision to life.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 mb-12 justify-center">
-              <div className="bg-red-500 p-4 text-white">
-                Debug: showAIAssistant = {showAIAssistant.toString()}
-              </div>
-              <button
-                onClick={(e) => {
-                  console.log('Button clicked! Event:', e);
-                  console.log('Current showAIAssistant state:', showAIAssistant);
-                  setShowAIAssistant(prev => {
-                    console.log('Setting showAIAssistant from', prev, 'to', !prev);
-                    return true;
-                  });
-                }}
-                className="h-14 px-12 text-lg rounded-xl bg-red-600 hover:bg-red-700 text-white font-semibold inline-flex items-center justify-center gap-2 transition-all cursor-pointer"
-                style={{ zIndex: 1000, position: 'relative' }}
-              >
-                <Sparkles className="h-5 w-5" />
-                DEBUG: Start Your Project
-                <ArrowRight className="h-5 w-5" />
-              </button>
+              <GlassButton variant="hero" size="xl" onClick={() => setShowAIAssistant(true)}>
+                <Sparkles className="h-5 w-5 mr-2" />
+                Start Your Project
+                <ArrowRight className="h-5 w-5 ml-2" />
+              </GlassButton>
               <GlassButton variant="outline" size="xl" asChild>
                 <Link to="/products">Explore Products</Link>
               </GlassButton>
