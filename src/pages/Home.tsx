@@ -356,6 +356,17 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Floating Start Project button */}
+      <GlassButton
+        variant="hero"
+        size="xl"
+        onClick={() => setShowAIAssistant(true)}
+        className="fixed bottom-6 right-6 z-[100]"
+        aria-label="Start your project"
+      >
+        <Sparkles className="h-5 w-5 mr-2" />
+        Start Project
+      </GlassButton>
 
       {/* AI Project Assistant Dialog */}
       <AIProjectAssistant 
