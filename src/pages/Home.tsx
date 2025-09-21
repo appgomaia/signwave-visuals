@@ -188,16 +188,17 @@ export default function Home() {
               From custom business signs to digital displays, we bring your vision to life.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 mb-12 justify-center">
-              <GlassButton 
-                variant="hero" 
-                size="xl" 
-                onClick={() => setShowAIAssistant(true)}
-                className="bg-gradient-primary hover:bg-gradient-primary/90 text-white font-semibold"
+              <button
+                onClick={() => {
+                  console.log('Start Project button clicked!');
+                  setShowAIAssistant(true);
+                }}
+                className="h-14 px-12 text-lg rounded-xl bg-gradient-primary hover:bg-gradient-primary/90 text-white font-semibold inline-flex items-center justify-center gap-2 transition-all"
               >
-                <Sparkles className="mr-2 h-5 w-5" />
+                <Sparkles className="h-5 w-5" />
                 Start Your Project
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </GlassButton>
+                <ArrowRight className="h-5 w-5" />
+              </button>
               <GlassButton variant="outline" size="xl" asChild>
                 <Link to="/products">Explore Products</Link>
               </GlassButton>
@@ -362,7 +363,10 @@ export default function Home() {
       {/* AI Project Assistant Dialog */}
       <AIProjectAssistant 
         open={showAIAssistant}
-        onOpenChange={setShowAIAssistant}
+        onOpenChange={(open) => {
+          console.log('AI Assistant dialog state changing to:', open);
+          setShowAIAssistant(open);
+        }}
       />
     </PageLayout>
   );

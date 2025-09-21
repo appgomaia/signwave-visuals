@@ -23,6 +23,8 @@ export const AIProjectAssistant: React.FC<AIProjectAssistantProps> = ({
   open,
   onOpenChange
 }) => {
+  console.log('AIProjectAssistant rendered with open:', open);
+  
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
