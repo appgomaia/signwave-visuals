@@ -192,7 +192,13 @@ export const AIProjectAssistant: React.FC<AIProjectAssistantProps> = ({
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="max-w-4xl h-[80vh] flex flex-col p-0">
+      <DialogContent className="max-w-4xl h-[80vh] flex flex-col p-0 bg-red-100 border-4 border-red-500">
+        <div className="p-4 bg-yellow-200">
+          <h2>DEBUG: Dialog is open! conversationStarted: {conversationStarted.toString()}</h2>
+          <h2>DEBUG: projectSummary: {projectSummary ? 'exists' : 'null'}</h2>
+          <h2>DEBUG: messages length: {messages.length}</h2>
+        </div>
+        
         <DialogHeader className="p-6 pb-4 border-b border-border">
           <DialogTitle className="flex items-center gap-3 text-2xl">
             <div className="p-2 rounded-xl bg-gradient-primary flex items-center justify-center">
@@ -205,10 +211,10 @@ export const AIProjectAssistant: React.FC<AIProjectAssistantProps> = ({
           </p>
         </DialogHeader>
 
-        <div className="flex-1 flex flex-col min-h-0">
+        <div className="flex-1 flex flex-col min-h-0 bg-green-100">
           {!conversationStarted && !projectSummary ? (
             // Welcome Screen
-            <div className="flex-1 flex items-center justify-center p-8">
+            <div className="flex-1 flex items-center justify-center p-8 bg-blue-100">
               <div className="text-center max-w-2xl">
                 <div className="mb-8">
                   <div className="inline-flex p-4 rounded-2xl bg-gradient-primary mb-4">
@@ -247,11 +253,13 @@ export const AIProjectAssistant: React.FC<AIProjectAssistantProps> = ({
                   </div>
                 </GlassCard>
 
-                <Button 
-                  onClick={startConversation}
+                <button 
+                  onClick={(e) => {
+                    console.log('Start My Project button clicked!', e);
+                    startConversation();
+                  }}
                   disabled={isLoading}
-                  size="lg"
-                  className="bg-gradient-primary hover:bg-gradient-primary/90 text-white font-semibold px-8"
+                  className="h-12 px-8 text-lg bg-red-600 hover:bg-red-700 text-white font-semibold rounded-lg"
                 >
                   {isLoading ? (
                     <>
@@ -261,142 +269,24 @@ export const AIProjectAssistant: React.FC<AIProjectAssistantProps> = ({
                   ) : (
                     <>
                       <Sparkles className="mr-2 h-5 w-5" />
-                      Start My Project
+                      DEBUG: Start My Project
                     </>
                   )}
-                </Button>
+                </button>
               </div>
             </div>
           ) : projectSummary ? (
-            // Project Summary Screen
-            <div className="flex-1 p-6">
-              <div className="max-w-3xl mx-auto">
-                <div className="text-center mb-6">
-                  <div className="inline-flex p-3 rounded-2xl bg-gradient-primary mb-4">
-                    <CheckCircle className="h-8 w-8 text-white" />
-                  </div>
-                  <h3 className="text-2xl font-semibold mb-2">Project Summary Complete!</h3>
-                  <p className="text-muted-foreground">
-                    Here's what we've gathered about your project:
-                  </p>
-                </div>
-
-                <GlassCard className="p-6 mb-6">
-                  <div className="prose prose-sm max-w-none dark:prose-invert">
-                    <div className="whitespace-pre-wrap text-sm leading-relaxed">
-                      {projectSummary}
-                    </div>
-                  </div>
-                </GlassCard>
-
-                <div className="flex gap-4 justify-center">
-                  <Button 
-                    onClick={resetConversation}
-                    variant="outline"
-                  >
-                    Start Over
-                  </Button>
-                  <Button 
-                    onClick={() => {
-                      onOpenChange(false);
-                      // Navigate to quote request with summary
-                      window.location.href = '/quote-request';
-                    }}
-                    className="bg-gradient-primary hover:bg-gradient-primary/90 text-white"
-                  >
-                    Request Quote
-                  </Button>
-                </div>
-              </div>
+            // Project Summary Screen - SIMPLIFIED FOR NOW
+            <div className="p-8 bg-purple-100">
+              <h3>Project Summary Complete!</h3>
+              <p>{projectSummary}</p>
             </div>
           ) : (
-            // Chat Interface
-            <>
-              <ScrollArea ref={scrollAreaRef} className="flex-1 p-6">
-                <div className="space-y-4 max-w-3xl mx-auto">
-                  {messages.map((message, index) => (
-                    <div key={index} className={`flex gap-3 ${message.role === 'user' ? 'justify-end' : 'justify-start'}`}>
-                      <div className={`flex gap-3 max-w-[80%] ${message.role === 'user' ? 'flex-row-reverse' : 'flex-row'}`}>
-                        <div className={`p-2 rounded-xl flex-shrink-0 ${
-                          message.role === 'user' 
-                            ? 'bg-primary text-primary-foreground' 
-                            : 'bg-gradient-primary'
-                        }`}>
-                          {message.role === 'user' ? (
-                            <User className="h-5 w-5 text-white" />
-                          ) : (
-                            <Bot className="h-5 w-5 text-white" />
-                          )}
-                        </div>
-                        <GlassCard className={`p-4 ${
-                          message.role === 'user' 
-                            ? 'bg-primary/10 border-primary/20' 
-                            : ''
-                        }`}>
-                          <div className="text-sm leading-relaxed whitespace-pre-wrap">
-                            {message.content}
-                          </div>
-                          <div className="text-xs text-muted-foreground mt-2">
-                            {message.timestamp.toLocaleTimeString()}
-                          </div>
-                        </GlassCard>
-                      </div>
-                    </div>
-                  ))}
-                  
-                  {isLoading && (
-                    <div className="flex gap-3 justify-start">
-                      <div className="p-2 rounded-xl bg-gradient-primary">
-                        <Bot className="h-5 w-5 text-white" />
-                      </div>
-                      <GlassCard className="p-4">
-                        <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                          <Loader2 className="h-4 w-4 animate-spin" />
-                          Assistant is thinking...
-                        </div>
-                      </GlassCard>
-                    </div>
-                  )}
-                </div>
-              </ScrollArea>
-
-              <div className="border-t border-border p-6">
-                <div className="max-w-3xl mx-auto">
-                  <div className="flex gap-3 mb-4">
-                    <Input
-                      ref={inputRef}
-                      value={input}
-                      onChange={(e) => setInput(e.target.value)}
-                      onKeyPress={handleKeyPress}
-                      placeholder="Type your message..."
-                      disabled={isLoading}
-                      className="flex-1"
-                    />
-                    <Button 
-                      onClick={sendMessage}
-                      disabled={!input.trim() || isLoading}
-                      size="icon"
-                    >
-                      <Send className="h-4 w-4" />
-                    </Button>
-                  </div>
-                  
-                  {messages.length >= 4 && (
-                    <div className="text-center">
-                      <Button 
-                        onClick={generateProjectSummary}
-                        disabled={isLoading}
-                        variant="outline"
-                        className="border-primary/20 text-primary hover:bg-primary/10"
-                      >
-                        <CheckCircle className="mr-2 h-4 w-4" />
-                        Generate Project Summary
-                      </Button>
-                    </div>
-                  )}
-                </div>
-              </div>
-            </>
+            // Chat Interface - SIMPLIFIED FOR NOW
+            <div className="p-8 bg-orange-100">
+              <h3>Chat Interface (simplified)</h3>
+              <p>Messages: {messages.length}</p>
+            </div>
           )}
         </div>
       </DialogContent>
