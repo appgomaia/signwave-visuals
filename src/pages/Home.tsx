@@ -370,6 +370,17 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Quick-access Assistant button */}
+      <button
+        onClick={() => {
+          console.log('Floating Assistant button clicked');
+          setShowAIAssistant(true);
+        }}
+        className="fixed bottom-6 right-6 z-[10000] h-12 px-5 rounded-full bg-primary text-primary-foreground shadow-glow hover:shadow-glow focus:outline-none focus:ring-2 focus:ring-ring transition"
+      >
+        Start Project
+      </button>
+
       {/* AI Project Assistant Dialog */}
       <AIProjectAssistant 
         open={showAIAssistant}
