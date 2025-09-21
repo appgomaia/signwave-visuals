@@ -11,11 +11,13 @@ import {
   CheckCircle,
   Eye,
   Palette,
-  Wrench
+  Wrench,
+  Sparkles
 } from "lucide-react";
 import { PageLayout } from "@/components/layout/PageLayout";
 import { GlassCard } from "@/components/ui/glass-card";
 import { GlassButton } from "@/components/ui/glass-button";
+import { AIProjectAssistant } from "@/components/forms/AIProjectAssistant";
 import heroImage from "@/assets/signage-business-hero.jpg";
 import galleryStorefront from "@/assets/gallery-storefront-sign.jpg";
 import galleryDigitalLED from "@/assets/gallery-digital-led.jpg";
@@ -125,6 +127,7 @@ const testimonials = [
 
 export default function Home() {
   const [currentBgIndex, setCurrentBgIndex] = useState(0);
+  const [showAIAssistant, setShowAIAssistant] = useState(false);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -185,14 +188,18 @@ export default function Home() {
               From custom business signs to digital displays, we bring your vision to life.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 mb-12 justify-center">
-              <GlassButton variant="hero" size="xl" asChild>
-                <Link to="/products">
-                  Explore Products
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </Link>
+              <GlassButton 
+                variant="hero" 
+                size="xl" 
+                onClick={() => setShowAIAssistant(true)}
+                className="bg-gradient-primary hover:bg-gradient-primary/90 text-white font-semibold"
+              >
+                <Sparkles className="mr-2 h-5 w-5" />
+                Start Your Project
+                <ArrowRight className="ml-2 h-5 w-5" />
               </GlassButton>
               <GlassButton variant="outline" size="xl" asChild>
-                <Link to="/contact">Get Free Quote</Link>
+                <Link to="/products">Explore Products</Link>
               </GlassButton>
             </div>
             
@@ -351,6 +358,12 @@ export default function Home() {
           </GlassCard>
         </div>
       </section>
+
+      {/* AI Project Assistant Dialog */}
+      <AIProjectAssistant 
+        open={showAIAssistant}
+        onOpenChange={setShowAIAssistant}
+      />
     </PageLayout>
   );
 }
