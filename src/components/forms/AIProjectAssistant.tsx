@@ -205,96 +205,98 @@ export const AIProjectAssistant: React.FC<AIProjectAssistantProps> = ({
           </DialogDescription>
         </DialogHeader>
 
-        <div className="flex-1 flex flex-col min-h-0">
+        <div className="flex-1 flex flex-col min-h-0 overflow-hidden">
           {!conversationStarted && !projectSummary ? (
             // Welcome Screen
-            <div className="flex-1 flex items-center justify-center p-8">
-              <div className="text-center max-w-2xl">
-                <div className="mb-8">
-                  <div className="inline-flex p-4 rounded-2xl bg-gradient-primary mb-4">
-                    <Bot className="h-12 w-12 text-white" />
+            <ScrollArea className="flex-1">
+              <div className="flex items-center justify-center p-8 min-h-full">
+                <div className="text-center max-w-2xl">
+                  <div className="mb-8">
+                    <div className="inline-flex p-4 rounded-2xl bg-gradient-primary mb-4">
+                      <Bot className="h-12 w-12 text-white" />
+                    </div>
+                    <h3 className="text-2xl font-semibold mb-4">
+                      Welcome to Your Personal Project Assistant
+                    </h3>
+                    <p className="text-muted-foreground text-lg mb-8">
+                      Not sure how to describe your signage needs? No problem! Our AI assistant 
+                      will ask you simple questions to help define your perfect project. 
+                      Whether it's signs, banners, t-shirts, or promotional materials, 
+                      we'll guide you through every step.
+                    </p>
                   </div>
-                  <h3 className="text-2xl font-semibold mb-4">
-                    Welcome to Your Personal Project Assistant
-                  </h3>
-                  <p className="text-muted-foreground text-lg mb-8">
-                    Not sure how to describe your signage needs? No problem! Our AI assistant 
-                    will ask you simple questions to help define your perfect project. 
-                    Whether it's signs, banners, t-shirts, or promotional materials, 
-                    we'll guide you through every step.
-                  </p>
+                  
+                  <GlassCard className="p-6 mb-6">
+                    <h4 className="font-semibold mb-3">What we'll help you define:</h4>
+                    <div className="grid md:grid-cols-2 gap-3 text-sm text-muted-foreground">
+                      <div className="flex items-center gap-2">
+                        <CheckCircle className="h-4 w-4 text-primary" />
+                        Product type & specifications
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <CheckCircle className="h-4 w-4 text-primary" />
+                        Size and format preferences
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <CheckCircle className="h-4 w-4 text-primary" />
+                        Design and style needs
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <CheckCircle className="h-4 w-4 text-primary" />
+                        Timeline and budget
+                      </div>
+                    </div>
+                  </GlassCard>
+
+                  <Button 
+                    onClick={startConversation}
+                    disabled={isLoading}
+                    size="lg"
+                    className="h-12 px-8 text-lg"
+                  >
+                    {isLoading ? (
+                      <>
+                        <Loader2 className="mr-2 h-5 w-5 animate-spin" />
+                        Starting...
+                      </>
+                    ) : (
+                      <>
+                        <Sparkles className="mr-2 h-5 w-5" />
+                        Start My Project
+                      </>
+                    )}
+                  </Button>
+                </div>
+              </div>
+            </ScrollArea>
+          ) : projectSummary ? (
+            // Project Summary Screen
+            <ScrollArea className="flex-1">
+              <div className="p-8">
+                <div className="text-center mb-6">
+                  <div className="inline-flex p-3 rounded-xl bg-gradient-primary mb-4">
+                    <CheckCircle className="h-8 w-8 text-white" />
+                  </div>
+                  <h3 className="text-2xl font-semibold mb-2">Project Summary Complete!</h3>
+                  <p className="text-muted-foreground">Your project details have been compiled and are ready for review.</p>
                 </div>
                 
                 <GlassCard className="p-6 mb-6">
-                  <h4 className="font-semibold mb-3">What we'll help you define:</h4>
-                  <div className="grid md:grid-cols-2 gap-3 text-sm text-muted-foreground">
-                    <div className="flex items-center gap-2">
-                      <CheckCircle className="h-4 w-4 text-primary" />
-                      Product type & specifications
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <CheckCircle className="h-4 w-4 text-primary" />
-                      Size and format preferences
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <CheckCircle className="h-4 w-4 text-primary" />
-                      Design and style needs
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <CheckCircle className="h-4 w-4 text-primary" />
-                      Timeline and budget
-                    </div>
-                  </div>
-                </GlassCard>
-
-                <Button 
-                  onClick={startConversation}
-                  disabled={isLoading}
-                  size="lg"
-                  className="h-12 px-8 text-lg"
-                >
-                  {isLoading ? (
-                    <>
-                      <Loader2 className="mr-2 h-5 w-5 animate-spin" />
-                      Starting...
-                    </>
-                  ) : (
-                    <>
-                      <Sparkles className="mr-2 h-5 w-5" />
-                      Start My Project
-                    </>
-                  )}
-                </Button>
-              </div>
-            </div>
-          ) : projectSummary ? (
-            // Project Summary Screen
-            <div className="flex-1 flex flex-col p-8">
-              <div className="text-center mb-6">
-                <div className="inline-flex p-3 rounded-xl bg-gradient-primary mb-4">
-                  <CheckCircle className="h-8 w-8 text-white" />
-                </div>
-                <h3 className="text-2xl font-semibold mb-2">Project Summary Complete!</h3>
-                <p className="text-muted-foreground">Your project details have been compiled and are ready for review.</p>
-              </div>
-              
-              <GlassCard className="flex-1 p-6 mb-6">
-                <ScrollArea className="h-full">
                   <div className="prose prose-sm max-w-none">
                     <div className="whitespace-pre-wrap">{projectSummary}</div>
                   </div>
-                </ScrollArea>
-              </GlassCard>
-              
-              <div className="flex gap-3 justify-end">
-                <Button variant="outline" onClick={resetConversation}>
-                  Start Over
-                </Button>
-                <Button onClick={() => onOpenChange(false)}>
-                  Request Quote
-                </Button>
+                </GlassCard>
+                
+                <div className="flex gap-3 justify-end">
+                  <Button variant="outline" onClick={resetConversation}>
+                    Start Over
+                  </Button>
+                  <Button onClick={() => onOpenChange(false)}>
+                    Request Quote
+                  </Button>
+                </div>
               </div>
-            </div>
+            </ScrollArea>
           ) : (
             // Chat Interface
             <div className="flex-1 flex flex-col">
