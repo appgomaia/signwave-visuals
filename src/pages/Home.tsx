@@ -148,11 +148,11 @@ export default function Home() {
           <img
             src={heroMainBg}
             alt="Professional signage background"
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover object-center"
           />
           
-          {/* Black Overlay with 85% opacity */}
-          <div className="absolute inset-0 bg-black/85" />
+          {/* Black Overlay with 75% opacity */}
+          <div className="absolute inset-0 bg-black/75" />
           
           {/* Floating Particles Effect */}
           <div className="absolute inset-0">
