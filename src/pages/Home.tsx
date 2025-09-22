@@ -151,8 +151,8 @@ export default function Home() {
             className="w-full h-full object-cover"
           />
           
-          {/* Black Overlay with 80% opacity */}
-          <div className="absolute inset-0 bg-black/80" />
+          {/* Black Overlay with 85% opacity */}
+          <div className="absolute inset-0 bg-black/85" />
           
           {/* Floating Particles Effect */}
           <div className="absolute inset-0">
