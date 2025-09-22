@@ -40,17 +40,53 @@ const checkoutSchema = z.object({
   
   // Additional
   notes: z.string().optional()
-}).refine((data) => {
+}).superRefine((data, ctx) => {
   if (data.paymentMethod === 'credit_card') {
-    return data.cardNumber && data.cardName && data.cardExpiry && data.cardCvv;
+    if (!data.cardNumber || data.cardNumber.trim() === '') {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        message: "Card number is required",
+        path: ["cardNumber"]
+      });
+    }
+    if (!data.cardName || data.cardName.trim() === '') {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        message: "Cardholder name is required",
+        path: ["cardName"]
+      });
+    }
+    if (!data.cardExpiry || data.cardExpiry.trim() === '') {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        message: "Expiry date is required",
+        path: ["cardExpiry"]
+      });
+    }
+    if (!data.cardCvv || data.cardCvv.trim() === '') {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        message: "CVV is required",
+        path: ["cardCvv"]
+      });
+    }
   }
+  
   if (data.paymentMethod === 'paypal') {
-    return data.paypalEmail && z.string().email().safeParse(data.paypalEmail).success;
+    if (!data.paypalEmail || data.paypalEmail.trim() === '') {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        message: "PayPal email is required",
+        path: ["paypalEmail"]
+      });
+    } else if (!z.string().email().safeParse(data.paypalEmail).success) {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        message: "Please enter a valid email address",
+        path: ["paypalEmail"]
+      });
+    }
   }
-  return true;
-}, {
-  message: "Please fill in all required payment fields",
-  path: ["paymentMethod"],
 });
 
 type CheckoutForm = z.infer<typeof checkoutSchema>;
