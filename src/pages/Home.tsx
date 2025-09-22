@@ -130,7 +130,7 @@ export default function Home() {
   const [currentBgIndex, setCurrentBgIndex] = useState(0);
   const [showAIAssistant, setShowAIAssistant] = useState(false);
 
-  console.log('Home component rendered, showAIAssistant:', showAIAssistant);
+  
 
   useEffect(() => {
     const interval = setInterval(() => {
