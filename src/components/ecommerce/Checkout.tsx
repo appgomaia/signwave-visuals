@@ -187,14 +187,14 @@ export const Checkout: React.FC<CheckoutProps> = ({ onBack, onSuccess }) => {
         zipCode: data.zipCode
       };
 
-      // Create order in database
+      // Create order in database (ensure customer_email matches auth email for RLS)
       const { data: order, error: orderError } = await supabase
         .from('orders')
         .insert({
           customer_id: customer?.id || null,
-          customer_name: customer?.full_name || 'Guest Customer',
-          customer_email: customer?.email || user?.email || 'guest@checkout.com',
-          customer_phone: customer?.phone,
+          customer_name: customer?.full_name || user?.user_metadata?.full_name || 'Guest Customer',
+          customer_email: user?.email || 'guest@checkout.com', // Must match auth.users.email for RLS
+          customer_phone: customer?.phone || customer?.phone_number,
           total: state.total,
           payment_method: data.paymentMethod,
           shipping_address: shippingAddress,
