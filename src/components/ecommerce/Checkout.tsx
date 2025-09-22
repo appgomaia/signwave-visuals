@@ -29,8 +29,28 @@ const checkoutSchema = z.object({
   // Payment
   paymentMethod: z.enum(['credit_card', 'paypal']),
   
+  // Credit Card fields (conditional)
+  cardNumber: z.string().optional(),
+  cardName: z.string().optional(),
+  cardExpiry: z.string().optional(),
+  cardCvv: z.string().optional(),
+  
+  // PayPal fields (conditional)
+  paypalEmail: z.string().optional(),
+  
   // Additional
   notes: z.string().optional()
+}).refine((data) => {
+  if (data.paymentMethod === 'credit_card') {
+    return data.cardNumber && data.cardName && data.cardExpiry && data.cardCvv;
+  }
+  if (data.paymentMethod === 'paypal') {
+    return data.paypalEmail && z.string().email().safeParse(data.paypalEmail).success;
+  }
+  return true;
+}, {
+  message: "Please fill in all required payment fields",
+  path: ["paymentMethod"],
 });
 
 type CheckoutForm = z.infer<typeof checkoutSchema>;
@@ -340,6 +360,115 @@ export const Checkout: React.FC<CheckoutProps> = ({ onBack, onSuccess }) => {
                       </FormItem>
                     )}
                   />
+                  
+                  {/* Dynamic Payment Fields */}
+                  {form.watch('paymentMethod') === 'credit_card' && (
+                    <div className="mt-6 pt-6 border-t border-border/50">
+                      <h3 className="text-lg font-medium mb-4">Credit Card Information</h3>
+                      <div className="grid md:grid-cols-2 gap-4">
+                        <FormField
+                          control={form.control}
+                          name="cardNumber"
+                          render={({ field }) => (
+                            <FormItem className="md:col-span-2">
+                              <FormLabel>Card Number *</FormLabel>
+                              <FormControl>
+                                <Input 
+                                  {...field} 
+                                  className="glass-input" 
+                                  placeholder="1234 5678 9012 3456"
+                                  maxLength={19}
+                                />
+                              </FormControl>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+                        
+                        <FormField
+                          control={form.control}
+                          name="cardName"
+                          render={({ field }) => (
+                            <FormItem className="md:col-span-2">
+                              <FormLabel>Cardholder Name *</FormLabel>
+                              <FormControl>
+                                <Input {...field} className="glass-input" placeholder="John Doe" />
+                              </FormControl>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+                        
+                        <FormField
+                          control={form.control}
+                          name="cardExpiry"
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormLabel>Expiry Date *</FormLabel>
+                              <FormControl>
+                                <Input 
+                                  {...field} 
+                                  className="glass-input" 
+                                  placeholder="MM/YY"
+                                  maxLength={5}
+                                />
+                              </FormControl>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+                        
+                        <FormField
+                          control={form.control}
+                          name="cardCvv"
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormLabel>CVV *</FormLabel>
+                              <FormControl>
+                                <Input 
+                                  {...field} 
+                                  className="glass-input" 
+                                  placeholder="123"
+                                  maxLength={4}
+                                />
+                              </FormControl>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+                      </div>
+                      <p className="text-sm text-muted-foreground mt-4">
+                        ⚠️ Test Mode: Use card number 4242 4242 4242 4242 for testing
+                      </p>
+                    </div>
+                  )}
+                  
+                  {form.watch('paymentMethod') === 'paypal' && (
+                    <div className="mt-6 pt-6 border-t border-border/50">
+                      <h3 className="text-lg font-medium mb-4">PayPal Information</h3>
+                      <FormField
+                        control={form.control}
+                        name="paypalEmail"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>PayPal Email Address *</FormLabel>
+                            <FormControl>
+                              <Input 
+                                {...field} 
+                                type="email"
+                                className="glass-input" 
+                                placeholder="your-email@paypal.com"
+                              />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+                      <p className="text-sm text-muted-foreground mt-4">
+                        You will be redirected to PayPal to complete your payment securely.
+                      </p>
+                    </div>
+                  )}
                 </GlassCard>
 
                 {/* Additional Notes */}
