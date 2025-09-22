@@ -141,7 +141,7 @@ export default function Home() {
   return (
     <PageLayout>
       {/* Hero Section */}
-      <section className="relative py-20 lg:py-32 overflow-hidden">
+      <section className="relative min-h-[80vh] flex items-center justify-center overflow-hidden">
         {/* Rotating Background Images */}
         <div className="absolute inset-0 z-0">
           {heroBgImages.map((bgImage, index) => (
@@ -179,7 +179,7 @@ export default function Home() {
           </div>
         </div>
         
-        <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center justify-center">
           <div className="animate-fade-in">
             <h1 className="text-5xl lg:text-7xl xl:text-8xl font-bold leading-tight mb-6">
               Transform Your Vision Into<br />

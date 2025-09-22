@@ -194,11 +194,11 @@ export const AIProjectAssistant: React.FC<AIProjectAssistantProps> = ({
       <DialogContent className="max-w-4xl h-[80vh] flex flex-col p-0">
         
         <DialogHeader className="p-6 pb-4 border-b border-border">
-          <DialogTitle className="flex items-center gap-3 text-2xl">
+          <DialogTitle className="flex items-center justify-center gap-3 text-2xl">
             <div className="p-2 rounded-xl bg-gradient-primary flex items-center justify-center">
               <Sparkles className="h-6 w-6 text-white" />
             </div>
-            AI Project Assistant
+            FBRsigns AI
           </DialogTitle>
           <DialogDescription>
             Let our AI assistant help you define your perfect signage project
