@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ArrowLeft, CreditCard, MapPin, User, Mail, Phone, Building } from 'lucide-react';
+import { ArrowLeft, CreditCard, MapPin, User, Mail, Phone, Building, LogIn, UserPlus } from 'lucide-react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
@@ -14,6 +14,7 @@ import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { toast } from '@/hooks/use-toast';
 import { supabase } from '@/integrations/supabase/client';
+import { LoginDialog } from '@/components/auth/LoginDialog';
 
 const checkoutSchema = z.object({
   // Customer Information
@@ -34,7 +35,7 @@ const checkoutSchema = z.object({
   zipCode: z.string().min(5, 'ZIP code must be at least 5 digits'),
   
   // Payment
-  paymentMethod: z.enum(['credit_card', 'bank_transfer', 'pix']),
+  paymentMethod: z.enum(['credit_card', 'paypal']),
   
   // Additional
   notes: z.string().optional()
@@ -57,7 +58,7 @@ export const Checkout: React.FC<CheckoutProps> = ({ onBack, onSuccess }) => {
   const form = useForm<CheckoutForm>({
     resolver: zodResolver(checkoutSchema),
     defaultValues: {
-      paymentMethod: 'pix'
+      paymentMethod: 'credit_card'
     }
   });
 
@@ -176,6 +177,35 @@ export const Checkout: React.FC<CheckoutProps> = ({ onBack, onSuccess }) => {
         <div className="grid lg:grid-cols-3 gap-8">
           {/* Checkout Form */}
           <div className="lg:col-span-2">
+            {/* Login/Signup Section */}
+            <GlassCard className="p-6 mb-8">
+              <div className="text-center">
+                <h2 className="text-xl font-semibold mb-4">Already have an account?</h2>
+                <p className="text-muted-foreground mb-4">
+                  Sign in to use your saved information and track your orders.
+                </p>
+                <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                  <LoginDialog>
+                    <GlassButton variant="outline" className="flex items-center gap-2">
+                      <LogIn className="h-4 w-4" />
+                      Sign In
+                    </GlassButton>
+                  </LoginDialog>
+                  <LoginDialog>
+                    <GlassButton variant="ghost" className="flex items-center gap-2">
+                      <UserPlus className="h-4 w-4" />
+                      Create Account
+                    </GlassButton>
+                  </LoginDialog>
+                </div>
+                <div className="mt-4 pt-4 border-t border-border/50">
+                  <p className="text-sm text-muted-foreground">
+                    New customers can continue as guest below
+                  </p>
+                </div>
+              </div>
+            </GlassCard>
+
             <Form {...form}>
               <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
                 {/* Customer Information */}
@@ -403,16 +433,12 @@ export const Checkout: React.FC<CheckoutProps> = ({ onBack, onSuccess }) => {
                             className="space-y-3"
                           >
                             <div className="flex items-center space-x-2 p-3 rounded-lg border border-border/50 hover:border-primary/50">
-                              <RadioGroupItem value="pix" id="pix" />
-                              <Label htmlFor="pix" className="flex-1 cursor-pointer">PIX (Instant Approval)</Label>
-                            </div>
-                            <div className="flex items-center space-x-2 p-3 rounded-lg border border-border/50 hover:border-primary/50">
-                              <RadioGroupItem value="bank_transfer" id="bank_transfer" />
-                              <Label htmlFor="bank_transfer" className="flex-1 cursor-pointer">Bank Transfer</Label>
-                            </div>
-                            <div className="flex items-center space-x-2 p-3 rounded-lg border border-border/50 hover:border-primary/50">
                               <RadioGroupItem value="credit_card" id="credit_card" />
-                              <Label htmlFor="credit_card" className="flex-1 cursor-pointer">Credit Card</Label>
+                              <Label htmlFor="credit_card" className="flex-1 cursor-pointer">Credit Card (Test Mode)</Label>
+                            </div>
+                            <div className="flex items-center space-x-2 p-3 rounded-lg border border-border/50 hover:border-primary/50">
+                              <RadioGroupItem value="paypal" id="paypal" />
+                              <Label htmlFor="paypal" className="flex-1 cursor-pointer">PayPal</Label>
                             </div>
                           </RadioGroup>
                         </FormControl>
