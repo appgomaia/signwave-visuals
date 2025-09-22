@@ -111,7 +111,7 @@ export const Checkout: React.FC<CheckoutProps> = ({ onBack, onSuccess }) => {
           .from('customers')
           .select('*')
           .eq('user_id', session.user.id)
-          .single();
+          .maybeSingle();
         
         if (customerData) {
           setCustomer(customerData);
@@ -131,7 +131,7 @@ export const Checkout: React.FC<CheckoutProps> = ({ onBack, onSuccess }) => {
           .from('customers')
           .select('*')
           .eq('user_id', session.user.id)
-          .single();
+          .maybeSingle();
         
         if (customerData) {
           setCustomer(customerData);
@@ -219,7 +219,7 @@ export const Checkout: React.FC<CheckoutProps> = ({ onBack, onSuccess }) => {
         .insert({
           customer_id: customer?.id || null,
           customer_name: customer?.full_name || user?.user_metadata?.full_name || 'Guest Customer',
-          customer_email: user?.email || 'guest@checkout.com', // Must match auth.users.email for RLS
+          customer_email: (user?.email || 'guest@checkout.com')?.toLowerCase(), // Must match auth.users.email for RLS
           customer_phone: customer?.phone || customer?.phone_number,
           total: state.total,
           payment_method: data.paymentMethod,
