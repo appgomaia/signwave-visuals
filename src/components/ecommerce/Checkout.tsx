@@ -566,7 +566,11 @@ export const Checkout: React.FC<CheckoutProps> = ({ onBack, onSuccess }) => {
                         />
                       </div>
                       <p className="text-sm text-muted-foreground mt-4">
-                        ⚠️ Test Mode: Use card number 4242 4242 4242 4242 for testing
+                        ⚠️ Test Mode: <br/>
+                        • Card Number: 4242 4242 4242 4242<br/>
+                        • Cardholder Name: Any name<br/>
+                        • Expiry Date: Any future date (e.g., 12/25)<br/>
+                        • CVV: Any 3 digits (e.g., 123)
                       </p>
                     </div>
                   )}
