@@ -101,44 +101,37 @@ export const Checkout: React.FC<CheckoutProps> = ({ onBack, onSuccess }) => {
   
   // Check auth state and fetch customer data
   useEffect(() => {
-    const getSession = async () => {
-      const { data: { session } } = await supabase.auth.getSession();
+    // 1) Set up auth listener FIRST
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
       if (session?.user) {
         setUser(session.user);
-        
-        // Fetch customer data
-        const { data: customerData } = await supabase
-          .from('customers')
-          .select('*')
-          .eq('user_id', session.user.id)
-          .maybeSingle();
-        
-        if (customerData) {
-          setCustomer(customerData);
-        }
-      }
-    };
-
-    getSession();
-
-    // Listen for auth changes
-    const { data: { subscription } } = supabase.auth.onAuthStateChange(async (event, session) => {
-      if (session?.user) {
-        setUser(session.user);
-        
-        // Fetch customer data
-        const { data: customerData } = await supabase
-          .from('customers')
-          .select('*')
-          .eq('user_id', session.user.id)
-          .maybeSingle();
-        
-        if (customerData) {
-          setCustomer(customerData);
-        }
+        // Defer Supabase calls to avoid deadlocks
+        setTimeout(async () => {
+          const { data: customerData } = await supabase
+            .from('customers')
+            .select('*')
+            .eq('user_id', session.user.id)
+            .maybeSingle();
+          setCustomer(customerData ?? null);
+        }, 0);
       } else {
         setUser(null);
         setCustomer(null);
+      }
+    });
+
+    // 2) Then check for existing session
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      if (session?.user) {
+        setUser(session.user);
+        setTimeout(async () => {
+          const { data: customerData } = await supabase
+            .from('customers')
+            .select('*')
+            .eq('user_id', session.user.id)
+            .maybeSingle();
+          setCustomer(customerData ?? null);
+        }, 0);
       }
     });
 
@@ -190,7 +183,9 @@ export const Checkout: React.FC<CheckoutProps> = ({ onBack, onSuccess }) => {
     }
 
     // Require auth to place order due to database security policies
-    if (!user) {
+    const { data: authData } = await supabase.auth.getUser();
+    const authUser = authData?.user;
+    if (!authUser) {
       toast({
         title: "Sign in required",
         description: "Please sign in to place your order. Your cart is saved.",
@@ -218,8 +213,8 @@ export const Checkout: React.FC<CheckoutProps> = ({ onBack, onSuccess }) => {
         .from('orders')
         .insert({
           customer_id: customer?.id || null,
-          customer_name: customer?.full_name || user?.user_metadata?.full_name || 'Guest Customer',
-          customer_email: (user?.email || 'guest@checkout.com')?.toLowerCase(), // Must match auth.users.email for RLS
+          customer_name: customer?.full_name || (authUser.user_metadata?.full_name as string | undefined) || authUser.email,
+          customer_email: authUser.email, // Must match auth.users.email for RLS
           customer_phone: customer?.phone || customer?.phone_number,
           total: state.total,
           payment_method: data.paymentMethod,
