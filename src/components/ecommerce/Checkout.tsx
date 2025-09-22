@@ -152,7 +152,23 @@ export const Checkout: React.FC<CheckoutProps> = ({ onBack, onSuccess }) => {
   const form = useForm<CheckoutForm>({
     resolver: zodResolver(checkoutSchema),
     defaultValues: {
-      paymentMethod: 'credit_card'
+      // Shipping
+      street: '',
+      number: '',
+      complement: '',
+      neighborhood: '',
+      city: '',
+      state: '',
+      zipCode: '',
+      // Payment
+      paymentMethod: 'credit_card',
+      cardNumber: '',
+      cardName: '',
+      cardExpiry: '',
+      cardCvv: '',
+      paypalEmail: '',
+      // Additional
+      notes: ''
     }
   });
 
@@ -169,6 +185,16 @@ export const Checkout: React.FC<CheckoutProps> = ({ onBack, onSuccess }) => {
         title: "Empty Cart",
         description: "Add items to cart before checkout.",
         variant: "destructive"
+      });
+      return;
+    }
+
+    // Require auth to place order due to database security policies
+    if (!user) {
+      toast({
+        title: "Sign in required",
+        description: "Please sign in to place your order. Your cart is saved.",
+        variant: "destructive",
       });
       return;
     }
@@ -625,14 +651,14 @@ export const Checkout: React.FC<CheckoutProps> = ({ onBack, onSuccess }) => {
                 </GlassCard>
 
                 {/* Submit Button */}
-                <GlassButton 
-                  type="submit" 
-                  className="w-full" 
-                  size="lg"
-                  disabled={isSubmitting}
-                >
-                  {isSubmitting ? "Processing..." : "Place Order"}
-                </GlassButton>
+<GlassButton 
+  type="submit" 
+  className="w-full" 
+  size="lg"
+  disabled={isSubmitting || !user}
+>
+  {isSubmitting ? "Processing..." : user ? "Place Order" : "Sign in to place order"}
+</GlassButton>
               </form>
             </Form>
           </div>
