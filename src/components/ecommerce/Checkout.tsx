@@ -17,14 +17,6 @@ import { supabase } from '@/integrations/supabase/client';
 import { LoginDialog } from '@/components/auth/LoginDialog';
 
 const checkoutSchema = z.object({
-  // Customer Information
-  customerName: z.string().min(2, 'Name must be at least 2 characters'),
-  customerEmail: z.string().email('Invalid email'),
-  customerPhone: z.string().min(10, 'Phone must be at least 10 digits'),
-  customerCompany: z.string().optional(),
-  password: z.string().min(8, 'Password must be at least 8 characters'),
-  confirmPassword: z.string().min(8, 'Password confirmation is required'),
-  
   // Shipping Address
   street: z.string().min(5, 'Address must be at least 5 characters'),
   number: z.string().min(1, 'Number is required'),
@@ -39,9 +31,6 @@ const checkoutSchema = z.object({
   
   // Additional
   notes: z.string().optional()
-}).refine((data) => data.password === data.confirmPassword, {
-  message: "Passwords don't match",
-  path: ["confirmPassword"],
 });
 
 type CheckoutForm = z.infer<typeof checkoutSchema>;
@@ -93,13 +82,12 @@ export const Checkout: React.FC<CheckoutProps> = ({ onBack, onSuccess }) => {
         zipCode: data.zipCode
       };
 
-      // Create order in database
+      // Create order in database (using placeholder data for guest checkout)
       const { data: order, error: orderError } = await supabase
         .from('orders')
         .insert({
-          customer_name: data.customerName,
-          customer_email: data.customerEmail,
-          customer_phone: data.customerPhone,
+          customer_name: 'Guest Customer',
+          customer_email: 'guest@checkout.com',
           total: state.total,
           payment_method: data.paymentMethod,
           shipping_address: shippingAddress,
@@ -191,7 +179,7 @@ export const Checkout: React.FC<CheckoutProps> = ({ onBack, onSuccess }) => {
                       Sign In
                     </GlassButton>
                   </LoginDialog>
-                  <LoginDialog>
+                  <LoginDialog defaultTab="signup">
                     <GlassButton variant="ghost" className="flex items-center gap-2">
                       <UserPlus className="h-4 w-4" />
                       Create Account
@@ -208,100 +196,6 @@ export const Checkout: React.FC<CheckoutProps> = ({ onBack, onSuccess }) => {
 
             <Form {...form}>
               <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-                {/* Customer Information */}
-                <GlassCard className="p-6">
-                  <div className="flex items-center gap-2 mb-6">
-                    <User className="h-5 w-5 text-primary" />
-                    <h2 className="text-xl font-semibold">Customer Information</h2>
-                  </div>
-                  
-                  <div className="grid md:grid-cols-2 gap-4">
-                    <FormField
-                      control={form.control}
-                      name="customerName"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>Full Name *</FormLabel>
-                          <FormControl>
-                            <Input {...field} className="glass-input" />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                    
-                    <FormField
-                      control={form.control}
-                      name="customerEmail"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>Email *</FormLabel>
-                          <FormControl>
-                            <Input type="email" {...field} className="glass-input" />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                    
-                    <FormField
-                      control={form.control}
-                      name="customerPhone"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>Phone *</FormLabel>
-                          <FormControl>
-                            <Input {...field} className="glass-input" placeholder="+1 (555) 123-4567" />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                    
-                    <FormField
-                      control={form.control}
-                      name="customerCompany"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>Company (Optional)</FormLabel>
-                          <FormControl>
-                            <Input {...field} className="glass-input" />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                    
-                    <FormField
-                      control={form.control}
-                      name="password"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>Password *</FormLabel>
-                          <FormControl>
-                            <Input type="password" {...field} className="glass-input" />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                    
-                    <FormField
-                      control={form.control}
-                      name="confirmPassword"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>Confirm Password *</FormLabel>
-                          <FormControl>
-                            <Input type="password" {...field} className="glass-input" />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                  </div>
-                </GlassCard>
-
                 {/* Shipping Address */}
                 <GlassCard className="p-6">
                   <div className="flex items-center gap-2 mb-6">

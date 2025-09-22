@@ -11,12 +11,13 @@ import { supabase } from '@/integrations/supabase/client';
 
 interface LoginDialogProps {
   children: React.ReactNode;
+  defaultTab?: 'login' | 'signup';
 }
 
-export const LoginDialog: React.FC<LoginDialogProps> = ({ children }) => {
+export const LoginDialog: React.FC<LoginDialogProps> = ({ children, defaultTab = 'login' }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const [activeTab, setActiveTab] = useState('login');
+  const [activeTab, setActiveTab] = useState(defaultTab);
   const [loginData, setLoginData] = useState({
     email: '',
     password: '',
@@ -172,7 +173,7 @@ export const LoginDialog: React.FC<LoginDialogProps> = ({ children }) => {
           </DialogTitle>
         </DialogHeader>
         
-        <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
+        <Tabs value={activeTab} onValueChange={(value) => setActiveTab(value as 'login' | 'signup')} className="w-full">
           <TabsList className="grid w-full grid-cols-2">
             <TabsTrigger value="login">Sign In</TabsTrigger>
             <TabsTrigger value="signup">Sign Up</TabsTrigger>
