@@ -19,6 +19,7 @@ import { GlassCard } from "@/components/ui/glass-card";
 import { GlassButton } from "@/components/ui/glass-button";
 import { AIProjectAssistant } from "@/components/forms/AIProjectAssistant";
 import heroImage from "@/assets/signage-business-hero.jpg";
+import heroMainBg from "@/assets/hero-main-bg.jpg";
 import galleryStorefront from "@/assets/gallery-storefront-sign.jpg";
 import galleryDigitalLED from "@/assets/gallery-digital-led.jpg";
 import galleryVehicleWrap from "@/assets/gallery-vehicle-wrap.jpg";
@@ -142,25 +143,16 @@ export default function Home() {
     <PageLayout>
       {/* Hero Section */}
       <section className="relative min-h-[80vh] flex items-center justify-center overflow-hidden">
-        {/* Rotating Background Images */}
+        {/* Hero Background Image */}
         <div className="absolute inset-0 z-0">
-          {heroBgImages.map((bgImage, index) => (
-            <div
-              key={index}
-              className={`absolute inset-0 transition-opacity duration-2000 ease-in-out ${
-                index === currentBgIndex ? 'opacity-30' : 'opacity-0'
-              }`}
-            >
-              <img
-                src={bgImage}
-                alt="Dynamic background"
-                className="w-full h-full object-cover hero-bg-animate"
-              />
-            </div>
-          ))}
+          <img
+            src={heroMainBg}
+            alt="Professional signage background"
+            className="w-full h-full object-cover"
+          />
           
-          {/* Animated Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-r from-background/95 via-background/80 to-background/95" />
+          {/* Black Overlay with 80% opacity */}
+          <div className="absolute inset-0 bg-black/80" />
           
           {/* Floating Particles Effect */}
           <div className="absolute inset-0">
