@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ArrowLeft, CreditCard, MapPin, User, Mail, Phone, Building, LogIn, UserPlus } from 'lucide-react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -62,6 +62,55 @@ interface CheckoutProps {
 
 export const Checkout: React.FC<CheckoutProps> = ({ onBack, onSuccess }) => {
   const { state, clearCart } = useCart();
+  
+  // Check auth state and fetch customer data
+  useEffect(() => {
+    const getSession = async () => {
+      const { data: { session } } = await supabase.auth.getSession();
+      if (session?.user) {
+        setUser(session.user);
+        
+        // Fetch customer data
+        const { data: customerData } = await supabase
+          .from('customers')
+          .select('*')
+          .eq('user_id', session.user.id)
+          .single();
+        
+        if (customerData) {
+          setCustomer(customerData);
+        }
+      }
+    };
+
+    getSession();
+
+    // Listen for auth changes
+    const { data: { subscription } } = supabase.auth.onAuthStateChange(async (event, session) => {
+      if (session?.user) {
+        setUser(session.user);
+        
+        // Fetch customer data
+        const { data: customerData } = await supabase
+          .from('customers')
+          .select('*')
+          .eq('user_id', session.user.id)
+          .single();
+        
+        if (customerData) {
+          setCustomer(customerData);
+        }
+      } else {
+        setUser(null);
+        setCustomer(null);
+      }
+    });
+
+    return () => subscription.unsubscribe();
+  }, []);
+
+  const [user, setUser] = useState<any>(null);
+  const [customer, setCustomer] = useState<any>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   
   const form = useForm<CheckoutForm>({
@@ -102,12 +151,14 @@ export const Checkout: React.FC<CheckoutProps> = ({ onBack, onSuccess }) => {
         zipCode: data.zipCode
       };
 
-      // Create order in database (using placeholder data for guest checkout)
+      // Create order in database
       const { data: order, error: orderError } = await supabase
         .from('orders')
         .insert({
-          customer_name: 'Guest Customer',
-          customer_email: 'guest@checkout.com',
+          customer_id: customer?.id || null,
+          customer_name: customer?.full_name || 'Guest Customer',
+          customer_email: customer?.email || user?.email || 'guest@checkout.com',
+          customer_phone: customer?.phone,
           total: state.total,
           payment_method: data.paymentMethod,
           shipping_address: shippingAddress,
@@ -185,34 +236,75 @@ export const Checkout: React.FC<CheckoutProps> = ({ onBack, onSuccess }) => {
         <div className="grid lg:grid-cols-3 gap-8">
           {/* Checkout Form */}
           <div className="lg:col-span-2">
-            {/* Login/Signup Section */}
-            <GlassCard className="p-6 mb-8">
-              <div className="text-center">
-                <h2 className="text-xl font-semibold mb-4">Already have an account?</h2>
-                <p className="text-muted-foreground mb-4">
-                  Sign in to use your saved information and track your orders.
-                </p>
-                <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <LoginDialog>
-                    <GlassButton variant="outline" className="flex items-center gap-2">
-                      <LogIn className="h-4 w-4" />
-                      Sign In
-                    </GlassButton>
-                  </LoginDialog>
-                  <LoginDialog defaultTab="signup">
-                    <GlassButton variant="ghost" className="flex items-center gap-2">
-                      <UserPlus className="h-4 w-4" />
-                      Create Account
-                    </GlassButton>
-                  </LoginDialog>
+            {/* Customer Info Section */}
+            {user ? (
+              <GlassCard className="p-6 mb-8">
+                <div className="flex items-center gap-2 mb-4">
+                  <User className="h-5 w-5 text-primary" />
+                  <h2 className="text-xl font-semibold">Welcome back!</h2>
                 </div>
-                <div className="mt-4 pt-4 border-t border-border/50">
-                  <p className="text-sm text-muted-foreground">
-                    New customers can continue as guest below
+                <div className="bg-primary/5 rounded-lg p-4">
+                  <div className="grid md:grid-cols-2 gap-4">
+                    <div>
+                      <p className="text-sm text-muted-foreground">Customer</p>
+                      <p className="font-medium">{customer?.full_name || user.email}</p>
+                    </div>
+                    <div>
+                      <p className="text-sm text-muted-foreground">Email</p>
+                      <p className="font-medium">{customer?.email || user.email}</p>
+                    </div>
+                    {customer?.phone && (
+                      <div>
+                        <p className="text-sm text-muted-foreground">Phone</p>
+                        <p className="font-medium">{customer.phone}</p>
+                      </div>
+                    )}
+                    {customer?.company && (
+                      <div>
+                        <p className="text-sm text-muted-foreground">Company</p>
+                        <p className="font-medium">{customer.company}</p>
+                      </div>
+                    )}
+                  </div>
+                  <div className="mt-4 pt-4 border-t border-border/50">
+                    <button
+                      onClick={() => supabase.auth.signOut()}
+                      className="text-sm text-muted-foreground hover:text-foreground"
+                    >
+                      Sign out and checkout as guest
+                    </button>
+                  </div>
+                </div>
+              </GlassCard>
+            ) : (
+              <GlassCard className="p-6 mb-8">
+                <div className="text-center">
+                  <h2 className="text-xl font-semibold mb-4">Already have an account?</h2>
+                  <p className="text-muted-foreground mb-4">
+                    Sign in to use your saved information and track your orders.
                   </p>
+                  <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                    <LoginDialog>
+                      <GlassButton variant="outline" className="flex items-center gap-2">
+                        <LogIn className="h-4 w-4" />
+                        Sign In
+                      </GlassButton>
+                    </LoginDialog>
+                    <LoginDialog defaultTab="signup">
+                      <GlassButton variant="ghost" className="flex items-center gap-2">
+                        <UserPlus className="h-4 w-4" />
+                        Create Account
+                      </GlassButton>
+                    </LoginDialog>
+                  </div>
+                  <div className="mt-4 pt-4 border-t border-border/50">
+                    <p className="text-sm text-muted-foreground">
+                      New customers can continue as guest below
+                    </p>
+                  </div>
                 </div>
-              </div>
-            </GlassCard>
+              </GlassCard>
+            )}
 
             <Form {...form}>
               <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
