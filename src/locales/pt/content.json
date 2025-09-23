@@ -71,6 +71,154 @@
   },
   "services": {
     "title": "Nossos Serviços",
+    "subtitle": "Soluções completas de sinalização do conceito à conclusão. Cuidamos de todos os aspectos do seu projeto com expertise e cuidado.",
+    "design": {
+      "title": "Serviços de Design",
+      "description": "Design personalizado de logotipo, marca e layout adaptado às necessidades do seu negócio.",
+      "startingPrice": "R$ 599",
+      "features": [
+        "Design de Logotipo Personalizado",
+        "Desenvolvimento de Identidade da Marca", 
+        "Criação de Layout e Mockup",
+        "Consultoria de Esquema de Cores"
+      ],
+      "process": [
+        "Consulta Inicial",
+        "Desenvolvimento do Conceito", 
+        "Refinamento do Design",
+        "Aprovação Final"
+      ],
+      "timeline": "3-5 dias úteis"
+    },
+    "production": {
+      "title": "Serviços de Produção", 
+      "description": "Impressão e fabricação de última geração usando materiais premium e tecnologia de ponta.",
+      "startingPrice": "R$ 899",
+      "features": [
+        "Impressão Digital",
+        "Corte e Aplicação de Vinil",
+        "Fabricação de Metal",
+        "Laminação e Acabamento"
+      ],
+      "process": [
+        "Preparação de Arquivo",
+        "Seleção de Material",
+        "Produção",
+        "Controle de Qualidade"
+      ],
+      "timeline": "2-7 dias úteis"
+    },
+    "installation": {
+      "title": "Serviços de Instalação",
+      "description": "Instalação profissional por técnicos certificados garantindo posicionamento perfeito e conformidade de segurança.",
+      "startingPrice": "R$ 449",
+      "features": [
+        "Montagem Profissional",
+        "Conexões Elétricas",
+        "Preparação do Local",
+        "Conformidade de Segurança"
+      ],
+      "process": [
+        "Levantamento do Local",
+        "Planejamento da Instalação",
+        "Instalação Profissional",
+        "Teste Final"
+      ],
+      "timeline": "1-3 dias úteis"
+    },
+    "maintenance": {
+      "title": "Manutenção e Suporte",
+      "description": "Serviços de manutenção contínua para manter sua sinalização perfeita e funcionando de forma otimizada.",
+      "startingPrice": "R$ 299/mês",
+      "features": [
+        "Limpeza Regular",
+        "Serviços de Reparo",
+        "Atualizações de Conteúdo",
+        "Suporte 24/7"
+      ],
+      "process": [
+        "Cronograma de Manutenção",
+        "Inspeções Regulares",
+        "Cuidados Preventivos",
+        "Reparos de Emergência"
+      ],
+      "timeline": "Contínuo"
+    },
+    "featuresIncluded": "Recursos Incluídos:",
+    "ourProcess": "Nosso Processo:",
+    "getQuote": "Solicitar Orçamento",
+    "process": {
+      "title": "Nosso Processo",
+      "subtitle": "Da consulta inicial à instalação final, guiamos você em cada etapa",
+      "consultation": {
+        "title": "Consulta",
+        "description": "Discutimos suas necessidades, orçamento e visão para criar a solução perfeita"
+      },
+      "design": {
+        "title": "Design e Mockup",
+        "description": "Nossos designers criam mockups detalhados e renderizações para sua aprovação"
+      },
+      "production": {
+        "title": "Produção",
+        "description": "Fabricamos sua sinalização usando materiais premium e técnicas avançadas"
+      },
+      "installation": {
+        "title": "Instalação",
+        "description": "Instalação profissional garantindo posicionamento perfeito e funcionalidade"
+      },
+      "support": {
+        "title": "Suporte Contínuo",
+        "description": "Manutenção e suporte contínuos para manter sua sinalização com a melhor aparência"
+      }
+    },
+    "whyChoose": {
+      "title": "Por que Escolher a FBR Signs?",
+      "expertise": {
+        "title": "20+ Anos de Experiência",
+        "description": "Décadas de expertise na criação de soluções de sinalização impactantes"
+      },
+      "turnaround": {
+        "title": "Entrega Rápida",
+        "description": "Entrega rápida sem comprometer a qualidade"
+      },
+      "quality": {
+        "title": "Qualidade Premium",
+        "description": "Usando apenas os melhores materiais e tecnologia mais recente"
+      },
+      "delivery": {
+        "title": "Entrega Pontual",
+        "description": "Cronograma confiável e conclusão rápida do projeto"
+      }
+    },
+    "cta": {
+      "title": "Pronto para Começar?",
+      "subtitle": "Vamos discutir seu projeto e criar uma solução personalizada que se adapte perfeitamente às suas necessidades e orçamento.",
+      "button": "Consulta Gratuita",
+      "portfolio": "Ver Nosso Trabalho"
+    },
+    "digitalSigns": {
+      "title": "Placas LED Digitais",
+      "description": "Displays digitais atraentes que capturam atenção e aumentam o tráfego de pedestres"
+    },
+    "illuminatedSigns": {
+      "title": "Placas Iluminadas", 
+      "description": "Soluções de iluminação profissional que tornam seu negócio visível 24/7"
+    },
+    "vehicleWraps": {
+      "title": "Adesivação de Veículos",
+      "description": "Transforme sua frota em publicidade móvel com nossos adesivos premium para veículos"
+    },
+    "storefrontSigns": {
+      "title": "Placas de Fachada",
+      "description": "Sinalização profissional de fachada que atrai clientes e constrói sua marca"
+    },
+    "tradeShows": {
+      "title": "Displays para Feiras",
+      "description": "Displays portáteis e impactantes que ajudam você a se destacar em convenções e eventos"
+    }
+  },
+  "about": {
+    "title": "Nossos Serviços",
     "subtitle": "Soluções completas de sinalização para todas as necessidades empresariais",
     "digitalSigns": {
       "title": "Placas LED Digitais",
@@ -94,6 +242,105 @@
     }
   },
   "about": {
+    "title": "Sobre FBR Signs",
+    "subtitle": "Seu parceiro confiável em soluções de sinalização profissional",
+    "description": "Com mais de 20 anos de experiência na indústria de sinalização, a FBR Signs se estabeleceu como provedora premium de soluções de sinalização personalizadas. Combinamos artesanato tradicional com tecnologia de ponta para entregar resultados excepcionais.",
+    "mission": "Nossa missão é ajudar empresas a comunicar sua mensagem de marca efetivamente através de sinalização inovadora e de alta qualidade que resiste ao teste do tempo.",
+    "story": {
+      "title": "Nossa História",
+      "content": "Fundada em 2009 com a visão de transformar a comunicação visual, a FBR Signs cresceu de um pequeno negócio local para uma empresa líder de sinalização atendendo clientes em múltiplos estados. Nossa jornada foi marcada por inovação contínua, compromisso inabalável com a qualidade e paixão por ajudar empresas a se destacar."
+    },
+    "values": {
+      "title": "Nossos Valores",
+      "excellence": {
+        "title": "Excelência",
+        "description": "Buscamos a perfeição em todos os projetos, desde o conceito do design até a instalação final."
+      },
+      "customerFocus": {
+        "title": "Foco no Cliente",
+        "description": "Seu sucesso é nosso sucesso. Priorizamos suas necessidades e superamos expectativas."
+      },
+      "innovation": {
+        "title": "Inovação",
+        "description": "Abraçamos novas tecnologias e soluções criativas para ficar à frente da concorrência."
+      },
+      "teamwork": {
+        "title": "Trabalho em Equipe",
+        "description": "Nossa abordagem colaborativa garante que cada projeto se beneficie de nossa expertise coletiva."
+      }
+    },
+    "team": {
+      "title": "Conheça Nossa Equipe",
+      "subtitle": "Os profissionais talentosos por trás do seu sucesso",
+      "members": [
+        {
+          "name": "Sarah Johnson",
+          "role": "Fundadora e CEO",
+          "bio": "Com mais de 15 anos na indústria de sinalização, Sarah lidera nossa equipe com paixão e expertise.",
+          "image": "/placeholder.svg"
+        },
+        {
+          "name": "Mike Rodriguez",
+          "role": "Diretor Criativo", 
+          "bio": "Mike traz pensamento de design inovador e garante que cada projeto supere as expectativas.",
+          "image": "/placeholder.svg"
+        },
+        {
+          "name": "Emily Chen",
+          "role": "Gerente de Produção",
+          "bio": "Emily supervisiona o controle de qualidade e garante a entrega pontual de todos os nossos projetos.",
+          "image": "/placeholder.svg"
+        },
+        {
+          "name": "David Thompson",
+          "role": "Especialista em Instalação",
+          "bio": "David lidera nossa equipe de instalação com precisão e compromisso com a segurança.",
+          "image": "/placeholder.svg"
+        }
+      ]
+    },
+    "milestones": {
+      "title": "Nossa Jornada",
+      "subtitle": "Marcos importantes no crescimento da nossa empresa",
+      "items": [
+        {
+          "year": "2009",
+          "title": "Empresa Fundada",
+          "description": "Começamos com a visão de transformar a comunicação visual"
+        },
+        {
+          "year": "2012",
+          "title": "1.000 Projetos",
+          "description": "Alcançamos nosso primeiro marco importante com 1.000 projetos concluídos"
+        },
+        {
+          "year": "2015",
+          "title": "Expansão Digital",
+          "description": "Adicionamos serviços de sinalização digital e displays LED"
+        },
+        {
+          "year": "2018",
+          "title": "Crescimento Regional",
+          "description": "Expandimos operações para atender clientes em três estados"
+        },
+        {
+          "year": "2021",
+          "title": "Foco na Sustentabilidade",
+          "description": "Lançamos materiais eco-friendly e práticas sustentáveis"
+        },
+        {
+          "year": "2024",
+          "title": "10.000+ Projetos",
+          "description": "Celebrando mais de 10.000 projetos bem-sucedidos e contando"
+        }
+      ]
+    },
+    "whyChooseUs": "Por Que Nos Escolher",
+    "experience": "20+ Anos de Experiência",
+    "customSolutions": "Soluções Personalizadas",
+    "qualityMaterials": "Materiais Premium",
+    "professionalInstallation": "Instalação Profissional"
+  },
     "title": "Sobre a FBR Signs",
     "description": "Com mais de 20 anos de experiência na indústria de sinalização, a FBR Signs se estabeleceu como fornecedora premium de soluções de sinalização personalizadas. Combinamos artesanato tradicional com tecnologia de ponta para entregar resultados excepcionais.",
     "mission": "Nossa missão é ajudar empresas a comunicar sua mensagem de marca efetivamente através de sinalização inovadora e de alta qualidade que resiste ao teste do tempo.",
