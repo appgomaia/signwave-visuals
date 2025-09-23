@@ -19,7 +19,7 @@ import { PageLayout } from "@/components/layout/PageLayout";
 import { GlassCard } from "@/components/ui/glass-card";
 import { GlassButton } from "@/components/ui/glass-button";
 import { AIProjectAssistant } from "@/components/forms/AIProjectAssistant";
-import { useTranslatedText } from "@/hooks/useAutoTranslation";
+
 import heroImage from "@/assets/signage-business-hero.jpg";
 import heroMainBg from "@/assets/hero-main-bg.jpg";
 import galleryStorefront from "@/assets/gallery-storefront-sign.jpg";
@@ -132,10 +132,6 @@ export default function Home() {
   const [currentBgIndex, setCurrentBgIndex] = useState(0);
   const [showAIAssistant, setShowAIAssistant] = useState(false);
   const { t } = useTranslation();
-  
-  // Auto-translate dynamic content
-  const heroTitle = useTranslatedText("Professional Signs That Make Your Business Stand Out");
-  const heroSubtitle = useTranslatedText("From digital displays to custom fabrication, we create eye-catching signage solutions that drive results");
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -179,11 +175,11 @@ export default function Home() {
         <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center justify-center">
           <div className="animate-fade-in">
             <h1 className="text-5xl lg:text-7xl xl:text-8xl font-bold leading-tight mb-6">
-              {t('content:hero.title')}<br />
-              <span className="text-gradient">{t('content:hero.subtitle')}</span>
+              <span className="text-gradient">FBRSigns</span><br />
+              <span>Creative Marketing Solutions</span>
             </h1>
             <p className="text-xl text-muted-foreground mb-8 leading-relaxed max-w-3xl mx-auto">
-              {heroSubtitle.text}
+              Professional signage, printing, and creative services that help your business make a lasting impression.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 mb-12 justify-center">
               <GlassButton variant="hero" size="xl" onClick={() => setShowAIAssistant(true)}>
