@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Eye, ExternalLink, Filter } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import { PageLayout } from "@/components/layout/PageLayout";
 import { GlassCard } from "@/components/ui/glass-card";
 import { GlassButton } from "@/components/ui/glass-button";
@@ -98,11 +99,15 @@ const portfolioItems = [
 ];
 
 export default function Portfolio() {
-  const [selectedCategory, setSelectedCategory] = useState("All Projects");
+  const { t } = useTranslation('content');
+  const [selectedCategory, setSelectedCategory] = useState(t('portfolio.categories.0'));
   const [selectedProject, setSelectedProject] = useState<typeof portfolioItems[0] | null>(null);
 
-  const filteredProjects = portfolioItems.filter(project =>
-    selectedCategory === "All Projects" || project.category === selectedCategory
+  const categories = t('portfolio.categories', { returnObjects: true }) as string[];
+  const projects = t('portfolio.projects', { returnObjects: true }) as any[];
+
+  const filteredProjects = projects.filter(project =>
+    selectedCategory === categories[0] || project.category === selectedCategory
   );
 
   return (
@@ -112,11 +117,10 @@ export default function Portfolio() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h1 className="text-4xl lg:text-6xl font-bold mb-6">
-              Our <span className="text-gradient">Portfolio</span>
+              {t('portfolio.title')}
             </h1>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Explore our recent projects and see how we've helped businesses 
-              transform their visual communication and stand out from the competition.
+              {t('portfolio.subtitle')}
             </p>
           </div>
 
@@ -158,7 +162,7 @@ export default function Portfolio() {
                     <div className="flex gap-2">
                       <GlassButton variant="outline" size="sm">
                         <Eye className="h-4 w-4 mr-2" />
-                        View Details
+                        {t('portfolio.viewDetails')}
                       </GlassButton>
                     </div>
                   </div>
@@ -193,7 +197,7 @@ export default function Portfolio() {
           {filteredProjects.length === 0 && (
             <div className="text-center py-16">
               <p className="text-xl text-muted-foreground">
-                No projects found in this category.
+                {t('portfolio.noProjects')}
               </p>
             </div>
           )}
@@ -231,7 +235,7 @@ export default function Portfolio() {
                 </div>
                 
                 <div>
-                  <h3 className="text-lg font-semibold mb-3">Project Tags</h3>
+                  <h3 className="text-lg font-semibold mb-3">{t('portfolio.projectTags')}</h3>
                   <div className="flex flex-wrap gap-2">
                     {selectedProject.tags.map((tag) => (
                       <span
@@ -247,10 +251,10 @@ export default function Portfolio() {
                 <div className="pt-6 border-t border-glass-neutral/20">
                   <div className="flex gap-4">
                     <GlassButton variant="hero" size="lg">
-                      Start Similar Project
+                      {t('portfolio.startSimilar')}
                     </GlassButton>
                     <GlassButton variant="outline" size="lg">
-                      Get Quote
+                      {t('portfolio.getQuote')}
                     </GlassButton>
                   </div>
                 </div>
@@ -265,27 +269,17 @@ export default function Portfolio() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl lg:text-5xl font-bold mb-6">
-              Project <span className="text-gradient">Statistics</span>
+              {t('portfolio.statsTitle')}
             </h2>
           </div>
           
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
-            <GlassCard className="text-center">
-              <div className="text-4xl lg:text-5xl font-bold text-gradient mb-2">150+</div>
-              <div className="text-muted-foreground">Projects This Year</div>
-            </GlassCard>
-            <GlassCard className="text-center">
-              <div className="text-4xl lg:text-5xl font-bold text-gradient mb-2">98%</div>
-              <div className="text-muted-foreground">Client Satisfaction</div>
-            </GlassCard>
-            <GlassCard className="text-center">
-              <div className="text-4xl lg:text-5xl font-bold text-gradient mb-2">25</div>
-              <div className="text-muted-foreground">Industry Awards</div>
-            </GlassCard>
-            <GlassCard className="text-center">
-              <div className="text-4xl lg:text-5xl font-bold text-gradient mb-2">5.0</div>
-              <div className="text-muted-foreground">Average Rating</div>
-            </GlassCard>
+            {(t('portfolio.stats', { returnObjects: true }) as any[]).map((stat, index) => (
+              <GlassCard key={index} className="text-center">
+                <div className="text-4xl lg:text-5xl font-bold text-gradient mb-2">{stat.value}</div>
+                <div className="text-muted-foreground">{stat.label}</div>
+              </GlassCard>
+            ))}
           </div>
         </div>
       </section>
@@ -295,18 +289,17 @@ export default function Portfolio() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <GlassCard variant="hero">
             <h2 className="text-3xl lg:text-5xl font-bold mb-6">
-              Inspired by Our <span className="text-gradient">Work?</span>
+              {t('portfolio.ctaTitle')}
             </h2>
             <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-              Let's create something amazing for your business. Every project starts 
-              with understanding your unique needs and vision.
+              {t('portfolio.ctaSubtitle')}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <GlassButton variant="hero" size="xl">
-                Start Your Project
+                {t('portfolio.ctaButton')}
               </GlassButton>
               <GlassButton variant="outline" size="xl">
-                Schedule Consultation
+                {t('portfolio.ctaSecondary')}
               </GlassButton>
             </div>
           </GlassCard>

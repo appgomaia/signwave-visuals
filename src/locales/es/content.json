@@ -125,5 +125,192 @@
     "title": "¿Listo Para Transformar Tu Negocio?",
     "subtitle": "Obtén una consulta y cotización gratuitas para tu proyecto de señalización hoy",
     "button": "Obtener Cotización Gratuita"
+  },
+  "portfolio": {
+    "title": "Nuestro Portafolio",
+    "subtitle": "Explora nuestros proyectos recientes y ve cómo hemos ayudado a empresas a transformar su comunicación visual y destacarse de la competencia.",
+    "categories": [
+      "Todos los Proyectos",
+      "Letreros Comerciales",
+      "Pantallas Digitales",
+      "Vinilado de Vehículos",
+      "Ferias Comerciales",
+      "Señalización Interior",
+      "Publicidad Exterior"
+    ],
+    "projects": [
+      {
+        "title": "Señalización de Restaurante Moderno",
+        "category": "Letreros Comerciales",
+        "client": "Restaurante Bella Vista",
+        "description": "Paquete completo de señalización incluyendo letrero de fachada, tableros de menú y señalización interior.",
+        "tags": ["LED", "Acrílico", "Diseño Interior"],
+        "year": "2024"
+      },
+      {
+        "title": "Campaña de Valla Digital",
+        "category": "Pantallas Digitales",
+        "client": "Tech Solutions Inc",
+        "description": "Pantalla LED de gran formato para publicidad de alto tráfico con gestión de contenido dinámico.",
+        "tags": ["LED", "Digital", "Alto Tráfico"],
+        "year": "2024"
+      },
+      {
+        "title": "Vinilado de Flota",
+        "category": "Vinilado de Vehículos",
+        "client": "Green Clean Services",
+        "description": "Branding completo de flota con vinilos llamativos para 12 vehículos de servicio.",
+        "tags": ["Flota", "Branding", "Vinilo"],
+        "year": "2023"
+      },
+      {
+        "title": "Diseño de Stand para Feria",
+        "category": "Ferias Comerciales",
+        "client": "Innovation Expo 2024",
+        "description": "Sistema modular de display para feria con iluminación integrada y elementos interactivos.",
+        "tags": ["Modular", "Interactivo", "Portátil"],
+        "year": "2024"
+      },
+      {
+        "title": "Señalización de Oficina Corporativa",
+        "category": "Señalización Interior",
+        "client": "Atlantic Financial Group",
+        "description": "Suite profesional de señalización interior incluyendo display del lobby, señales direccionales e identificación de salas.",
+        "tags": ["Corporativo", "Señalización", "Profesional"],
+        "year": "2023"
+      },
+      {
+        "title": "Directorio de Centro Comercial",
+        "category": "Publicidad Exterior",
+        "client": "Riverside Shopping Plaza",
+        "description": "Letrero de directorio a gran escala con paneles iluminados de inquilinos e integración de mapa.",
+        "tags": ["Directorio", "Iluminado", "Gran Escala"],
+        "year": "2024"
+      },
+      {
+        "title": "Señalización de Centro Médico",
+        "category": "Señalización Interior",
+        "client": "Sunrise Medical Center",
+        "description": "Sistema integral de señalización con letreros compatibles con ADA en toda la instalación.",
+        "tags": ["Compatible ADA", "Salud", "Señalización"],
+        "year": "2023"
+      },
+      {
+        "title": "Letreros de Desarrollo Inmobiliario",
+        "category": "Letreros Comerciales",
+        "client": "Premier Properties",
+        "description": "Letreros monumentales, señalización direccional y displays del centro de ventas para desarrollo de lujo.",
+        "tags": ["Monumental", "Lujo", "Desarrollo"],
+        "year": "2024"
+      }
+    ],
+    "statsTitle": "Estadísticas de Proyectos",
+    "stats": [
+      {
+        "value": "150+",
+        "label": "Proyectos Este Año"
+      },
+      {
+        "value": "98%",
+        "label": "Satisfacción del Cliente"
+      },
+      {
+        "value": "25",
+        "label": "Premios de la Industria"
+      },
+      {
+        "value": "5.0",
+        "label": "Calificación Promedio"
+      }
+    ],
+    "ctaTitle": "¿Inspirado por Nuestro Trabajo?",
+    "ctaSubtitle": "Creemos algo increíble para tu negocio. Cada proyecto comienza con entender tus necesidades y visión únicas.",
+    "ctaButton": "Iniciar Tu Proyecto",
+    "ctaSecondary": "Programar Consulta",
+    "viewDetails": "Ver Detalles",
+    "startSimilar": "Iniciar Proyecto Similar",
+    "getQuote": "Obtener Cotización",
+    "projectTags": "Etiquetas del Proyecto",
+    "noProjects": "No se encontraron proyectos en esta categoría."
+  },
+  "quote": {
+    "title": "Solicitar Cotización",
+    "subtitle": "Obtén una cotización personalizada para tu proyecto de señalización. Completa el formulario a continuación y te responderemos dentro de 24 horas.",
+    "contactInfo": "Información de Contacto",
+    "projectDetails": "Detalles del Proyecto",
+    "additionalInfo": "Información Adicional",
+    "firstName": "Nombre",
+    "lastName": "Apellido",
+    "email": "Dirección de Email",
+    "phone": "Número de Teléfono",
+    "company": "Nombre de la Empresa (Opcional)",
+    "projectType": "Tipo de Proyecto",
+    "selectProjectType": "Seleccionar tipo de proyecto",
+    "projectTypes": [
+      "Señalización Comercial",
+      "Pantalla LED Digital",
+      "Vinilado de Vehículo",
+      "Display para Feria",
+      "Señalización Interior",
+      "Publicidad Exterior",
+      "Proyecto Personalizado"
+    ],
+    "budget": "Presupuesto Estimado",
+    "selectBudget": "Seleccionar rango de presupuesto",
+    "budgetRanges": [
+      "Menos de $500",
+      "$500 - $1,000",
+      "$1,000 - $2,500",
+      "$2,500 - $5,000",
+      "$5,000 - $10,000",
+      "Más de $10,000"
+    ],
+    "timeline": "Cronograma Deseado",
+    "selectTimeline": "Seleccionar cronograma",
+    "timelines": [
+      "Lo antes posible",
+      "Dentro de 2 semanas",
+      "Dentro de 1 mes",
+      "Dentro de 2-3 meses",
+      "Flexible"
+    ],
+    "description": "Descripción del Proyecto",
+    "descriptionPlaceholder": "Proporciona detalles sobre tu proyecto, incluyendo tamaño, materiales, requisitos de instalación y cualquier preferencia específica de diseño...",
+    "attachments": "Adjuntos (Opcional)",
+    "attachmentsText": "Adjuntar imágenes de referencia, logos o archivos de diseño",
+    "submitButton": "Enviar Solicitud de Cotización",
+    "submitting": "Enviando...",
+    "successTitle": "¡Solicitud de Cotización Enviada!",
+    "successMessage": "¡Gracias por tu interés! Revisaremos tu solicitud y te responderemos dentro de 24 horas con una cotización detallada.",
+    "backToHome": "Volver al Inicio"
+  },
+  "ecommerce": {
+    "searchPlaceholder": "Buscar productos...",
+    "filterByCategory": "Filtrar por categoría",
+    "allCategories": "Todas las Categorías",
+    "viewModes": {
+      "grid": "Vista de Cuadrícula",
+      "list": "Vista de Lista"
+    },
+    "loading": "Cargando productos...",
+    "noProducts": "No se encontraron productos",
+    "addToCart": "Agregar al Carrito",
+    "viewDetails": "Ver Detalles",
+    "backToProducts": "Volver a Productos",
+    "quantity": "Cantidad",
+    "specifications": "Especificaciones",
+    "materials": "Materiales",
+    "dimensions": "Dimensiones",
+    "warranty": "Información de Garantía",
+    "installation": "Información de Instalación",
+    "leadTime": "Tiempo de Entrega",
+    "minQuantity": "Cantidad Mínima",
+    "maxQuantity": "Cantidad Máxima",
+    "orderPlaced": "¡Pedido Realizado!",
+    "orderConfirmation": "Gracias por tu compra. Recibirás un email de confirmación en breve.",
+    "continueShopping": "Continuar Comprando",
+    "cart": "Carrito de Compras",
+    "checkout": "Finalizar Compra",
+    "total": "Total"
   }
 }

@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { 
   Palette, 
   Printer, 
@@ -146,6 +147,138 @@ const whyChooseUs = [
 ];
 
 export default function Services() {
+  const { t } = useTranslation('content');
+
+  const services = [
+    {
+      icon: Palette,
+      title: t('services.design.title'),
+      description: t('services.design.description'),
+      features: [
+        "Custom Logo Design",
+        "Brand Identity Development", 
+        "Layout & Mockup Creation",
+        "Color Scheme Consultation"
+      ],
+      process: [
+        "Initial Consultation",
+        "Concept Development", 
+        "Design Refinement",
+        "Final Approval"
+      ],
+      timeline: "3-5 business days",
+      startingPrice: t('services.design.startingPrice')
+    },
+    {
+      icon: Printer,
+      title: t('services.production.title'),
+      description: t('services.production.description'),
+      features: [
+        "Digital Printing",
+        "Vinyl Cutting & Application",
+        "Metal Fabrication",
+        "Lamination & Finishing"
+      ],
+      process: [
+        "File Preparation",
+        "Material Selection",
+        "Production",
+        "Quality Control"
+      ],
+      timeline: "2-7 business days",
+      startingPrice: t('services.production.startingPrice')
+    },
+    {
+      icon: Wrench,
+      title: t('services.installation.title'),
+      description: t('services.installation.description'),
+      features: [
+        "Professional Mounting",
+        "Electrical Connections",
+        "Site Preparation",
+        "Safety Compliance"
+      ],
+      process: [
+        "Site Survey",
+        "Installation Planning",
+        "Professional Installation",
+        "Final Testing"
+      ],
+      timeline: "1-3 business days",
+      startingPrice: t('services.installation.startingPrice')
+    },
+    {
+      icon: Headphones,
+      title: t('services.maintenance.title'),
+      description: t('services.maintenance.description'),
+      features: [
+        "Regular Cleaning",
+        "Repair Services",
+        "Content Updates",
+        "24/7 Support"
+      ],
+      process: [
+        "Maintenance Schedule",
+        "Regular Inspections",
+        "Preventive Care",
+        "Emergency Repairs"
+      ],
+      timeline: "Ongoing",
+      startingPrice: t('services.maintenance.startingPrice')
+    }
+  ];
+
+  const processSteps = [
+    {
+      step: "01",
+      title: t('services.process.consultation.title'),
+      description: t('services.process.consultation.description')
+    },
+    {
+      step: "02", 
+      title: t('services.process.design.title'),
+      description: t('services.process.design.description')
+    },
+    {
+      step: "03",
+      title: t('services.process.production.title'),
+      description: t('services.process.production.description')
+    },
+    {
+      step: "04",
+      title: t('services.process.installation.title'),
+      description: t('services.process.installation.description')
+    },
+    {
+      step: "05",
+      title: t('services.process.support.title'),
+      description: t('services.process.support.description')
+    }
+  ];
+
+  const whyChooseUs = [
+    {
+      icon: Award,
+      title: t('services.whyChoose.expertise.title'),
+      description: t('services.whyChoose.expertise.description')
+    },
+    {
+      icon: Zap,
+      title: t('services.whyChoose.turnaround.title'),
+      description: t('services.whyChoose.turnaround.description')
+    },
+    {
+      icon: CheckCircle,
+      title: t('services.whyChoose.quality.title'),
+      description: t('services.whyChoose.quality.description')
+    },
+    {
+      icon: Clock,
+      title: t('services.whyChoose.delivery.title'),
+      description: t('services.whyChoose.delivery.description')
+    }
+  ];
+
   return (
     <PageLayout>
       {/* Header */}
@@ -153,11 +286,10 @@ export default function Services() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h1 className="text-4xl lg:text-6xl font-bold mb-6">
-              Our <span className="text-gradient">Services</span>
+              {t('services.title')}
             </h1>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Comprehensive signage solutions from concept to completion. 
-              We handle every aspect of your project with expertise and care.
+              {t('services.subtitle')}
             </p>
           </div>
         </div>
@@ -233,11 +365,10 @@ export default function Services() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl lg:text-5xl font-bold mb-6">
-              Our <span className="text-gradient">Process</span>
+              {t('services.process.title')}
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              From initial consultation to final installation, we guide you through 
-              every step of creating your perfect signage solution.
+              {t('services.process.subtitle')}
             </p>
           </div>
           
@@ -265,7 +396,7 @@ export default function Services() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl lg:text-5xl font-bold mb-6">
-              Why Choose <span className="text-gradient">FBRSigns</span>
+              {t('services.whyChoose.title')}
             </h2>
           </div>
           
@@ -291,21 +422,20 @@ export default function Services() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <GlassCard variant="hero">
             <h2 className="text-3xl lg:text-5xl font-bold mb-6">
-              Ready to Get <span className="text-gradient">Started?</span>
+              {t('services.cta.title')}
             </h2>
             <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-              Let's discuss your project and create a custom solution that perfectly 
-              fits your needs and budget.
+              {t('services.cta.subtitle')}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <GlassButton variant="hero" size="xl" asChild>
                 <Link to="/contact">
-                  Get Free Consultation
+                  {t('services.cta.button')}
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Link>
               </GlassButton>
               <GlassButton variant="outline" size="xl" asChild>
-                <Link to="/portfolio">View Our Work</Link>
+                <Link to="/portfolio">{t('services.cta.portfolio')}</Link>
               </GlassButton>
             </div>
           </GlassCard>

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { PageLayout } from '@/components/layout/PageLayout';
 import { CartSidebar } from '@/components/ecommerce/CartSidebar';
 import { ProductDetails } from '@/components/ecommerce/ProductDetails';
@@ -28,6 +29,7 @@ interface Product {
 }
 
 export default function EcommercePage() {
+  const { t } = useTranslation('content');
   const [currentView, setCurrentView] = useState<ViewMode>('products');
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const [isCartOpen, setIsCartOpen] = useState(false);
@@ -91,15 +93,15 @@ export default function EcommercePage() {
                   />
                 </svg>
               </div>
-              <h1 className="text-2xl font-bold mb-4">Order Placed!</h1>
+              <h1 className="text-2xl font-bold mb-4">{t('ecommerce.orderPlaced')}</h1>
               <p className="text-muted-foreground mb-8">
-                Thank you for your purchase. You will receive a confirmation email shortly.
+                {t('ecommerce.orderConfirmation')}
               </p>
               <button
                 onClick={handleBackToProducts}
                 className="inline-flex items-center px-6 py-3 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors"
               >
-                Continue Shopping
+                {t('ecommerce.continueShopping')}
               </button>
             </div>
           </div>

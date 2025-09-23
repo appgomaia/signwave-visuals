@@ -125,5 +125,192 @@
     "title": "Pronto Para Transformar Seu Negócio?",
     "subtitle": "Obtenha uma consulta e orçamento gratuitos para seu projeto de sinalização hoje",
     "button": "Obter Orçamento Gratuito"
+  },
+  "portfolio": {
+    "title": "Nosso Portfólio",
+    "subtitle": "Explore nossos projetos recentes e veja como ajudamos empresas a transformar sua comunicação visual e se destacar da concorrência.",
+    "categories": [
+      "Todos os Projetos",
+      "Placas Comerciais",
+      "Displays Digitais",
+      "Adesivação de Veículos",
+      "Feiras Comerciais",
+      "Sinalização Interna",
+      "Publicidade Externa"
+    ],
+    "projects": [
+      {
+        "title": "Sinalização de Restaurante Moderno",
+        "category": "Placas Comerciais",
+        "client": "Restaurante Bella Vista",
+        "description": "Pacote completo de sinalização incluindo placa de fachada, pranchas de menu e sinalização interna.",
+        "tags": ["LED", "Acrílico", "Design de Interiores"],
+        "year": "2024"
+      },
+      {
+        "title": "Campanha de Outdoor Digital",
+        "category": "Displays Digitais",
+        "client": "Tech Solutions Inc",
+        "description": "Display LED de grande formato para publicidade de alto tráfego com gerenciamento de conteúdo dinâmico.",
+        "tags": ["LED", "Digital", "Alto Tráfego"],
+        "year": "2024"
+      },
+      {
+        "title": "Adesivação de Frota",
+        "category": "Adesivação de Veículos",
+        "client": "Green Clean Services",
+        "description": "Branding completo da frota com adesivos atraentes para 12 veículos de serviço.",
+        "tags": ["Frota", "Branding", "Vinil"],
+        "year": "2023"
+      },
+      {
+        "title": "Design de Estande para Feira",
+        "category": "Feiras Comerciais",
+        "client": "Innovation Expo 2024",
+        "description": "Sistema modular de display para feira com iluminação integrada e elementos interativos.",
+        "tags": ["Modular", "Interativo", "Portátil"],
+        "year": "2024"
+      },
+      {
+        "title": "Sinalização de Escritório Corporativo",
+        "category": "Sinalização Interna",
+        "client": "Atlantic Financial Group",
+        "description": "Conjunto profissional de sinalização interna incluindo display do lobby, placas direcionais e identificação de salas.",
+        "tags": ["Corporativo", "Sinalização", "Profissional"],
+        "year": "2023"
+      },
+      {
+        "title": "Diretório de Shopping Center",
+        "category": "Publicidade Externa",
+        "client": "Riverside Shopping Plaza",
+        "description": "Placa de diretório em grande escala com painéis iluminados de inquilinos e integração de mapa.",
+        "tags": ["Diretório", "Iluminado", "Grande Escala"],
+        "year": "2024"
+      },
+      {
+        "title": "Sinalização de Centro Médico",
+        "category": "Sinalização Interna",
+        "client": "Sunrise Medical Center",
+        "description": "Sistema abrangente de sinalização com placas compatíveis com ADA em toda a instalação.",
+        "tags": ["Compatível com ADA", "Saúde", "Sinalização"],
+        "year": "2023"
+      },
+      {
+        "title": "Placas de Desenvolvimento Imobiliário",
+        "category": "Placas Comerciais",
+        "client": "Premier Properties",
+        "description": "Placas monumentais, sinalização direcional e displays do centro de vendas para desenvolvimento de luxo.",
+        "tags": ["Monumental", "Luxo", "Desenvolvimento"],
+        "year": "2024"
+      }
+    ],
+    "statsTitle": "Estatísticas de Projetos",
+    "stats": [
+      {
+        "value": "150+",
+        "label": "Projetos Este Ano"
+      },
+      {
+        "value": "98%",
+        "label": "Satisfação do Cliente"
+      },
+      {
+        "value": "25",
+        "label": "Prêmios da Indústria"
+      },
+      {
+        "value": "5.0",
+        "label": "Avaliação Média"
+      }
+    ],
+    "ctaTitle": "Inspirado pelo Nosso Trabalho?",
+    "ctaSubtitle": "Vamos criar algo incrível para seu negócio. Todo projeto começa com o entendimento de suas necessidades e visão únicas.",
+    "ctaButton": "Comece Seu Projeto",
+    "ctaSecondary": "Agendar Consulta",
+    "viewDetails": "Ver Detalhes",
+    "startSimilar": "Iniciar Projeto Similar",
+    "getQuote": "Obter Orçamento",
+    "projectTags": "Tags do Projeto",
+    "noProjects": "Nenhum projeto encontrado nesta categoria."
+  },
+  "quote": {
+    "title": "Solicitar Orçamento",
+    "subtitle": "Obtenha um orçamento personalizado para seu projeto de sinalização. Preencha o formulário abaixo e retornaremos em até 24 horas.",
+    "contactInfo": "Informações de Contato",
+    "projectDetails": "Detalhes do Projeto",
+    "additionalInfo": "Informações Adicionais",
+    "firstName": "Nome",
+    "lastName": "Sobrenome",
+    "email": "Endereço de Email",
+    "phone": "Número de Telefone",
+    "company": "Nome da Empresa (Opcional)",
+    "projectType": "Tipo de Projeto",
+    "selectProjectType": "Selecionar tipo de projeto",
+    "projectTypes": [
+      "Sinalização Comercial",
+      "Display LED Digital",
+      "Adesivação de Veículo",
+      "Display para Feira",
+      "Sinalização Interna",
+      "Publicidade Externa",
+      "Projeto Personalizado"
+    ],
+    "budget": "Orçamento Estimado",
+    "selectBudget": "Selecionar faixa de orçamento",
+    "budgetRanges": [
+      "Abaixo de R$ 500",
+      "R$ 500 - R$ 1.000",
+      "R$ 1.000 - R$ 2.500",
+      "R$ 2.500 - R$ 5.000",
+      "R$ 5.000 - R$ 10.000",
+      "Acima de R$ 10.000"
+    ],
+    "timeline": "Cronograma Desejado",
+    "selectTimeline": "Selecionar cronograma",
+    "timelines": [
+      "O mais rápido possível",
+      "Dentro de 2 semanas",
+      "Dentro de 1 mês",
+      "Dentro de 2-3 meses",
+      "Flexível"
+    ],
+    "description": "Descrição do Projeto",
+    "descriptionPlaceholder": "Forneça detalhes sobre seu projeto, incluindo tamanho, materiais, requisitos de instalação e quaisquer preferências específicas de design...",
+    "attachments": "Anexos (Opcional)",
+    "attachmentsText": "Anexar imagens de referência, logos ou arquivos de design",
+    "submitButton": "Enviar Solicitação de Orçamento",
+    "submitting": "Enviando...",
+    "successTitle": "Solicitação de Orçamento Enviada!",
+    "successMessage": "Obrigado pelo seu interesse! Analisaremos sua solicitação e retornaremos em até 24 horas com um orçamento detalhado.",
+    "backToHome": "Voltar ao Início"
+  },
+  "ecommerce": {
+    "searchPlaceholder": "Buscar produtos...",
+    "filterByCategory": "Filtrar por categoria",
+    "allCategories": "Todas as Categorias",
+    "viewModes": {
+      "grid": "Visualização em Grade",
+      "list": "Visualização em Lista"
+    },
+    "loading": "Carregando produtos...",
+    "noProducts": "Nenhum produto encontrado",
+    "addToCart": "Adicionar ao Carrinho",
+    "viewDetails": "Ver Detalhes",
+    "backToProducts": "Voltar aos Produtos",
+    "quantity": "Quantidade",
+    "specifications": "Especificações",
+    "materials": "Materiais",
+    "dimensions": "Dimensões",
+    "warranty": "Informações de Garantia",
+    "installation": "Informações de Instalação",
+    "leadTime": "Prazo de Entrega",
+    "minQuantity": "Quantidade Mínima",
+    "maxQuantity": "Quantidade Máxima",
+    "orderPlaced": "Pedido Realizado!",
+    "orderConfirmation": "Obrigado pela sua compra. Você receberá um email de confirmação em breve.",
+    "continueShopping": "Continuar Comprando",
+    "cart": "Carrinho de Compras",
+    "checkout": "Finalizar Compra",
+    "total": "Total"
   }
 }

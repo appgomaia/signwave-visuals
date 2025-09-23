@@ -301,5 +301,192 @@
     "title": "Ready to Transform Your Business?",
     "subtitle": "Get a free consultation and quote for your signage project today",
     "button": "Get Free Quote"
+  },
+  "portfolio": {
+    "title": "Our Portfolio",
+    "subtitle": "Explore our recent projects and see how we've helped businesses transform their visual communication and stand out from the competition.",
+    "categories": [
+      "All Projects",
+      "Business Signs",
+      "Digital Displays",
+      "Vehicle Wraps",
+      "Trade Shows",
+      "Interior Signage",
+      "Outdoor Advertising"
+    ],
+    "projects": [
+      {
+        "title": "Modern Restaurant Signage",
+        "category": "Business Signs",
+        "client": "Bella Vista Restaurant",
+        "description": "Complete signage package including storefront sign, menu boards, and interior wayfinding.",
+        "tags": ["LED", "Acrylic", "Interior Design"],
+        "year": "2024"
+      },
+      {
+        "title": "Digital Billboard Campaign",
+        "category": "Digital Displays",
+        "client": "Tech Solutions Inc",
+        "description": "Large-format LED display for high-traffic advertising with dynamic content management.",
+        "tags": ["LED", "Digital", "High-Traffic"],
+        "year": "2024"
+      },
+      {
+        "title": "Fleet Vehicle Wraps",
+        "category": "Vehicle Wraps",
+        "client": "Green Clean Services",
+        "description": "Complete fleet branding with eye-catching vehicle wraps for 12 service vehicles.",
+        "tags": ["Fleet", "Branding", "Vinyl"],
+        "year": "2023"
+      },
+      {
+        "title": "Trade Show Booth Design",
+        "category": "Trade Shows",
+        "client": "Innovation Expo 2024",
+        "description": "Modular trade show display system with integrated lighting and interactive elements.",
+        "tags": ["Modular", "Interactive", "Portable"],
+        "year": "2024"
+      },
+      {
+        "title": "Corporate Office Signage",
+        "category": "Interior Signage",
+        "client": "Atlantic Financial Group",
+        "description": "Professional interior signage suite including lobby display, directional signs, and room identification.",
+        "tags": ["Corporate", "Wayfinding", "Professional"],
+        "year": "2023"
+      },
+      {
+        "title": "Shopping Center Directory",
+        "category": "Outdoor Advertising",
+        "client": "Riverside Shopping Plaza",
+        "description": "Large-scale directory sign with illuminated tenant panels and map integration.",
+        "tags": ["Directory", "Illuminated", "Large-Scale"],
+        "year": "2024"
+      },
+      {
+        "title": "Medical Center Wayfinding",
+        "category": "Interior Signage",
+        "client": "Sunrise Medical Center",
+        "description": "Comprehensive wayfinding system with ADA-compliant signage throughout the facility.",
+        "tags": ["ADA Compliant", "Healthcare", "Wayfinding"],
+        "year": "2023"
+      },
+      {
+        "title": "Real Estate Development Signs",
+        "category": "Business Signs",
+        "client": "Premier Properties",
+        "description": "Monument signs, directional signage, and sales center displays for luxury development.",
+        "tags": ["Monument", "Luxury", "Development"],
+        "year": "2024"
+      }
+    ],
+    "statsTitle": "Project Statistics",
+    "stats": [
+      {
+        "value": "150+",
+        "label": "Projects This Year"
+      },
+      {
+        "value": "98%",
+        "label": "Client Satisfaction"
+      },
+      {
+        "value": "25",
+        "label": "Industry Awards"
+      },
+      {
+        "value": "5.0",
+        "label": "Average Rating"
+      }
+    ],
+    "ctaTitle": "Inspired by Our Work?",
+    "ctaSubtitle": "Let's create something amazing for your business. Every project starts with understanding your unique needs and vision.",
+    "ctaButton": "Start Your Project",
+    "ctaSecondary": "Schedule Consultation",
+    "viewDetails": "View Details",
+    "startSimilar": "Start Similar Project",
+    "getQuote": "Get Quote",
+    "projectTags": "Project Tags",
+    "noProjects": "No projects found in this category."
+  },
+  "quote": {
+    "title": "Request a Quote",
+    "subtitle": "Get a personalized quote for your signage project. Fill out the form below and we'll get back to you within 24 hours.",
+    "contactInfo": "Contact Information",
+    "projectDetails": "Project Details",
+    "additionalInfo": "Additional Information",
+    "firstName": "First Name",
+    "lastName": "Last Name",
+    "email": "Email Address",
+    "phone": "Phone Number",
+    "company": "Company Name (Optional)",
+    "projectType": "Project Type",
+    "selectProjectType": "Select project type",
+    "projectTypes": [
+      "Business Signage",
+      "Digital LED Display",
+      "Vehicle Wrap",
+      "Trade Show Display",
+      "Interior Signage",
+      "Outdoor Advertising",
+      "Custom Project"
+    ],
+    "budget": "Estimated Budget",
+    "selectBudget": "Select budget range",
+    "budgetRanges": [
+      "Under $500",
+      "$500 - $1,000",
+      "$1,000 - $2,500",
+      "$2,500 - $5,000",
+      "$5,000 - $10,000",
+      "Over $10,000"
+    ],
+    "timeline": "Desired Timeline",
+    "selectTimeline": "Select timeline",
+    "timelines": [
+      "ASAP",
+      "Within 2 weeks",
+      "Within 1 month",
+      "Within 2-3 months",
+      "Flexible"
+    ],
+    "description": "Project Description",
+    "descriptionPlaceholder": "Please provide details about your project, including size, materials, installation requirements, and any specific design preferences...",
+    "attachments": "Attachments (Optional)",
+    "attachmentsText": "Attach reference images, logos, or design files",
+    "submitButton": "Submit Quote Request",
+    "submitting": "Submitting...",
+    "successTitle": "Quote Request Submitted!",
+    "successMessage": "Thank you for your interest! We'll review your request and get back to you within 24 hours with a detailed quote.",
+    "backToHome": "Back to Home"
+  },
+  "ecommerce": {
+    "searchPlaceholder": "Search products...",
+    "filterByCategory": "Filter by category",
+    "allCategories": "All Categories",
+    "viewModes": {
+      "grid": "Grid View",
+      "list": "List View"
+    },
+    "loading": "Loading products...",
+    "noProducts": "No products found",
+    "addToCart": "Add to Cart",
+    "viewDetails": "View Details",
+    "backToProducts": "Back to Products",
+    "quantity": "Quantity",
+    "specifications": "Specifications",
+    "materials": "Materials",
+    "dimensions": "Dimensions",
+    "warranty": "Warranty Information",
+    "installation": "Installation Information",
+    "leadTime": "Lead Time",
+    "minQuantity": "Minimum Quantity",
+    "maxQuantity": "Maximum Quantity",
+    "orderPlaced": "Order Placed!",
+    "orderConfirmation": "Thank you for your purchase. You will receive a confirmation email shortly.",
+    "continueShopping": "Continue Shopping",
+    "cart": "Shopping Cart",
+    "checkout": "Checkout",
+    "total": "Total"
   }
 }
