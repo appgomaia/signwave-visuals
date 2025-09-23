@@ -312,5 +312,40 @@
     "cart": "Carrinho de Compras",
     "checkout": "Finalizar Compra",
     "total": "Total"
+  },
+  "aiAssistant": {
+    "title": "FBRsigns AI",
+    "subtitle": "Deixe nosso assistente de IA ajudá-lo a definir seu projeto de sinalização perfeito",
+    "welcome": {
+      "title": "Bem-vindo ao Seu Assistente Pessoal de Projetos",
+      "description": "Não tem certeza de como descrever suas necessidades de sinalização? Sem problema! Nosso assistente de IA fará perguntas simples para ajudar a definir seu projeto perfeito. Seja para placas, banners, camisetas ou materiais promocionais, nós o guiaremos em cada etapa.",
+      "helpDefine": "O que ajudaremos você a definir:",
+      "productType": "Tipo de produto e especificações",
+      "sizeFormat": "Preferências de tamanho e formato",
+      "designStyle": "Necessidades de design e estilo",
+      "timelineBudget": "Cronograma e orçamento",
+      "startButton": "Iniciar Meu Projeto",
+      "starting": "Iniciando..."
+    },
+    "chat": {
+      "placeholder": "Digite sua mensagem...",
+      "thinking": "Pensando...",
+      "generateSummary": "Gerar Resumo do Projeto",
+      "moreInfoNeeded": "Mais informações necessárias",
+      "moreInfoDescription": "Por favor, continue a conversa para coletar mais detalhes do projeto."
+    },
+    "summary": {
+      "title": "Resumo do Projeto Concluído!",
+      "description": "Os detalhes do seu projeto foram compilados e estão prontos para revisão.",
+      "startOver": "Começar Novamente",
+      "requestQuote": "Solicitar Orçamento",
+      "summaryGenerated": "Resumo do Projeto Gerado!",
+      "summaryDescription": "Os detalhes do seu projeto foram compilados. Agora você pode solicitar um orçamento."
+    },
+    "errors": {
+      "startFailed": "Falha ao iniciar conversa. Tente novamente.",
+      "sendFailed": "Falha ao enviar mensagem. Tente novamente.",
+      "summaryFailed": "Falha ao gerar resumo do projeto. Tente novamente."
+    }
   }
 }

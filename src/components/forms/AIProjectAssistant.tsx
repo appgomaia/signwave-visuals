@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -23,7 +24,7 @@ export const AIProjectAssistant: React.FC<AIProjectAssistantProps> = ({
   open,
   onOpenChange
 }) => {
-  
+  const { t } = useTranslation('content');
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -76,7 +77,7 @@ export const AIProjectAssistant: React.FC<AIProjectAssistantProps> = ({
       console.error('Error starting conversation:', error);
       toast({
         title: "Error",
-        description: "Failed to start conversation. Please try again.",
+        description: t('aiAssistant.errors.startFailed'),
         variant: "destructive",
       });
     } finally {
@@ -122,7 +123,7 @@ export const AIProjectAssistant: React.FC<AIProjectAssistantProps> = ({
       console.error('Error sending message:', error);
       toast({
         title: "Error",
-        description: "Failed to send message. Please try again.",
+        description: t('aiAssistant.errors.sendFailed'),
         variant: "destructive",
       });
     } finally {
@@ -133,8 +134,8 @@ export const AIProjectAssistant: React.FC<AIProjectAssistantProps> = ({
   const generateProjectSummary = async () => {
     if (messages.length < 4) {
       toast({
-        title: "More information needed",
-        description: "Please continue the conversation to gather more project details.",
+        title: t('aiAssistant.chat.moreInfoNeeded'),
+        description: t('aiAssistant.chat.moreInfoDescription'),
         variant: "destructive",
       });
       return;
@@ -160,14 +161,14 @@ export const AIProjectAssistant: React.FC<AIProjectAssistantProps> = ({
       setProjectSummary(data.message);
       
       toast({
-        title: "Project Summary Generated!",
-        description: "Your project details have been compiled. You can now request a quote.",
+        title: t('aiAssistant.summary.summaryGenerated'),
+        description: t('aiAssistant.summary.summaryDescription'),
       });
     } catch (error) {
       console.error('Error generating summary:', error);
       toast({
         title: "Error",
-        description: "Failed to generate project summary. Please try again.",
+        description: t('aiAssistant.errors.summaryFailed'),
         variant: "destructive",
       });
     } finally {
@@ -198,10 +199,10 @@ export const AIProjectAssistant: React.FC<AIProjectAssistantProps> = ({
             <div className="p-2 rounded-xl bg-gradient-primary flex items-center justify-center">
               <Sparkles className="h-6 w-6 text-white" />
             </div>
-            FBRsigns AI
+            {t('aiAssistant.title')}
           </DialogTitle>
           <DialogDescription>
-            Let our AI assistant help you define your perfect signage project
+            {t('aiAssistant.subtitle')}
           </DialogDescription>
         </DialogHeader>
 
@@ -216,34 +217,31 @@ export const AIProjectAssistant: React.FC<AIProjectAssistantProps> = ({
                       <Bot className="h-12 w-12 text-white" />
                     </div>
                     <h3 className="text-2xl font-semibold mb-4">
-                      Welcome to Your Personal Project Assistant
+                      {t('aiAssistant.welcome.title')}
                     </h3>
                     <p className="text-muted-foreground text-lg mb-8">
-                      Not sure how to describe your signage needs? No problem! Our AI assistant 
-                      will ask you simple questions to help define your perfect project. 
-                      Whether it's signs, banners, t-shirts, or promotional materials, 
-                      we'll guide you through every step.
+                      {t('aiAssistant.welcome.description')}
                     </p>
                   </div>
                   
                   <GlassCard className="p-6 mb-6">
-                    <h4 className="font-semibold mb-3">What we'll help you define:</h4>
+                    <h4 className="font-semibold mb-3">{t('aiAssistant.welcome.helpDefine')}</h4>
                     <div className="grid md:grid-cols-2 gap-3 text-sm text-muted-foreground">
                       <div className="flex items-center gap-2">
                         <CheckCircle className="h-4 w-4 text-primary" />
-                        Product type & specifications
+                        {t('aiAssistant.welcome.productType')}
                       </div>
                       <div className="flex items-center gap-2">
                         <CheckCircle className="h-4 w-4 text-primary" />
-                        Size and format preferences
+                        {t('aiAssistant.welcome.sizeFormat')}
                       </div>
                       <div className="flex items-center gap-2">
                         <CheckCircle className="h-4 w-4 text-primary" />
-                        Design and style needs
+                        {t('aiAssistant.welcome.designStyle')}
                       </div>
                       <div className="flex items-center gap-2">
                         <CheckCircle className="h-4 w-4 text-primary" />
-                        Timeline and budget
+                        {t('aiAssistant.welcome.timelineBudget')}
                       </div>
                     </div>
                   </GlassCard>
@@ -257,12 +255,12 @@ export const AIProjectAssistant: React.FC<AIProjectAssistantProps> = ({
                     {isLoading ? (
                       <>
                         <Loader2 className="mr-2 h-5 w-5 animate-spin" />
-                        Starting...
+                        {t('aiAssistant.welcome.starting')}
                       </>
                     ) : (
                       <>
                         <Sparkles className="mr-2 h-5 w-5" />
-                        Start My Project
+                        {t('aiAssistant.welcome.startButton')}
                       </>
                     )}
                   </Button>
@@ -277,8 +275,8 @@ export const AIProjectAssistant: React.FC<AIProjectAssistantProps> = ({
                   <div className="inline-flex p-3 rounded-xl bg-gradient-primary mb-4">
                     <CheckCircle className="h-8 w-8 text-white" />
                   </div>
-                  <h3 className="text-2xl font-semibold mb-2">Project Summary Complete!</h3>
-                  <p className="text-muted-foreground">Your project details have been compiled and are ready for review.</p>
+                  <h3 className="text-2xl font-semibold mb-2">{t('aiAssistant.summary.title')}</h3>
+                  <p className="text-muted-foreground">{t('aiAssistant.summary.description')}</p>
                 </div>
                 
                 <GlassCard className="p-6 mb-6">
@@ -289,10 +287,10 @@ export const AIProjectAssistant: React.FC<AIProjectAssistantProps> = ({
                 
                 <div className="flex gap-3 justify-end">
                   <Button variant="outline" onClick={resetConversation}>
-                    Start Over
+                    {t('aiAssistant.summary.startOver')}
                   </Button>
                   <Button onClick={() => onOpenChange(false)}>
-                    Request Quote
+                    {t('aiAssistant.summary.requestQuote')}
                   </Button>
                 </div>
               </div>
@@ -337,7 +335,7 @@ export const AIProjectAssistant: React.FC<AIProjectAssistantProps> = ({
                         <GlassCard className="p-4">
                           <div className="flex items-center gap-2">
                             <Loader2 className="h-4 w-4 animate-spin" />
-                            <span className="text-sm">Thinking...</span>
+                            <span className="text-sm">{t('aiAssistant.chat.thinking')}</span>
                           </div>
                         </GlassCard>
                       </div>
@@ -353,7 +351,7 @@ export const AIProjectAssistant: React.FC<AIProjectAssistantProps> = ({
                     value={input}
                     onChange={(e) => setInput(e.target.value)}
                     onKeyPress={handleKeyPress}
-                    placeholder="Type your message..."
+                    placeholder={t('aiAssistant.chat.placeholder')}
                     disabled={isLoading}
                     className="flex-1"
                   />
@@ -369,7 +367,7 @@ export const AIProjectAssistant: React.FC<AIProjectAssistantProps> = ({
                       onClick={generateProjectSummary}
                       disabled={isLoading}
                     >
-                      Generate Project Summary
+                      {t('aiAssistant.chat.generateSummary')}
                     </Button>
                   </div>
                 )}

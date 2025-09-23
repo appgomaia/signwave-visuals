@@ -312,5 +312,40 @@
     "cart": "Carrito de Compras",
     "checkout": "Finalizar Compra",
     "total": "Total"
+  },
+  "aiAssistant": {
+    "title": "FBRsigns AI",
+    "subtitle": "Deja que nuestro asistente de IA te ayude a definir tu proyecto de señalización perfecto",
+    "welcome": {
+      "title": "Bienvenido a tu Asistente Personal de Proyectos",
+      "description": "¿No estás seguro de cómo describir tus necesidades de señalización? ¡No hay problema! Nuestro asistente de IA te hará preguntas simples para ayudar a definir tu proyecto perfecto. Ya sean letreros, banners, camisetas o materiales promocionales, te guiaremos en cada paso.",
+      "helpDefine": "Lo que te ayudaremos a definir:",
+      "productType": "Tipo de producto y especificaciones",
+      "sizeFormat": "Preferencias de tamaño y formato",
+      "designStyle": "Necesidades de diseño y estilo",
+      "timelineBudget": "Cronograma y presupuesto",
+      "startButton": "Iniciar Mi Proyecto",
+      "starting": "Iniciando..."
+    },
+    "chat": {
+      "placeholder": "Escribe tu mensaje...",
+      "thinking": "Pensando...",
+      "generateSummary": "Generar Resumen del Proyecto",
+      "moreInfoNeeded": "Se necesita más información",
+      "moreInfoDescription": "Por favor, continúa la conversación para recopilar más detalles del proyecto."
+    },
+    "summary": {
+      "title": "¡Resumen del Proyecto Completado!",
+      "description": "Los detalles de tu proyecto han sido compilados y están listos para revisión.",
+      "startOver": "Empezar de Nuevo",
+      "requestQuote": "Solicitar Cotización",
+      "summaryGenerated": "¡Resumen del Proyecto Generado!",
+      "summaryDescription": "Los detalles de tu proyecto han sido compilados. Ahora puedes solicitar una cotización."
+    },
+    "errors": {
+      "startFailed": "Error al iniciar conversación. Inténtalo de nuevo.",
+      "sendFailed": "Error al enviar mensaje. Inténtalo de nuevo.",
+      "summaryFailed": "Error al generar resumen del proyecto. Inténtalo de nuevo."
+    }
   }
 }

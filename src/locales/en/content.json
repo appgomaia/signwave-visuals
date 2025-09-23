@@ -488,5 +488,40 @@
     "cart": "Shopping Cart",
     "checkout": "Checkout",
     "total": "Total"
+  },
+  "aiAssistant": {
+    "title": "FBRsigns AI",
+    "subtitle": "Let our AI assistant help you define your perfect signage project",
+    "welcome": {
+      "title": "Welcome to Your Personal Project Assistant",
+      "description": "Not sure how to describe your signage needs? No problem! Our AI assistant will ask you simple questions to help define your perfect project. Whether it's signs, banners, t-shirts, or promotional materials, we'll guide you through every step.",
+      "helpDefine": "What we'll help you define:",
+      "productType": "Product type & specifications",
+      "sizeFormat": "Size and format preferences",
+      "designStyle": "Design and style needs",
+      "timelineBudget": "Timeline and budget",
+      "startButton": "Start My Project",
+      "starting": "Starting..."
+    },
+    "chat": {
+      "placeholder": "Type your message...",
+      "thinking": "Thinking...",
+      "generateSummary": "Generate Project Summary",
+      "moreInfoNeeded": "More information needed",
+      "moreInfoDescription": "Please continue the conversation to gather more project details."
+    },
+    "summary": {
+      "title": "Project Summary Complete!",
+      "description": "Your project details have been compiled and are ready for review.",
+      "startOver": "Start Over",
+      "requestQuote": "Request Quote",
+      "summaryGenerated": "Project Summary Generated!",
+      "summaryDescription": "Your project details have been compiled. You can now request a quote."
+    },
+    "errors": {
+      "startFailed": "Failed to start conversation. Please try again.",
+      "sendFailed": "Failed to send message. Please try again.",
+      "summaryFailed": "Failed to generate project summary. Please try again."
+    }
   }
 }
