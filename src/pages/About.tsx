@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { 
   Users, 
   Award, 
@@ -105,6 +106,97 @@ const stats = [
 ];
 
 export default function About() {
+  const { t } = useTranslation();
+
+  const teamMembers = [
+    {
+      name: "Sarah Johnson",
+      role: "Founder & CEO",
+      bio: "With over 15 years in the signage industry, Sarah leads our team with passion and expertise.",
+      image: "/placeholder.svg"
+    },
+    {
+      name: "Mike Rodriguez",
+      role: "Creative Director", 
+      bio: "Mike brings innovative design thinking and ensures every project exceeds expectations.",
+      image: "/placeholder.svg"
+    },
+    {
+      name: "Emily Chen",
+      role: "Production Manager",
+      bio: "Emily oversees quality control and ensures timely delivery of all our projects.",
+      image: "/placeholder.svg"
+    },
+    {
+      name: "David Thompson",
+      role: "Installation Specialist",
+      bio: "David leads our installation team with precision and commitment to safety.",
+      image: "/placeholder.svg"
+    }
+  ];
+
+  const values = [
+    {
+      icon: Target,
+      title: t('content:about.values.excellence.title'),
+      description: t('content:about.values.excellence.description')
+    },
+    {
+      icon: Heart,
+      title: t('content:about.values.customerFocus.title'),
+      description: t('content:about.values.customerFocus.description')
+    },
+    {
+      icon: Award,
+      title: t('content:about.values.innovation.title'),
+      description: t('content:about.values.innovation.description')
+    },
+    {
+      icon: Users,
+      title: t('content:about.values.teamwork.title'),
+      description: t('content:about.values.teamwork.description')
+    }
+  ];
+
+  const milestones = [
+    {
+      year: "2009",
+      title: "Company Founded",
+      description: "Started with a vision to transform visual communication"
+    },
+    {
+      year: "2012",
+      title: "1,000 Projects",
+      description: "Reached our first major milestone with 1,000 completed projects"
+    },
+    {
+      year: "2015",
+      title: "Digital Expansion",
+      description: "Added digital signage and LED display services"
+    },
+    {
+      year: "2018",
+      title: "Regional Growth",
+      description: "Expanded operations to serve clients across three states"
+    },
+    {
+      year: "2021",
+      title: "Sustainability Focus",
+      description: "Launched eco-friendly materials and sustainable practices"
+    },
+    {
+      year: "2024",
+      title: "10,000+ Projects",
+      description: "Celebrating over 10,000 successful projects and counting"
+    }
+  ];
+
+  const stats = [
+    { value: t('content:stats.experience.value'), label: t('content:stats.experience.label') },
+    { value: t('content:stats.clients.value'), label: t('content:stats.clients.label') },
+    { value: t('content:stats.projects.value'), label: t('content:stats.projects.label') },
+    { value: "50+", label: "Team Members" }
+  ];
   return (
     <PageLayout>
       {/* Header */}
@@ -112,11 +204,10 @@ export default function About() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h1 className="text-4xl lg:text-6xl font-bold mb-6">
-              About <span className="text-gradient">FBRSigns</span>
+              {t('content:about.title')}
             </h1>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              For over 15 years, we've been transforming visions into stunning visual 
-              communication solutions that help businesses stand out and succeed.
+              {t('content:about.subtitle')}
             </p>
           </div>
 
@@ -140,25 +231,17 @@ export default function About() {
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
               <h2 className="text-3xl lg:text-5xl font-bold mb-6">
-                Our <span className="text-gradient">Story</span>
+                {t('content:about.story.title')}
               </h2>
               <div className="space-y-6 text-muted-foreground">
                 <p>
-                  Founded in 2009 by Sarah Johnson, FBRSigns began with a simple mission: 
-                  to help businesses communicate their message through exceptional visual signage. 
-                  What started as a small operation has grown into a leading signage company 
-                  serving clients across the region.
+                  {t('content:about.story.content1')}
                 </p>
                 <p>
-                  Our journey has been marked by continuous innovation, from embracing digital 
-                  signage technologies to implementing sustainable practices. We've completed 
-                  over 10,000 projects, but what we're most proud of is the lasting relationships 
-                  we've built with our clients.
+                  {t('content:about.story.content2')}
                 </p>
                 <p>
-                  Today, our team of 50+ professionals combines decades of experience with 
-                  cutting-edge technology to deliver signage solutions that not only look 
-                  amazing but drive real business results.
+                  {t('content:about.story.content3')}
                 </p>
               </div>
             </div>
@@ -179,11 +262,10 @@ export default function About() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl lg:text-5xl font-bold mb-6">
-              Our <span className="text-gradient">Values</span>
+              {t('content:about.values.title')}
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              These core values guide everything we do and shape the way we work 
-              with our clients and each other.
+              {t('content:about.values.subtitle')}
             </p>
           </div>
           
@@ -209,11 +291,10 @@ export default function About() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl lg:text-5xl font-bold mb-6">
-              Meet Our <span className="text-gradient">Team</span>
+              {t('content:about.team.title')}
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              The talented professionals behind every successful project. 
-              Our team combines expertise, creativity, and dedication.
+              {t('content:about.team.subtitle')}
             </p>
           </div>
           
@@ -241,10 +322,10 @@ export default function About() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl lg:text-5xl font-bold mb-6">
-              Our <span className="text-gradient">Journey</span>
+              {t('content:about.journey.title')}
             </h2>
             <p className="text-xl text-muted-foreground">
-              Key milestones that have shaped our company and defined our success.
+              {t('content:about.journey.subtitle')}
             </p>
           </div>
           
@@ -278,7 +359,7 @@ export default function About() {
               <div className="w-16 h-16 mx-auto mb-6 rounded-xl bg-gradient-primary flex items-center justify-center shadow-glow">
                 <MapPin className="h-8 w-8 text-white" />
               </div>
-              <h3 className="text-xl font-semibold mb-4">Visit Us</h3>
+              <h3 className="text-xl font-semibold mb-4">{t('content:about.contact.visitUs')}</h3>
               <p className="text-muted-foreground">
                 123 Business Avenue<br />
                 Suite 100<br />
@@ -290,7 +371,7 @@ export default function About() {
               <div className="w-16 h-16 mx-auto mb-6 rounded-xl bg-gradient-secondary flex items-center justify-center shadow-glow-secondary">
                 <Phone className="h-8 w-8 text-white" />
               </div>
-              <h3 className="text-xl font-semibold mb-4">Call Us</h3>
+              <h3 className="text-xl font-semibold mb-4">{t('content:about.contact.callUs')}</h3>
               <p className="text-muted-foreground">
                 Main: (555) 123-4567<br />
                 Emergency: (555) 987-6543<br />
@@ -302,7 +383,7 @@ export default function About() {
               <div className="w-16 h-16 mx-auto mb-6 rounded-xl bg-gradient-primary flex items-center justify-center shadow-glow">
                 <Mail className="h-8 w-8 text-white" />
               </div>
-              <h3 className="text-xl font-semibold mb-4">Email Us</h3>
+              <h3 className="text-xl font-semibold mb-4">{t('content:about.contact.emailUs')}</h3>
               <p className="text-muted-foreground">
                 info@fbrsigns.com<br />
                 support@fbrsigns.com<br />
@@ -318,21 +399,20 @@ export default function About() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <GlassCard variant="hero">
             <h2 className="text-3xl lg:text-5xl font-bold mb-6">
-              Ready to Work <span className="text-gradient">Together?</span>
+              {t('content:about.cta.title')}
             </h2>
             <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-              Let's discuss your project and see how our experience and expertise 
-              can help bring your vision to life.
+              {t('content:about.cta.subtitle')}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <GlassButton variant="hero" size="xl" asChild>
                 <Link to="/contact">
-                  Start Your Project
+                  {t('content:about.cta.button')}
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Link>
               </GlassButton>
               <GlassButton variant="outline" size="xl" asChild>
-                <Link to="/portfolio">View Our Portfolio</Link>
+                <Link to="/portfolio">{t('content:about.cta.portfolio')}</Link>
               </GlassButton>
             </div>
           </GlassCard>

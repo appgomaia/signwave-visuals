@@ -69,6 +69,182 @@
     "viewDetails": "View Details",
     "viewAllProducts": "View All Products"
   },
+  "about": {
+    "title": "About FBRSigns",
+    "subtitle": "For over 15 years, we've been transforming visions into stunning visual communication solutions that help businesses stand out and succeed.",
+    "story": {
+      "title": "Our Story",
+      "content1": "Founded in 2009 by Sarah Johnson, FBRSigns began with a simple mission: to help businesses communicate their message through exceptional visual signage. What started as a small operation has grown into a leading signage company serving clients across the region.",
+      "content2": "Our journey has been marked by continuous innovation, from embracing digital signage technologies to implementing sustainable practices. We've completed over 10,000 projects, but what we're most proud of is the lasting relationships we've built with our clients.",
+      "content3": "Today, our team of 50+ professionals combines decades of experience with cutting-edge technology to deliver signage solutions that not only look amazing but drive real business results."
+    },
+    "values": {
+      "title": "Our Values",
+      "subtitle": "These core values guide everything we do and shape the way we work with our clients and each other.",
+      "excellence": {
+        "title": "Excellence",
+        "description": "We strive for perfection in every project, from design concept to final installation."
+      },
+      "customerFocus": {
+        "title": "Customer Focus", 
+        "description": "Our clients' success is our success. We build lasting relationships through exceptional service."
+      },
+      "innovation": {
+        "title": "Innovation",
+        "description": "We embrace new technologies and creative solutions to stay ahead of industry trends."
+      },
+      "teamwork": {
+        "title": "Teamwork",
+        "description": "Our collaborative approach ensures every project benefits from our collective expertise."
+      }
+    },
+    "team": {
+      "title": "Meet Our Team",
+      "subtitle": "The talented professionals behind every successful project. Our team combines expertise, creativity, and dedication."
+    },
+    "journey": {
+      "title": "Our Journey",
+      "subtitle": "Key milestones that have shaped our company and defined our success."
+    },
+    "contact": {
+      "visitUs": "Visit Us",
+      "callUs": "Call Us", 
+      "emailUs": "Email Us"
+    },
+    "cta": {
+      "title": "Ready to Work Together?",
+      "subtitle": "Let's discuss your project and see how our experience and expertise can help bring your vision to life.",
+      "button": "Start Your Project",
+      "portfolio": "View Our Portfolio"
+    }
+  },
+  "contact": {
+    "title": "Get In Touch",
+    "subtitle": "Ready to transform your vision into reality? Contact us today for a free consultation and let's discuss your signage needs.",
+    "info": {
+      "office": {
+        "title": "Visit Our Office",
+        "action": "Get Directions"
+      },
+      "phone": {
+        "title": "Call Us Today",
+        "action": "Call Now"
+      },
+      "email": {
+        "title": "Email Us",
+        "action": "Send Email"  
+      },
+      "hours": {
+        "title": "Business Hours",
+        "action": "Schedule Call"
+      }
+    },
+    "form": {
+      "title": "Request a Free Quote",
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "email": "Email Address",
+      "phone": "Phone Number", 
+      "company": "Company Name",
+      "serviceType": "Service Needed",
+      "budget": "Budget Range",
+      "timeline": "Timeline",
+      "projectDetails": "Project Details",
+      "submit": "Send Quote Request",
+      "response": "We'll respond within 2 hours during business hours"
+    },
+    "showroom": {
+      "title": "Visit Our Showroom",
+      "whyVisit": "Why Visit Our Showroom?",
+      "reasons": {
+        "materials": "See material samples and quality up close",
+        "portfolio": "View completed projects and portfolio", 
+        "consultation": "Meet our design team for consultation",
+        "pricing": "Get instant pricing and project timelines"
+      }
+    },
+    "help": {
+      "title": "Need Immediate Help?",
+      "call": "Call: (555) 123-4567",
+      "email": "Email: info@fbrsigns.com"
+    },
+    "faq": {
+      "title": "Frequently Asked Questions"
+    }
+  },
+  "services": {
+    "title": "Our Services",
+    "subtitle": "Comprehensive signage solutions from concept to completion. We handle every aspect of your project with expertise and care.",
+    "design": {
+      "title": "Design Services",
+      "description": "Custom logo design, branding, and layout design tailored to your business needs.",
+      "startingPrice": "$199"
+    },
+    "production": {
+      "title": "Production Services", 
+      "description": "High-quality printing, cutting, and fabrication using state-of-the-art equipment.",
+      "startingPrice": "$99"
+    },
+    "installation": {
+      "title": "Installation Services",
+      "description": "Professional mounting, electrical work, and setup by certified technicians.", 
+      "startingPrice": "$149"
+    },
+    "maintenance": {
+      "title": "Maintenance Services",
+      "description": "Ongoing cleaning, repairs, updates, and support to keep your signage looking perfect.",
+      "startingPrice": "$79/month"
+    },
+    "process": {
+      "title": "Our Process",
+      "subtitle": "From initial consultation to final installation, we guide you through every step of creating your perfect signage solution.",
+      "consultation": {
+        "title": "Consultation", 
+        "description": "We discuss your needs, vision, and budget to create the perfect solution."
+      },
+      "design": {
+        "title": "Design & Planning",
+        "description": "Our team creates custom designs and detailed project plans for your approval."
+      },
+      "production": {
+        "title": "Production",
+        "description": "We manufacture your signage using premium materials and cutting-edge technology."
+      },
+      "installation": {
+        "title": "Installation", 
+        "description": "Professional installation ensures your signage is mounted perfectly and safely."
+      },
+      "support": {
+        "title": "Support",
+        "description": "Ongoing maintenance and support keeps your signage looking its best."
+      }
+    },
+    "whyChoose": {
+      "title": "Why Choose FBRSigns",
+      "expertise": {
+        "title": "Industry Expertise",
+        "description": "15+ years of experience in visual communication and signage solutions."
+      },
+      "turnaround": {
+        "title": "Fast Turnaround", 
+        "description": "Quick production times without compromising on quality or attention to detail."
+      },
+      "quality": {
+        "title": "Quality Guarantee",
+        "description": "We stand behind our work with comprehensive warranties and quality assurance."
+      },
+      "delivery": {
+        "title": "On-Time Delivery",
+        "description": "Reliable project timelines and delivery schedules you can count on."
+      }
+    },
+    "cta": {
+      "title": "Ready to Get Started?",
+      "subtitle": "Let's discuss your project and create a custom solution that perfectly fits your needs and budget.",
+      "button": "Get Free Consultation",
+      "portfolio": "View Our Work"
+    }
+  },
   "services": {
     "title": "Our Services",
     "subtitle": "Comprehensive signage solutions for every business need",

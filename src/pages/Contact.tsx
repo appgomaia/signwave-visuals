@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { 
   MapPin, 
   Phone, 
@@ -59,6 +60,7 @@ const serviceTypes = [
 ];
 
 export default function Contact() {
+  const { t } = useTranslation();
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -70,6 +72,33 @@ export default function Contact() {
     budget: "",
     timeline: ""
   });
+
+  const contactInfo = [
+    {
+      icon: MapPin,
+      title: t('content:contact.info.office.title'),
+      details: ["123 Business Avenue", "Suite 100", "Your City, ST 12345"],
+      action: t('content:contact.info.office.action')
+    },
+    {
+      icon: Phone,
+      title: t('content:contact.info.phone.title'),
+      details: ["Main: (555) 123-4567", "Emergency: (555) 987-6543", "Toll Free: (800) 555-0123"],
+      action: t('content:contact.info.phone.action')
+    },
+    {
+      icon: Mail,
+      title: t('content:contact.info.email.title'),
+      details: ["info@fbrsigns.com", "support@fbrsigns.com", "sales@fbrsigns.com"],
+      action: t('content:contact.info.email.action')
+    },
+    {
+      icon: Clock,
+      title: t('content:contact.info.hours.title'),
+      details: ["Monday - Friday: 8:00 AM - 6:00 PM", "Saturday: 9:00 AM - 4:00 PM", "Sunday: Closed"],
+      action: t('content:contact.info.hours.action')
+    }
+  ];
 
   const handleInputChange = (field: string, value: string) => {
     setFormData(prev => ({ ...prev, [field]: value }));
@@ -88,11 +117,10 @@ export default function Contact() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h1 className="text-4xl lg:text-6xl font-bold mb-6">
-              Get In <span className="text-gradient">Touch</span>
+              {t('content:contact.title')}
             </h1>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Ready to transform your vision into reality? Contact us today for a free 
-              consultation and let's discuss your signage needs.
+              {t('content:contact.subtitle')}
             </p>
           </div>
         </div>
@@ -134,7 +162,7 @@ export default function Contact() {
             {/* Contact Form */}
             <div>
               <h2 className="text-3xl font-bold mb-8">
-                Request a <span className="text-gradient">Free Quote</span>
+                {t('content:contact.form.title')}
               </h2>
               
               <GlassCard className="p-8">
