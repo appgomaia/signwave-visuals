@@ -327,10 +327,13 @@
     "mission": "Our mission is to help businesses communicate their brand message effectively through innovative, high-quality signage that stands the test of time.",
     "story": {
       "title": "Our Story",
-      "content": "Founded in 2009 with a vision to transform visual communication, FBR Signs has grown from a small local business to a leading signage company serving clients across multiple states. Our journey has been marked by continuous innovation, unwavering commitment to quality, and a passion for helping businesses stand out."
+      "content1": "Founded in 2009 with a vision to transform visual communication, FBR Signs has grown from a small local business to a leading signage company serving clients across multiple states.",
+      "content2": "Our journey has been marked by continuous innovation, unwavering commitment to quality, and a passion for helping businesses stand out in today's competitive marketplace.",
+      "content3": "We combine traditional craftsmanship with cutting-edge technology to deliver exceptional results that exceed our clients' expectations every time."
     },
     "values": {
       "title": "Our Values",
+      "subtitle": "The principles that guide everything we do",
       "excellence": {
         "title": "Excellence",
         "description": "We strive for perfection in every project, from design concept to final installation."

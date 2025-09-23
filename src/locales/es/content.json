@@ -248,10 +248,13 @@
     "mission": "Nuestra misión es ayudar a las empresas a comunicar su mensaje de marca efectivamente a través de señalización innovadora y de alta calidad que resiste la prueba del tiempo.",
     "story": {
       "title": "Nuestra Historia",
-      "content": "Fundada en 2009 con la visión de transformar la comunicación visual, FBR Signs ha crecido de un pequeño negocio local a una empresa líder de señalización sirviendo clientes en múltiples estados. Nuestro viaje ha sido marcado por innovación continua, compromiso inquebrantable con la calidad y pasión por ayudar a las empresas a destacar."
+      "content1": "Fundada en 2009 con la visión de transformar la comunicación visual, FBR Signs ha crecido de un pequeño negocio local a una empresa líder de señalización sirviendo clientes en múltiples estados.",
+      "content2": "Nuestro viaje ha sido marcado por innovación continua, compromiso inquebrantable con la calidad y pasión por ayudar a las empresas a destacar en el mercado competitivo de hoy.",
+      "content3": "Combinamos artesanía tradicional con tecnología de vanguardia para entregar resultados excepcionales que superan las expectativas de nuestros clientes cada vez."
     },
     "values": {
       "title": "Nuestros Valores",
+      "subtitle": "Los principios que guían todo lo que hacemos",
       "excellence": {
         "title": "Excelencia",
         "description": "Buscamos la perfección en cada proyecto, desde el concepto del diseño hasta la instalación final."
