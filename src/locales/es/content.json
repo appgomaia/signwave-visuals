@@ -5,6 +5,70 @@
     "description": "Señalización profesional, impresión y servicios creativos que ayudan a tu negocio a causar una impresión duradera.",
     "cta": "Inicia Tu Proyecto"
   },
+  "stats": {
+    "experience": {
+      "value": "15+",
+      "label": "Años de Experiencia"
+    },
+    "clients": {
+      "value": "2.500+", 
+      "label": "Clientes Satisfechos"
+    },
+    "projects": {
+      "value": "10.000+",
+      "label": "Proyectos Completados"  
+    },
+    "success": {
+      "value": "99%",
+      "label": "Tasa de Éxito"
+    }
+  },
+  "features": {
+    "title": "Nuestros Servicios FBRSigns",
+    "subtitle": "Soluciones integrales de señalización para todas las necesidades empresariales",
+    "premiumMaterials": {
+      "title": "Materiales de Calidad Premium",
+      "description": "Usamos solo materiales de la más alta calidad para asegurar que tu señalización dure por años."
+    },
+    "fastTurnaround": {
+      "title": "Tiempos de Entrega Rápidos", 
+      "description": "Producción y entrega rápidas sin comprometer la calidad. La mayoría de proyectos completados en 5-7 días hábiles."
+    },
+    "customDesign": {
+      "title": "Servicios de Diseño Personalizado",
+      "description": "Nuestros diseñadores expertos trabajan contigo para crear señalización única y atractiva que representa perfectamente tu marca."
+    },
+    "installation": {
+      "title": "Instalación Profesional",
+      "description": "Servicios de instalación expertos aseguran que tu señalización se monte de forma segura y se vea perfecta desde el primer día."
+    }
+  },
+  "products": {
+    "title": "Productos Destacados",
+    "subtitle": "Soluciones integrales de señalización para todas las necesidades empresariales",
+    "customSigns": {
+      "name": "Letreros Comerciales Personalizados",
+      "description": "Señalización profesional de fachada que hace destacar tu negocio",
+      "price": "Desde $299"
+    },
+    "digitalLED": {
+      "name": "Pantallas LED Digitales", 
+      "description": "Señalización digital moderna para contenido dinámico y máximo impacto",
+      "price": "Desde $899"
+    },
+    "vehicleWraps": {
+      "name": "Vinilado de Vehículos",
+      "description": "Transforma tu vehículo en una valla publicitaria móvil para tu negocio", 
+      "price": "Desde $1.299"
+    },
+    "tradeShow": {
+      "name": "Displays para Ferias",
+      "description": "Displays portátiles y profesionales que atraen atención en eventos",
+      "price": "Desde $489"
+    },
+    "viewDetails": "Ver Detalles",
+    "viewAllProducts": "Ver Todos los Productos"
+  },
   "services": {
     "title": "Nuestros Servicios",
     "subtitle": "Soluciones integrales de señalización para todas las necesidades empresariales",

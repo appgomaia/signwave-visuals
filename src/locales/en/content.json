@@ -5,6 +5,70 @@
     "description": "Professional signage, printing, and creative services that help your business make a lasting impression.",
     "cta": "Start Your Project"
   },
+  "stats": {
+    "experience": {
+      "value": "15+",
+      "label": "Years Experience"
+    },
+    "clients": {
+      "value": "2,500+", 
+      "label": "Happy Clients"
+    },
+    "projects": {
+      "value": "10,000+",
+      "label": "Projects Completed"  
+    },
+    "success": {
+      "value": "99%",
+      "label": "Success Rate"
+    }
+  },
+  "features": {
+    "title": "Our Services FBRSigns",
+    "subtitle": "Comprehensive signage solutions for every business need",
+    "premiumMaterials": {
+      "title": "Premium Quality Materials",
+      "description": "We use only the highest quality materials to ensure your signage lasts for years to come."
+    },
+    "fastTurnaround": {
+      "title": "Fast Turnaround Times", 
+      "description": "Quick production and delivery without compromising on quality. Most projects completed within 5-7 business days."
+    },
+    "customDesign": {
+      "title": "Custom Design Services",
+      "description": "Our expert designers work with you to create unique, eye-catching signage that represents your brand perfectly."
+    },
+    "installation": {
+      "title": "Professional Installation",
+      "description": "Expert installation services ensure your signage is mounted safely and looks perfect from day one."
+    }
+  },
+  "products": {
+    "title": "Products Featured",
+    "subtitle": "Comprehensive signage solutions for every business need",
+    "customSigns": {
+      "name": "Custom Business Signs",
+      "description": "Professional storefront signage that makes your business stand out",
+      "price": "Starting at $299"
+    },
+    "digitalLED": {
+      "name": "Digital LED Displays", 
+      "description": "Modern digital signage for dynamic content and maximum impact",
+      "price": "Starting at $899"
+    },
+    "vehicleWraps": {
+      "name": "Vehicle Wraps",
+      "description": "Transform your vehicle into a mobile billboard for your business", 
+      "price": "Starting at $1,299"
+    },
+    "tradeShow": {
+      "name": "Trade Show Displays",
+      "description": "Portable, professional displays that attract attention at events",
+      "price": "Starting at $489"
+    },
+    "viewDetails": "View Details",
+    "viewAllProducts": "View All Products"
+  },
   "services": {
     "title": "Our Services",
     "subtitle": "Comprehensive signage solutions for every business need",

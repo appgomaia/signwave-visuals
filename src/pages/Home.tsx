@@ -33,62 +33,6 @@ import heroBg3 from "@/assets/hero-bg-3.jpg";
 import heroBg4 from "@/assets/hero-bg-4.jpg";
 import heroBg5 from "@/assets/hero-bg-5.jpg";
 
-const features = [
-  {
-    icon: Shield,
-    title: "Premium Quality Materials",
-    description: "We use only the highest quality materials to ensure your signage lasts for years to come."
-  },
-  {
-    icon: Clock,
-    title: "Fast Turnaround Times",
-    description: "Quick production and delivery without compromising on quality. Most projects completed within 5-7 business days."
-  },
-  {
-    icon: Palette,
-    title: "Custom Design Services",
-    description: "Our expert designers work with you to create unique, eye-catching signage that represents your brand perfectly."
-  },
-  {
-    icon: Wrench,
-    title: "Professional Installation",
-    description: "Expert installation services ensure your signage is mounted safely and looks perfect from day one."
-  }
-];
-
-const stats = [
-  { label: "Years Experience", value: "15+" },
-  { label: "Happy Clients", value: "2,500+" },
-  { label: "Projects Completed", value: "10,000+" },
-  { label: "Success Rate", value: "99%" }
-];
-
-const featuredProducts = [
-  {
-    name: "Custom Business Signs",
-    description: "Professional storefront signage that makes your business stand out",
-    price: "Starting at $299",
-    image: "/placeholder.svg"
-  },
-  {
-    name: "Digital LED Displays",
-    description: "Modern digital signage for dynamic content and maximum impact",
-    price: "Starting at $899",
-    image: "/placeholder.svg"
-  },
-  {
-    name: "Vehicle Wraps",
-    description: "Transform your vehicle into a mobile billboard for your business",
-    price: "Starting at $1,299",
-    image: "/placeholder.svg"
-  },
-  {
-    name: "Trade Show Displays",
-    description: "Portable, professional displays that attract attention at events",
-    price: "Starting at $499",
-    image: "/placeholder.svg"
-  }
-];
 
 const heroBgImages = [
   heroBg1,
@@ -107,31 +51,90 @@ const galleryImages = [
   { src: heroImage, alt: "Custom signage solutions" }
 ];
 
-const testimonials = [
-  {
-    name: "Sarah Johnson",
-    company: "Johnson's Bakery",
-    text: "FBRSigns transformed our storefront with a beautiful custom sign. Sales increased 30% in the first month!",
-    rating: 5
-  },
-  {
-    name: "Mike Chen",
-    company: "Tech Solutions Inc",
-    text: "Professional service, fast turnaround, and exceptional quality. Highly recommend for any business signage needs.",
-    rating: 5
-  },
-  {
-    name: "Lisa Rodriguez",
-    company: "Rodriguez Law Firm",
-    text: "The team at FBRSigns understood our vision perfectly and delivered exactly what we needed. Outstanding work!",
-    rating: 5
-  }
-];
 
 export default function Home() {
   const [currentBgIndex, setCurrentBgIndex] = useState(0);
   const [showAIAssistant, setShowAIAssistant] = useState(false);
   const { t } = useTranslation();
+  
+  // Dynamic data with translations
+  const stats = [
+    { label: t('content:stats.experience.label'), value: t('content:stats.experience.value') },
+    { label: t('content:stats.clients.label'), value: t('content:stats.clients.value') },
+    { label: t('content:stats.projects.label'), value: t('content:stats.projects.value') },
+    { label: t('content:stats.success.label'), value: t('content:stats.success.value') }
+  ];
+
+  const features = [
+    {
+      icon: Shield,
+      title: t('content:features.premiumMaterials.title'),
+      description: t('content:features.premiumMaterials.description')
+    },
+    {
+      icon: Clock,
+      title: t('content:features.fastTurnaround.title'),
+      description: t('content:features.fastTurnaround.description')
+    },
+    {
+      icon: Palette,
+      title: t('content:features.customDesign.title'),
+      description: t('content:features.customDesign.description')
+    },
+    {
+      icon: Wrench,
+      title: t('content:features.installation.title'),
+      description: t('content:features.installation.description')
+    }
+  ];
+
+  const featuredProducts = [
+    {
+      name: t('content:products.customSigns.name'),
+      description: t('content:products.customSigns.description'),
+      price: t('content:products.customSigns.price'),
+      image: "/placeholder.svg"
+    },
+    {
+      name: t('content:products.digitalLED.name'),
+      description: t('content:products.digitalLED.description'),
+      price: t('content:products.digitalLED.price'),
+      image: "/placeholder.svg"
+    },
+    {
+      name: t('content:products.vehicleWraps.name'),
+      description: t('content:products.vehicleWraps.description'),
+      price: t('content:products.vehicleWraps.price'),
+      image: "/placeholder.svg"
+    },
+    {
+      name: t('content:products.tradeShow.name'),
+      description: t('content:products.tradeShow.description'),
+      price: t('content:products.tradeShow.price'),
+      image: "/placeholder.svg"
+    }
+  ];
+
+  const testimonials = [
+    {
+      name: t('content:testimonials.client1.name'),
+      company: t('content:testimonials.client1.company'),
+      text: t('content:testimonials.client1.quote'),
+      rating: 5
+    },
+    {
+      name: t('content:testimonials.client2.name'),
+      company: t('content:testimonials.client2.company'),
+      text: t('content:testimonials.client2.quote'),
+      rating: 5
+    },
+    {
+      name: t('content:testimonials.client3.name'),
+      company: t('content:testimonials.client3.company'),
+      text: t('content:testimonials.client3.quote'),
+      rating: 5
+    }
+  ];
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -218,10 +221,10 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl lg:text-5xl font-bold mb-6">
-              {t('content:services.title')} <span className="text-gradient">FBRSigns</span>
+              {t('content:features.title')}
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              {t('content:services.subtitle')}
+              {t('content:features.subtitle')}
             </p>
           </div>
           
@@ -247,10 +250,10 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl lg:text-5xl font-bold mb-6">
-              {t('navigation:menu.products')} <span className="text-gradient">{t('common:labels.featured')}</span>
+              {t('content:products.title')}
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              {t('content:services.subtitle')}
+              {t('content:products.subtitle')}
             </p>
           </div>
           
@@ -271,7 +274,7 @@ export default function Home() {
                   <GlassButton variant="outline" size="sm" asChild>
                     <Link to="/products">
                       <Eye className="h-4 w-4 mr-2" />
-                      View Details
+                      {t('content:products.viewDetails')}
                     </Link>
                   </GlassButton>
                 </div>
@@ -282,7 +285,7 @@ export default function Home() {
           <div className="text-center mt-12">
             <GlassButton variant="hero" size="lg" asChild>
               <Link to="/products">
-                View All Products
+                {t('content:products.viewAllProducts')}
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Link>
             </GlassButton>
@@ -295,7 +298,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl lg:text-5xl font-bold mb-6">
-              {t('content:testimonials.title')} <span className="text-gradient">{t('common:labels.clients')}</span>
+              {t('content:testimonials.title')}
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               {t('content:about.whyChooseUs')}
@@ -326,7 +329,7 @@ export default function Home() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <GlassCard variant="hero">
             <h2 className="text-3xl lg:text-5xl font-bold mb-6">
-              {t('content:cta.title')} <span className="text-gradient">{t('common:labels.business')}</span>
+              {t('content:cta.title')}
             </h2>
             <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
               {t('content:cta.subtitle')}
