@@ -175,16 +175,16 @@ export default function Home() {
         <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center justify-center">
           <div className="animate-fade-in">
             <h1 className="text-5xl lg:text-7xl xl:text-8xl font-bold leading-tight mb-6">
-              Transform Your Vision Into<br />
-              <span className="text-gradient">Stunning Visual Communication</span>
+              {t('content:hero.title')}<br />
+              <span className="text-gradient">{t('content:hero.subtitle')}</span>
             </h1>
             <p className="text-xl text-muted-foreground mb-8 leading-relaxed max-w-3xl mx-auto">
-              Professional signage, printing, and creative services that help your business make a lasting impression.
+              {t('content:hero.description')}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 mb-12 justify-center">
               <GlassButton variant="hero" size="xl" onClick={() => setShowAIAssistant(true)}>
                 <Sparkles className="h-5 w-5 mr-2" />
-                Start Your Project
+                {t('content:hero.cta')}
                 <ArrowRight className="h-5 w-5 ml-2" />
               </GlassButton>
               <GlassButton variant="outline" size="xl" asChild>
@@ -355,7 +355,7 @@ export default function Home() {
         aria-label="Start your project"
       >
         <Sparkles className="h-5 w-5 mr-2" />
-        Start Your Project
+        {t('content:hero.cta')}
       </GlassButton>
 
       {/* AI Project Assistant Dialog */}
