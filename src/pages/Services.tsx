@@ -16,214 +16,89 @@ import { PageLayout } from "@/components/layout/PageLayout";
 import { GlassCard } from "@/components/ui/glass-card";
 import { GlassButton } from "@/components/ui/glass-button";
 
-const services = [
-  {
-    icon: Palette,
-    title: "Design Services",
-    description: "Custom logo design, branding, and layout design tailored to your business needs.",
-    features: [
-      "Custom Logo Design",
-      "Brand Identity Development", 
-      "Layout & Mockup Creation",
-      "Color Scheme Consultation"
-    ],
-    process: [
-      "Initial Consultation",
-      "Concept Development", 
-      "Design Refinement",
-      "Final Approval"
-    ],
-    timeline: "3-5 business days",
-    startingPrice: "$199"
-  },
-  {
-    icon: Printer,
-    title: "Production Services",
-    description: "High-quality printing, cutting, and fabrication using state-of-the-art equipment.",
-    features: [
-      "Digital Printing",
-      "Vinyl Cutting & Application",
-      "Metal Fabrication",
-      "Lamination & Finishing"
-    ],
-    process: [
-      "File Preparation",
-      "Material Selection",
-      "Production",
-      "Quality Control"
-    ],
-    timeline: "2-7 business days",
-    startingPrice: "$99"
-  },
-  {
-    icon: Wrench,
-    title: "Installation Services",
-    description: "Professional mounting, electrical work, and setup by certified technicians.",
-    features: [
-      "Professional Mounting",
-      "Electrical Connections",
-      "Site Preparation",
-      "Safety Compliance"
-    ],
-    process: [
-      "Site Survey",
-      "Installation Planning",
-      "Professional Installation",
-      "Final Testing"
-    ],
-    timeline: "1-3 business days",
-    startingPrice: "$149"
-  },
-  {
-    icon: Headphones,
-    title: "Maintenance Services",
-    description: "Ongoing cleaning, repairs, updates, and support to keep your signage looking perfect.",
-    features: [
-      "Regular Cleaning",
-      "Repair Services",
-      "Content Updates",
-      "24/7 Support"
-    ],
-    process: [
-      "Maintenance Schedule",
-      "Regular Inspections",
-      "Preventive Care",
-      "Emergency Repairs"
-    ],
-    timeline: "Ongoing",
-    startingPrice: "$79/month"
-  }
-];
-
-const processSteps = [
-  {
-    step: "01",
-    title: "Consultation",
-    description: "We discuss your needs, vision, and budget to create the perfect solution."
-  },
-  {
-    step: "02", 
-    title: "Design & Planning",
-    description: "Our team creates custom designs and detailed project plans for your approval."
-  },
-  {
-    step: "03",
-    title: "Production",
-    description: "We manufacture your signage using premium materials and cutting-edge technology."
-  },
-  {
-    step: "04",
-    title: "Installation",
-    description: "Professional installation ensures your signage is mounted perfectly and safely."
-  },
-  {
-    step: "05",
-    title: "Support",
-    description: "Ongoing maintenance and support keeps your signage looking its best."
-  }
-];
-
-const whyChooseUs = [
-  {
-    icon: Award,
-    title: "Industry Expertise",
-    description: "15+ years of experience in visual communication and signage solutions."
-  },
-  {
-    icon: Zap,
-    title: "Fast Turnaround",
-    description: "Quick production times without compromising on quality or attention to detail."
-  },
-  {
-    icon: CheckCircle,
-    title: "Quality Guarantee",
-    description: "We stand behind our work with comprehensive warranties and quality assurance."
-  },
-  {
-    icon: Clock,
-    title: "On-Time Delivery",
-    description: "Reliable project timelines and delivery schedules you can count on."
-  }
-];
-
 export default function Services() {
   const { t } = useTranslation('content');
+
+  const getArrayFromTranslation = (key: string, fallback: string[]) => {
+    const result = t(key, { returnObjects: true });
+    return Array.isArray(result) ? result : fallback;
+  };
 
   const services = [
     {
       icon: Palette,
       title: t('services.design.title'),
       description: t('services.design.description'),
-      features: [
+      features: getArrayFromTranslation('services.design.features', [
         "Custom Logo Design",
         "Brand Identity Development", 
         "Layout & Mockup Creation",
         "Color Scheme Consultation"
-      ],
-      process: [
+      ]),
+      process: getArrayFromTranslation('services.design.process', [
         "Initial Consultation",
         "Concept Development", 
         "Design Refinement",
         "Final Approval"
-      ],
-      timeline: "3-5 business days",
+      ]),
+      timeline: t('services.design.timeline') || "3-5 business days",
       startingPrice: t('services.design.startingPrice')
     },
     {
       icon: Printer,
       title: t('services.production.title'),
       description: t('services.production.description'),
-      features: [
+      features: getArrayFromTranslation('services.production.features', [
         "Digital Printing",
         "Vinyl Cutting & Application",
         "Metal Fabrication",
         "Lamination & Finishing"
-      ],
-      process: [
+      ]),
+      process: getArrayFromTranslation('services.production.process', [
         "File Preparation",
         "Material Selection",
         "Production",
         "Quality Control"
-      ],
-      timeline: "2-7 business days",
+      ]),
+      timeline: t('services.production.timeline') || "2-7 business days",
       startingPrice: t('services.production.startingPrice')
     },
     {
       icon: Wrench,
       title: t('services.installation.title'),
       description: t('services.installation.description'),
-      features: [
+      features: getArrayFromTranslation('services.installation.features', [
         "Professional Mounting",
         "Electrical Connections",
         "Site Preparation",
         "Safety Compliance"
-      ],
-      process: [
+      ]),
+      process: getArrayFromTranslation('services.installation.process', [
         "Site Survey",
         "Installation Planning",
         "Professional Installation",
         "Final Testing"
-      ],
-      timeline: "1-3 business days",
+      ]),
+      timeline: t('services.installation.timeline') || "1-3 business days",
       startingPrice: t('services.installation.startingPrice')
     },
     {
       icon: Headphones,
       title: t('services.maintenance.title'),
       description: t('services.maintenance.description'),
-      features: [
+      features: getArrayFromTranslation('services.maintenance.features', [
         "Regular Cleaning",
         "Repair Services",
         "Content Updates",
         "24/7 Support"
-      ],
-      process: [
+      ]),
+      process: getArrayFromTranslation('services.maintenance.process', [
         "Maintenance Schedule",
         "Regular Inspections",
         "Preventive Care",
         "Emergency Repairs"
-      ],
-      timeline: "Ongoing",
+      ]),
+      timeline: t('services.maintenance.timeline') || "Ongoing",
       startingPrice: t('services.maintenance.startingPrice')
     }
   ];
@@ -317,7 +192,7 @@ export default function Services() {
                   
                   <div className="grid md:grid-cols-2 gap-6 mb-6">
                     <div>
-                      <h4 className="font-semibold mb-3">Features Included:</h4>
+                      <h4 className="font-semibold mb-3">{t('services.featuresIncluded') || 'Features Included:'}</h4>
                       <ul className="space-y-2">
                         {service.features.map((feature, idx) => (
                           <li key={idx} className="flex items-center text-sm">
@@ -329,7 +204,7 @@ export default function Services() {
                     </div>
                     
                     <div>
-                      <h4 className="font-semibold mb-3">Our Process:</h4>
+                      <h4 className="font-semibold mb-3">{t('services.ourProcess') || 'Our Process:'}</h4>
                       <ul className="space-y-2">
                         {service.process.map((step, idx) => (
                           <li key={idx} className="flex items-center text-sm">
@@ -349,7 +224,7 @@ export default function Services() {
                       {service.timeline}
                     </div>
                     <GlassButton variant="outline" size="sm">
-                      Get Quote
+                      {t('services.getQuote') || 'Get Quote'}
                       <ArrowRight className="ml-2 h-4 w-4" />
                     </GlassButton>
                   </div>
