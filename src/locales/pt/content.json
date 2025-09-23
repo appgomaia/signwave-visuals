@@ -1,0 +1,64 @@
+{
+  "hero": {
+    "title": "Placas Profissionais Que Fazem Seu Negócio Se Destacar",
+    "subtitle": "De displays digitais à fabricação personalizada, criamos soluções de sinalização atrativas que geram resultados",
+    "cta": "Obtenha Seu Orçamento Gratuito Hoje"
+  },
+  "services": {
+    "title": "Nossos Serviços",
+    "subtitle": "Soluções completas de sinalização para todas as necessidades empresariais",
+    "digitalSigns": {
+      "title": "Placas LED Digitais",
+      "description": "Displays digitais atraentes que capturam atenção e aumentam o fluxo de clientes"
+    },
+    "illuminatedSigns": {
+      "title": "Placas Iluminadas",
+      "description": "Soluções de iluminação brilhantes e profissionais que tornam seu negócio visível 24/7"
+    },
+    "vehicleWraps": {
+      "title": "Adesivação de Veículos",
+      "description": "Publicidade móvel que transforma seus veículos em poderosas ferramentas de marketing"
+    },
+    "storefrontSigns": {
+      "title": "Placas de Fachada",
+      "description": "Sinalização profissional de fachada que estabelece a presença da sua marca"
+    },
+    "tradeShowDisplays": {
+      "title": "Displays para Feiras",
+      "description": "Displays portáteis e impactantes que fazem seu estande se destacar em eventos"
+    }
+  },
+  "about": {
+    "title": "Sobre a FBR Signs",
+    "description": "Com mais de 20 anos de experiência na indústria de sinalização, a FBR Signs se estabeleceu como fornecedora premium de soluções de sinalização personalizadas. Combinamos artesanato tradicional com tecnologia de ponta para entregar resultados excepcionais.",
+    "mission": "Nossa missão é ajudar empresas a comunicar sua mensagem de marca efetivamente através de sinalização inovadora e de alta qualidade que resiste ao teste do tempo.",
+    "whyChooseUs": "Por Que Nos Escolher",
+    "experience": "Mais de 20 Anos de Experiência",
+    "customSolutions": "Soluções Personalizadas",
+    "qualityMaterials": "Materiais Premium",
+    "professionalInstallation": "Instalação Profissional"
+  },
+  "testimonials": {
+    "title": "O Que Nossos Clientes Dizem",
+    "client1": {
+      "name": "Sarah Johnson",
+      "company": "Proprietária de Restaurante Local",
+      "quote": "A FBR Signs transformou nossa fachada com uma bela placa iluminada. Nosso fluxo de clientes aumentou 40% no primeiro mês!"
+    },
+    "client2": {
+      "name": "Mike Chen", 
+      "company": "Gerente de Loja de Varejo",
+      "quote": "A placa LED digital mudou o jogo para nossas promoções. A qualidade e o serviço superaram nossas expectativas."
+    },
+    "client3": {
+      "name": "Lisa Rodriguez",
+      "company": "Consultório Médico",
+      "quote": "Profissional, confiável e criativo. A FBR Signs entregou exatamente o que visualizamos para nosso centro médico."
+    }
+  },
+  "cta": {
+    "title": "Pronto Para Transformar Seu Negócio?",
+    "subtitle": "Obtenha uma consulta e orçamento gratuitos para seu projeto de sinalização hoje",
+    "button": "Obter Orçamento Gratuito"
+  }
+}

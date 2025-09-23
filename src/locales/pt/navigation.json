@@ -1,0 +1,39 @@
+{
+  "menu": {
+    "home": "Início",
+    "about": "Sobre",
+    "services": "Serviços",
+    "products": "Produtos",
+    "portfolio": "Portfólio",
+    "contact": "Contato",
+    "blog": "Blog",
+    "ecommerce": "Loja",
+    "categories": "Categorias",
+    "account": "Conta",
+    "settings": "Configurações",
+    "help": "Ajuda",
+    "support": "Suporte"
+  },
+  "footer": {
+    "company": "Empresa",
+    "quickLinks": "Links Rápidos",
+    "contactInfo": "Informações de Contato",
+    "followUs": "Siga-nos",
+    "newsletter": "Newsletter",
+    "subscribeNewsletter": "Inscreva-se em nossa newsletter para atualizações",
+    "enterEmail": "Digite seu e-mail",
+    "subscribe": "Inscrever-se",
+    "copyright": "© 2024 FBR Signs. Todos os direitos reservados.",
+    "privacyPolicy": "Política de Privacidade",
+    "termsOfService": "Termos de Serviço",
+    "address": "Rua Principal, 123, Cidade, Estado 12345",
+    "phone": "(555) 123-4567",
+    "email": "info@fbrsigns.com"
+  },
+  "breadcrumbs": {
+    "home": "Início",
+    "back": "Voltar",
+    "next": "Próximo",
+    "previous": "Anterior"
+  }
+}

@@ -14,10 +14,12 @@ import {
   Wrench,
   Sparkles
 } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import { PageLayout } from "@/components/layout/PageLayout";
 import { GlassCard } from "@/components/ui/glass-card";
 import { GlassButton } from "@/components/ui/glass-button";
 import { AIProjectAssistant } from "@/components/forms/AIProjectAssistant";
+import { useTranslatedText } from "@/hooks/useAutoTranslation";
 import heroImage from "@/assets/signage-business-hero.jpg";
 import heroMainBg from "@/assets/hero-main-bg.jpg";
 import galleryStorefront from "@/assets/gallery-storefront-sign.jpg";
@@ -129,8 +131,11 @@ const testimonials = [
 export default function Home() {
   const [currentBgIndex, setCurrentBgIndex] = useState(0);
   const [showAIAssistant, setShowAIAssistant] = useState(false);
-
+  const { t } = useTranslation();
   
+  // Auto-translate dynamic content
+  const heroTitle = useTranslatedText("Professional Signs That Make Your Business Stand Out");
+  const heroSubtitle = useTranslatedText("From digital displays to custom fabrication, we create eye-catching signage solutions that drive results");
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -174,21 +179,20 @@ export default function Home() {
         <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center justify-center">
           <div className="animate-fade-in">
             <h1 className="text-5xl lg:text-7xl xl:text-8xl font-bold leading-tight mb-6">
-              Transform Your Vision Into<br />
-              <span className="text-gradient">Stunning Visual Communication</span>
+              {t('content:hero.title')}<br />
+              <span className="text-gradient">{t('content:hero.subtitle')}</span>
             </h1>
             <p className="text-xl text-muted-foreground mb-8 leading-relaxed max-w-3xl mx-auto">
-              Professional signage solutions that make your brand stand out. 
-              From custom business signs to digital displays, we bring your vision to life.
+              {heroSubtitle.text}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 mb-12 justify-center">
               <GlassButton variant="hero" size="xl" onClick={() => setShowAIAssistant(true)}>
                 <Sparkles className="h-5 w-5 mr-2" />
-                Start Your Project
+                {t('common:buttons.joinLegion')}
                 <ArrowRight className="h-5 w-5 ml-2" />
               </GlassButton>
               <GlassButton variant="outline" size="xl" asChild>
-                <Link to="/products">Explore Products</Link>
+                <Link to="/products">{t('navigation:menu.products')}</Link>
               </GlassButton>
             </div>
             
@@ -218,11 +222,10 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl lg:text-5xl font-bold mb-6">
-              Why Choose <span className="text-gradient">FBRSigns</span>
+              {t('content:services.title')} <span className="text-gradient">FBRSigns</span>
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              We combine cutting-edge technology with years of expertise to deliver 
-              signage solutions that exceed expectations.
+              {t('content:services.subtitle')}
             </p>
           </div>
           
@@ -248,10 +251,10 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl lg:text-5xl font-bold mb-6">
-              Featured <span className="text-gradient">Products</span>
+              {t('navigation:menu.products')} <span className="text-gradient">{t('common:labels.featured')}</span>
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Discover our most popular signage solutions, crafted with precision and designed to make an impact.
+              {t('content:services.subtitle')}
             </p>
           </div>
           
@@ -296,10 +299,10 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl lg:text-5xl font-bold mb-6">
-              What Our <span className="text-gradient">Clients Say</span>
+              {t('content:testimonials.title')} <span className="text-gradient">{t('common:labels.clients')}</span>
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Don't just take our word for it. Here's what our satisfied customers have to say about our work.
+              {t('content:about.whyChooseUs')}
             </p>
           </div>
           
@@ -327,21 +330,20 @@ export default function Home() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <GlassCard variant="hero">
             <h2 className="text-3xl lg:text-5xl font-bold mb-6">
-              Ready to Transform <span className="text-gradient">Your Space?</span>
+              {t('content:cta.title')} <span className="text-gradient">{t('common:labels.business')}</span>
             </h2>
             <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-              Let's bring your vision to life with professional signage that makes a lasting impression. 
-              Get started with a free consultation today.
+              {t('content:cta.subtitle')}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <GlassButton variant="hero" size="xl" asChild>
                 <Link to="/contact">
-                  Get Free Quote
+                  {t('content:cta.button')}
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Link>
               </GlassButton>
               <GlassButton variant="outline" size="xl" asChild>
-                <Link to="/portfolio">View Our Work</Link>
+                <Link to="/portfolio">{t('common:buttons.viewAll')}</Link>
               </GlassButton>
             </div>
           </GlassCard>
@@ -357,7 +359,7 @@ export default function Home() {
         aria-label="Start your project"
       >
         <Sparkles className="h-5 w-5 mr-2" />
-        Start Project
+        {t('common:buttons.joinLegion')}
       </GlassButton>
 
       {/* AI Project Assistant Dialog */}

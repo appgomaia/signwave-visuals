@@ -1,0 +1,64 @@
+{
+  "hero": {
+    "title": "Professional Signs That Make Your Business Stand Out",
+    "subtitle": "From digital displays to custom fabrication, we create eye-catching signage solutions that drive results",
+    "cta": "Get Your Free Quote Today"
+  },
+  "services": {
+    "title": "Our Services",
+    "subtitle": "Comprehensive signage solutions for every business need",
+    "digitalSigns": {
+      "title": "Digital LED Signs",
+      "description": "Eye-catching digital displays that capture attention and drive foot traffic"
+    },
+    "illuminatedSigns": {
+      "title": "Illuminated Signs", 
+      "description": "Bright, professional lighting solutions that make your business visible 24/7"
+    },
+    "vehicleWraps": {
+      "title": "Vehicle Wraps",
+      "description": "Mobile advertising that turns your vehicles into powerful marketing tools"
+    },
+    "storefrontSigns": {
+      "title": "Storefront Signs",
+      "description": "Professional facade signage that establishes your brand presence"
+    },
+    "tradeShowDisplays": {
+      "title": "Trade Show Displays",
+      "description": "Portable, impactful displays that make your booth stand out at events"
+    }
+  },
+  "about": {
+    "title": "About FBR Signs",
+    "description": "With over 20 years of experience in the signage industry, FBR Signs has established itself as a premier provider of custom signage solutions. We combine traditional craftsmanship with cutting-edge technology to deliver exceptional results.",
+    "mission": "Our mission is to help businesses communicate their brand message effectively through innovative, high-quality signage that stands the test of time.",
+    "whyChooseUs": "Why Choose Us",
+    "experience": "20+ Years Experience",
+    "customSolutions": "Custom Solutions",
+    "qualityMaterials": "Premium Materials",
+    "professionalInstallation": "Professional Installation"
+  },
+  "testimonials": {
+    "title": "What Our Clients Say",
+    "client1": {
+      "name": "Sarah Johnson",
+      "company": "Local Restaurant Owner",
+      "quote": "FBR Signs transformed our storefront with a beautiful illuminated sign. Our foot traffic increased by 40% in the first month!"
+    },
+    "client2": {
+      "name": "Mike Chen",
+      "company": "Retail Store Manager", 
+      "quote": "The digital LED sign has been a game-changer for our promotions. The quality and service exceeded our expectations."
+    },
+    "client3": {
+      "name": "Lisa Rodriguez",
+      "company": "Medical Practice",
+      "quote": "Professional, reliable, and creative. FBR Signs delivered exactly what we envisioned for our medical center."
+    }
+  },
+  "cta": {
+    "title": "Ready to Transform Your Business?",
+    "subtitle": "Get a free consultation and quote for your signage project today",
+    "button": "Get Free Quote"
+  }
+}

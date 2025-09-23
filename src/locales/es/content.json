@@ -1,0 +1,64 @@
+{
+  "hero": {
+    "title": "Letreros Profesionales Que Hacen Destacar Tu Negocio",
+    "subtitle": "Desde pantallas digitales hasta fabricación personalizada, creamos soluciones de señalización llamativas que generan resultados",
+    "cta": "Obtén Tu Cotización Gratuita Hoy"
+  },
+  "services": {
+    "title": "Nuestros Servicios",
+    "subtitle": "Soluciones integrales de señalización para todas las necesidades empresariales",
+    "digitalSigns": {
+      "title": "Letreros LED Digitales",
+      "description": "Pantallas digitales llamativas que capturan la atención y aumentan el tráfico peatonal"
+    },
+    "illuminatedSigns": {
+      "title": "Letreros Iluminados",
+      "description": "Soluciones de iluminación brillantes y profesionales que hacen tu negocio visible las 24 horas"
+    },
+    "vehicleWraps": {
+      "title": "Vinilado de Vehículos",
+      "description": "Publicidad móvil que convierte tus vehículos en poderosas herramientas de marketing"
+    },
+    "storefrontSigns": {
+      "title": "Letreros de Fachada",
+      "description": "Señalización profesional de fachada que establece la presencia de tu marca"
+    },
+    "tradeShowDisplays": {
+      "title": "Displays para Ferias",
+      "description": "Displays portátiles e impactantes que hacen destacar tu stand en eventos"
+    }
+  },
+  "about": {
+    "title": "Acerca de FBR Signs",
+    "description": "Con más de 20 años de experiencia en la industria de señalización, FBR Signs se ha establecido como proveedor premium de soluciones de señalización personalizadas. Combinamos artesanía tradicional con tecnología de vanguardia para entregar resultados excepcionales.",
+    "mission": "Nuestra misión es ayudar a las empresas a comunicar su mensaje de marca efectivamente a través de señalización innovadora y de alta calidad que resiste la prueba del tiempo.",
+    "whyChooseUs": "Por Qué Elegirnos",
+    "experience": "Más de 20 Años de Experiencia",
+    "customSolutions": "Soluciones Personalizadas",
+    "qualityMaterials": "Materiales Premium",
+    "professionalInstallation": "Instalación Profesional"
+  },
+  "testimonials": {
+    "title": "Lo Que Dicen Nuestros Clientes",
+    "client1": {
+      "name": "Sarah Johnson",
+      "company": "Propietaria de Restaurante Local",
+      "quote": "FBR Signs transformó nuestro frente con un hermoso letrero iluminado. ¡Nuestro tráfico peatonal aumentó 40% en el primer mes!"
+    },
+    "client2": {
+      "name": "Mike Chen",
+      "company": "Gerente de Tienda Retail",
+      "quote": "El letrero LED digital ha sido un cambio radical para nuestras promociones. La calidad y el servicio superaron nuestras expectativas."
+    },
+    "client3": {
+      "name": "Lisa Rodriguez",
+      "company": "Consultorio Médico",
+      "quote": "Profesional, confiable y creativo. FBR Signs entregó exactamente lo que visualizamos para nuestro centro médico."
+    }
+  },
+  "cta": {
+    "title": "¿Listo Para Transformar Tu Negocio?",
+    "subtitle": "Obtén una consulta y cotización gratuitas para tu proyecto de señalización hoy",
+    "button": "Obtener Cotización Gratuita"
+  }
+}

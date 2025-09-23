@@ -1,21 +1,23 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X, ShoppingCart, User } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import { GlassButton } from "@/components/ui/glass-button";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { LoginDialog } from "@/components/auth/LoginDialog";
 import { useCart } from "@/hooks/useCart";
+import { LanguageSelector } from "@/components/LanguageSelector";
 import { cn } from "@/lib/utils";
 import fbrSignsLogo from "@/assets/fbrsigns-logo.png";
 
-const navigation = [
-  { name: "Home", href: "/" },
-  { name: "Products", href: "/ecommerce" },
-  { name: "Services", href: "/services" },
-  { name: "Portfolio", href: "/portfolio" },
-  { name: "About", href: "/about" },
-  { name: "Contact", href: "/contact" },
+const getNavigation = (t: any) => [
+  { name: t('navigation:menu.home'), href: "/" },
+  { name: t('navigation:menu.ecommerce'), href: "/ecommerce" },
+  { name: t('navigation:menu.services'), href: "/services" },
+  { name: t('navigation:menu.portfolio'), href: "/portfolio" },
+  { name: t('navigation:menu.about'), href: "/about" },
+  { name: t('navigation:menu.contact'), href: "/contact" },
 ];
 
 interface GlassNavbarProps {
@@ -25,8 +27,11 @@ interface GlassNavbarProps {
 export const GlassNavbar: React.FC<GlassNavbarProps> = ({ onCartOpen }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const { t } = useTranslation();
   const location = useLocation();
   const { state } = useCart();
+  
+  const navigation = getNavigation(t);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -78,6 +83,9 @@ export const GlassNavbar: React.FC<GlassNavbarProps> = ({ onCartOpen }) => {
 
           {/* Action Buttons */}
           <div className="hidden md:flex items-center space-x-4">
+            {/* Language Selector */}
+            <LanguageSelector />
+            
             {/* Cart Button */}
             <Button 
               variant="ghost" 
@@ -106,13 +114,13 @@ export const GlassNavbar: React.FC<GlassNavbarProps> = ({ onCartOpen }) => {
             <LoginDialog>
               <GlassButton variant="outline" size="sm">
                 <User className="h-4 w-4 mr-2" />
-                Dashboard
+                {t('common:buttons.login')}
               </GlassButton>
             </LoginDialog>
             
             <Link to="/quote-request">
               <GlassButton variant="default" size="sm">
-                Get a quote
+                {t('common:buttons.getQuote')}
               </GlassButton>
             </Link>
           </div>
@@ -151,6 +159,11 @@ export const GlassNavbar: React.FC<GlassNavbarProps> = ({ onCartOpen }) => {
             ))}
             <div className="pt-4 space-y-3">
               {/* Mobile Cart */}
+              {/* Mobile Language Selector */}
+              <div className="flex justify-center">
+                <LanguageSelector />
+              </div>
+              
               <Button 
                 variant="outline" 
                 className="w-full justify-center" 
@@ -165,7 +178,7 @@ export const GlassNavbar: React.FC<GlassNavbarProps> = ({ onCartOpen }) => {
                 }}
               >
                 <ShoppingCart className="h-4 w-4 mr-2" />
-                Carrinho
+                {t('navigation:menu.ecommerce')}
                 {state.itemCount > 0 && (
                   <Badge variant="destructive" className="ml-2">
                     {state.itemCount}
@@ -177,13 +190,13 @@ export const GlassNavbar: React.FC<GlassNavbarProps> = ({ onCartOpen }) => {
               <LoginDialog>
                 <GlassButton variant="outline" className="w-full" size="lg">
                   <User className="h-4 w-4 mr-2" />
-                  Dashboard
+                  {t('common:buttons.login')}
                 </GlassButton>
               </LoginDialog>
               
               <Link to="/quote-request" onClick={() => setIsOpen(false)}>
                 <GlassButton variant="default" className="w-full" size="lg">
-                  Get a quote
+                  {t('common:buttons.getQuote')}
                 </GlassButton>
               </Link>
             </div>
