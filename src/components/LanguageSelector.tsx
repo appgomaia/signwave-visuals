@@ -33,7 +33,7 @@ export const LanguageSelector = () => {
         >
           <Globe className="h-4 w-4" />
           <span className="hidden sm:inline">{currentLanguage.flag}</span>
-          <span className="hidden md:inline">{currentLanguage.name}</span>
+          <span className="hidden sm:inline text-xs font-medium">{currentLanguage.code.toUpperCase()}</span>
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="w-48">
