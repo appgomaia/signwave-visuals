@@ -19,6 +19,12 @@ i18n
   .init({
     fallbackLng: 'en',
     debug: false,
+    ns: ['common', 'navigation', 'content'],
+    defaultNS: 'content',
+    fallbackNS: 'common',
+    supportedLngs: ['en', 'pt', 'es'],
+    load: 'languageOnly',
+    lowerCaseLng: true,
     react: {
       useSuspense: false
     },
@@ -47,5 +53,11 @@ i18n
       escapeValue: false
     }
   });
+
+i18n.on('languageChanged', (lng) => {
+  if (typeof document !== 'undefined') {
+    document.documentElement.lang = lng;
+  }
+});
 
 export default i18n;
