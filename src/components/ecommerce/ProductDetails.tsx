@@ -7,6 +7,7 @@ import { GlassButton } from '@/components/ui/glass-button';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { useTranslation } from 'react-i18next';
 
 interface Product {
   id: string;
@@ -35,14 +36,14 @@ interface ProductDetailsProps {
 
 export const ProductDetails: React.FC<ProductDetailsProps> = ({ product, onBack }) => {
   const { addItem } = useCart();
+  const { t, i18n } = useTranslation('content');
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
   const [quantity, setQuantity] = useState(product.min_quantity || 1);
 
   const formatPrice = (price: number) => {
-    return new Intl.NumberFormat('pt-BR', {
-      style: 'currency',
-      currency: 'BRL'
-    }).format(price);
+    const locale = i18n.language === 'pt' ? 'pt-BR' : i18n.language === 'es' ? 'es-ES' : 'en-US';
+    const currency = i18n.language === 'pt' ? 'BRL' : 'USD';
+    return new Intl.NumberFormat(locale, { style: 'currency', currency }).format(price);
   };
 
   const allImages = [
@@ -72,7 +73,7 @@ export const ProductDetails: React.FC<ProductDetailsProps> = ({ product, onBack 
           className="mb-6 hover:bg-muted/50"
         >
           <ArrowLeft className="h-4 w-4 mr-2" />
-          Voltar aos Produtos
+          {t('shop.productDetails.backToProducts')}
         </Button>
 
         <div className="grid lg:grid-cols-2 gap-12">
@@ -154,7 +155,7 @@ export const ProductDetails: React.FC<ProductDetailsProps> = ({ product, onBack 
             {/* Quantity Selector */}
             <GlassCard className="p-4">
               <div className="flex items-center justify-between mb-4">
-                <label className="text-sm font-medium">Quantidade:</label>
+                <label className="text-sm font-medium">{t('shop.productDetails.quantity')}:</label>
                 <div className="flex items-center gap-3">
                   <Button
                     variant="outline"
@@ -178,9 +179,9 @@ export const ProductDetails: React.FC<ProductDetailsProps> = ({ product, onBack 
               
               {(product.min_quantity || product.max_quantity) && (
                 <p className="text-xs text-muted-foreground">
-                  {product.min_quantity && `Mín: ${product.min_quantity}`}
+                  {product.min_quantity && `${t('shop.productDetails.min')}: ${product.min_quantity}`}
                   {product.min_quantity && product.max_quantity && ' • '}
-                  {product.max_quantity && `Máx: ${product.max_quantity}`}
+                  {product.max_quantity && `${t('shop.productDetails.max')}: ${product.max_quantity}`}
                 </p>
               )}
             </GlassCard>
@@ -192,22 +193,22 @@ export const ProductDetails: React.FC<ProductDetailsProps> = ({ product, onBack 
               onClick={handleAddToCart}
             >
               <ShoppingCart className="h-5 w-5 mr-2" />
-              Adicionar ao Carrinho
+              {t('shop.productDetails.addToCart')}
             </GlassButton>
 
             {/* Product Features */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
               <div className="flex items-center gap-2 text-sm">
                 <Truck className="h-4 w-4 text-primary" />
-                <span>Entrega em {product.lead_time_days || 7} dias</span>
+                <span>{t('shop.productDetails.deliveryIn', { days: product.lead_time_days || 7 })}</span>
               </div>
               <div className="flex items-center gap-2 text-sm">
                 <Shield className="h-4 w-4 text-primary" />
-                <span>Garantia Inclusa</span>
+                <span>{t('shop.productDetails.warrantyIncluded')}</span>
               </div>
               <div className="flex items-center gap-2 text-sm">
                 <Award className="h-4 w-4 text-primary" />
-                <span>Qualidade Premium</span>
+                <span>{t('shop.productDetails.premiumQuality')}</span>
               </div>
             </div>
           </div>
@@ -217,10 +218,10 @@ export const ProductDetails: React.FC<ProductDetailsProps> = ({ product, onBack 
         <div className="mt-12">
           <Tabs defaultValue="description" className="w-full">
             <TabsList className="grid w-full grid-cols-4">
-              <TabsTrigger value="description">Descrição</TabsTrigger>
-              <TabsTrigger value="specifications">Especificações</TabsTrigger>
-              <TabsTrigger value="installation">Instalação</TabsTrigger>
-              <TabsTrigger value="warranty">Garantia</TabsTrigger>
+              <TabsTrigger value="description">{t('shop.productDetails.tabs.description')}</TabsTrigger>
+              <TabsTrigger value="specifications">{t('shop.productDetails.tabs.specifications')}</TabsTrigger>
+              <TabsTrigger value="installation">{t('shop.productDetails.tabs.installation')}</TabsTrigger>
+              <TabsTrigger value="warranty">{t('shop.productDetails.tabs.warranty')}</TabsTrigger>
             </TabsList>
             
             <TabsContent value="description" className="mt-6">
@@ -228,7 +229,7 @@ export const ProductDetails: React.FC<ProductDetailsProps> = ({ product, onBack 
                 <div className="prose prose-invert max-w-none">
                   <p className="text-muted-foreground leading-relaxed">
                     {product.detailed_description || product.description || 
-                     "Descrição detalhada do produto não disponível."}
+                     t('shop.productDetails.noDescription')}
                   </p>
                 </div>
               </GlassCard>
@@ -239,21 +240,21 @@ export const ProductDetails: React.FC<ProductDetailsProps> = ({ product, onBack 
                 <div className="grid md:grid-cols-2 gap-6">
                   {product.material && (
                     <div>
-                      <h4 className="font-semibold mb-2">Material</h4>
+                      <h4 className="font-semibold mb-2">{t('shop.productDetails.material')}</h4>
                       <p className="text-muted-foreground">{product.material}</p>
                     </div>
                   )}
                   
                   {product.dimensions && (
                     <div>
-                      <h4 className="font-semibold mb-2">Dimensões</h4>
+                      <h4 className="font-semibold mb-2">{t('shop.productDetails.dimensions')}</h4>
                       <p className="text-muted-foreground">{product.dimensions}</p>
                     </div>
                   )}
                   
                   {product.specifications && Object.keys(product.specifications).length > 0 && (
                     <div className="md:col-span-2">
-                      <h4 className="font-semibold mb-4">Especificações Técnicas</h4>
+                      <h4 className="font-semibold mb-4">{t('shop.productDetails.technicalSpecs')}</h4>
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                         {Object.entries(product.specifications).map(([key, value]) => (
                           <div key={key} className="flex justify-between py-2 border-b border-border/30">
@@ -273,7 +274,7 @@ export const ProductDetails: React.FC<ProductDetailsProps> = ({ product, onBack 
                 <div className="prose prose-invert max-w-none">
                   <p className="text-muted-foreground leading-relaxed">
                     {product.installation_info || 
-                     "Informações de instalação serão fornecidas junto com o produto. Nossa equipe técnica está disponível para suporte completo."}
+                     t('shop.productDetails.defaultInstallationInfo')}
                   </p>
                 </div>
               </GlassCard>
@@ -284,7 +285,7 @@ export const ProductDetails: React.FC<ProductDetailsProps> = ({ product, onBack 
                 <div className="prose prose-invert max-w-none">
                   <p className="text-muted-foreground leading-relaxed">
                     {product.warranty_info || 
-                     "Este produto possui garantia de qualidade e suporte técnico. Entre em contato para mais informações sobre nossa política de garantia."}
+                     t('shop.productDetails.defaultWarrantyInfo')}
                   </p>
                 </div>
               </GlassCard>

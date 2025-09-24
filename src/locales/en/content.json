@@ -698,10 +698,70 @@
     "categories": {
       "business_signs": "Business Signs",
       "digital_displays": "Digital Displays",
-      "vehicle_wraps": "Vehicle Wraps",
+      "vehicle_wraps": "Vehicle Wraps",  
       "trade_shows": "Trade Shows",
       "interior_signage": "Interior Signage",
       "outdoor_advertising": "Outdoor Advertising"
+    },
+    "productDetails": {
+      "backToProducts": "Back to Products",
+      "quantity": "Quantity",
+      "min": "Min",
+      "max": "Max",
+      "addToCart": "Add to Cart",
+      "deliveryIn": "Delivery in {{days}} days",
+      "warrantyIncluded": "Warranty Included",
+      "premiumQuality": "Premium Quality",
+      "tabs": {
+        "description": "Description",
+        "specifications": "Specifications",
+        "installation": "Installation",
+        "warranty": "Warranty"
+      },
+      "noDescription": "Detailed product description not available.",
+      "material": "Material",
+      "dimensions": "Dimensions",
+      "technicalSpecs": "Technical Specifications",
+      "defaultInstallationInfo": "Installation information will be provided with the product. Our technical team is available for complete support.",
+      "defaultWarrantyInfo": "This product comes with quality warranty and technical support. Contact us for more information about our warranty policy."
+    },
+    "cart": {
+      "title_one": "Your Cart ({{count}} item)",
+      "title_other": "Your Cart ({{count}} items)",
+      "description": "Review your items before checkout",
+      "empty": "Your cart is empty",
+      "emptyDescription": "Add some products to start shopping",
+      "continueShopping": "Continue Shopping",
+      "itemTotal": "Total",
+      "total": "Total",
+      "checkout": "Checkout"
+    },
+    "checkout": {
+      "title": "Checkout",
+      "back": "Back",
+      "emptyCart": "Empty Cart",
+      "emptyCartDescription": "Add products to your cart before checkout.",
+      "backToShopping": "Back to Shopping",
+      "welcomeBack": "Welcome back!",
+      "customer": "Customer",
+      "email": "Email",
+      "phone": "Phone",
+      "company": "Company",
+      "signOutGuest": "Sign out and checkout as guest",
+      "haveAccount": "Already have an account?",
+      "signInBenefits": "Sign in to use your saved information and track your orders.",
+      "signIn": "Sign In",
+      "createAccount": "Create Account",
+      "newCustomersContinue": "New customers can continue as guest below",
+      "shippingAddress": "Shipping Address",
+      "streetAddress": "Street Address",
+      "number": "Number",
+      "apartmentSuite": "Apartment/Suite",
+      "neighborhood": "Neighborhood",
+      "city": "City",
+      "state": "State",
+      "zipCode": "ZIP Code",
+      "paymentMethod": "Payment Method"
     }
   }
 }

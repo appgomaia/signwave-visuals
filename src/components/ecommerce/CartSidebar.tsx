@@ -5,6 +5,7 @@ import { GlassCard } from '@/components/ui/glass-card';
 import { GlassButton } from '@/components/ui/glass-button';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle } from '@/components/ui/sheet';
+import { useTranslation } from 'react-i18next';
 
 interface CartSidebarProps {
   isOpen: boolean;
@@ -14,12 +15,12 @@ interface CartSidebarProps {
 
 export const CartSidebar: React.FC<CartSidebarProps> = ({ isOpen, onClose, onCheckout }) => {
   const { state, removeItem, updateQuantity, clearCart } = useCart();
+  const { t, i18n } = useTranslation('content');
 
   const formatPrice = (price: number) => {
-    return new Intl.NumberFormat('pt-BR', {
-      style: 'currency',
-      currency: 'BRL'
-    }).format(price);
+    const locale = i18n.language === 'pt' ? 'pt-BR' : i18n.language === 'es' ? 'es-ES' : 'en-US';
+    const currency = i18n.language === 'pt' ? 'BRL' : 'USD';
+    return new Intl.NumberFormat(locale, { style: 'currency', currency }).format(price);
   };
 
   return (
@@ -28,10 +29,10 @@ export const CartSidebar: React.FC<CartSidebarProps> = ({ isOpen, onClose, onChe
         <SheetHeader>
           <SheetTitle className="flex items-center gap-2 text-xl">
             <ShoppingBag className="h-5 w-5" />
-            Seu Carrinho ({state.itemCount} {state.itemCount === 1 ? 'item' : 'itens'})
+            {t('shop.cart.title', { count: state.itemCount })}
           </SheetTitle>
           <SheetDescription>
-            Revise seus itens antes de finalizar a compra
+            {t('shop.cart.description')}
           </SheetDescription>
         </SheetHeader>
 
@@ -39,12 +40,12 @@ export const CartSidebar: React.FC<CartSidebarProps> = ({ isOpen, onClose, onChe
           {state.items.length === 0 ? (
             <div className="flex-1 flex flex-col items-center justify-center text-center">
               <ShoppingBag className="h-12 w-12 text-muted-foreground mb-4" />
-              <p className="text-lg text-muted-foreground mb-2">Seu carrinho está vazio</p>
+              <p className="text-lg text-muted-foreground mb-2">{t('shop.cart.empty')}</p>
               <p className="text-sm text-muted-foreground mb-4">
-                Adicione alguns produtos para começar suas compras
+                {t('shop.cart.emptyDescription')}
               </p>
               <Button onClick={onClose} variant="outline">
-                Continuar Comprando
+                {t('shop.cart.continueShopping')}
               </Button>
             </div>
           ) : (
@@ -121,7 +122,7 @@ export const CartSidebar: React.FC<CartSidebarProps> = ({ isOpen, onClose, onChe
                         {/* Item Total */}
                         <div className="text-right mt-2">
                           <span className="text-sm text-muted-foreground">
-                            Total: {formatPrice(item.price * item.quantity)}
+                            {t('shop.cart.itemTotal')}: {formatPrice(item.price * item.quantity)}
                           </span>
                         </div>
                       </div>
@@ -133,7 +134,7 @@ export const CartSidebar: React.FC<CartSidebarProps> = ({ isOpen, onClose, onChe
               {/* Cart Summary */}
               <div className="border-t border-border/50 pt-4 mt-4 space-y-4">
                 <div className="flex items-center justify-between text-lg font-bold">
-                  <span>Total:</span>
+                  <span>{t('shop.cart.total')}:</span>
                   <span className="text-gradient">{formatPrice(state.total)}</span>
                 </div>
 
@@ -143,7 +144,7 @@ export const CartSidebar: React.FC<CartSidebarProps> = ({ isOpen, onClose, onChe
                     onClick={onCheckout}
                     size="lg"
                   >
-                    Finalizar Compra
+                    {t('shop.cart.checkout')}
                   </GlassButton>
                   
                   <div className="flex gap-2">
@@ -152,7 +153,7 @@ export const CartSidebar: React.FC<CartSidebarProps> = ({ isOpen, onClose, onChe
                       onClick={onClose}
                       className="flex-1"
                     >
-                      Continuar Comprando
+                      {t('shop.cart.continueShopping')}
                     </Button>
                     <Button 
                       variant="destructive" 

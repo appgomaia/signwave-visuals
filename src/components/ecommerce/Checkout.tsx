@@ -15,6 +15,7 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '
 import { toast } from '@/hooks/use-toast';
 import { supabase } from '@/integrations/supabase/client';
 import { LoginDialog } from '@/components/auth/LoginDialog';
+import { useTranslation } from 'react-i18next';
 
 const checkoutSchema = z.object({
   // Shipping Address
@@ -98,6 +99,7 @@ interface CheckoutProps {
 
 export const Checkout: React.FC<CheckoutProps> = ({ onBack, onSuccess }) => {
   const { state, clearCart } = useCart();
+  const { t, i18n } = useTranslation('content');
   
   // Check auth state and fetch customer data
   useEffect(() => {
@@ -166,10 +168,9 @@ export const Checkout: React.FC<CheckoutProps> = ({ onBack, onSuccess }) => {
   });
 
   const formatPrice = (price: number) => {
-    return new Intl.NumberFormat('en-US', {
-      style: 'currency',
-      currency: 'USD'
-    }).format(price);
+    const locale = i18n.language === 'pt' ? 'pt-BR' : i18n.language === 'es' ? 'es-ES' : 'en-US';
+    const currency = i18n.language === 'pt' ? 'BRL' : 'USD';
+    return new Intl.NumberFormat(locale, { style: 'currency', currency }).format(price);
   };
 
   const onSubmit = async (data: CheckoutForm) => {
@@ -267,13 +268,13 @@ export const Checkout: React.FC<CheckoutProps> = ({ onBack, onSuccess }) => {
   if (state.items.length === 0) {
     return (
       <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 py-16 text-center">
-        <h1 className="text-2xl font-bold mb-4">Empty Cart</h1>
+        <h1 className="text-2xl font-bold mb-4">{t('shop.checkout.emptyCart')}</h1>
         <p className="text-muted-foreground mb-8">
-          Add products to your cart before checkout.
+          {t('shop.checkout.emptyCartDescription')}
         </p>
         <Button onClick={onBack}>
           <ArrowLeft className="h-4 w-4 mr-2" />
-          Back to Shopping
+          {t('shop.checkout.backToShopping')}
         </Button>
       </div>
     );
@@ -285,9 +286,9 @@ export const Checkout: React.FC<CheckoutProps> = ({ onBack, onSuccess }) => {
         <div className="flex items-center gap-4 mb-8">
           <Button variant="ghost" onClick={onBack}>
             <ArrowLeft className="h-4 w-4 mr-2" />
-            Back
+            {t('shop.checkout.back')}
           </Button>
-          <h1 className="text-3xl font-bold">Checkout</h1>
+          <h1 className="text-3xl font-bold">{t('shop.checkout.title')}</h1>
         </div>
 
         <div className="grid lg:grid-cols-3 gap-8">
@@ -298,27 +299,27 @@ export const Checkout: React.FC<CheckoutProps> = ({ onBack, onSuccess }) => {
               <GlassCard className="p-6 mb-8">
                 <div className="flex items-center gap-2 mb-4">
                   <User className="h-5 w-5 text-primary" />
-                  <h2 className="text-xl font-semibold">Welcome back!</h2>
+                  <h2 className="text-xl font-semibold">{t('shop.checkout.welcomeBack')}</h2>
                 </div>
                 <div className="bg-primary/5 rounded-lg p-4">
                   <div className="grid md:grid-cols-2 gap-4">
                     <div>
-                      <p className="text-sm text-muted-foreground">Customer</p>
+                      <p className="text-sm text-muted-foreground">{t('shop.checkout.customer')}</p>
                       <p className="font-medium">{customer?.full_name || user.email}</p>
                     </div>
                     <div>
-                      <p className="text-sm text-muted-foreground">Email</p>
+                      <p className="text-sm text-muted-foreground">{t('shop.checkout.email')}</p>
                       <p className="font-medium">{customer?.email || user.email}</p>
                     </div>
                     {customer?.phone && (
                       <div>
-                        <p className="text-sm text-muted-foreground">Phone</p>
+                        <p className="text-sm text-muted-foreground">{t('shop.checkout.phone')}</p>
                         <p className="font-medium">{customer.phone}</p>
                       </div>
                     )}
                     {customer?.company && (
                       <div>
-                        <p className="text-sm text-muted-foreground">Company</p>
+                        <p className="text-sm text-muted-foreground">{t('shop.checkout.company')}</p>
                         <p className="font-medium">{customer.company}</p>
                       </div>
                     )}
@@ -328,7 +329,7 @@ export const Checkout: React.FC<CheckoutProps> = ({ onBack, onSuccess }) => {
                       onClick={() => supabase.auth.signOut()}
                       className="text-sm text-muted-foreground hover:text-foreground"
                     >
-                      Sign out and checkout as guest
+                      {t('shop.checkout.signOutGuest')}
                     </button>
                   </div>
                 </div>
@@ -336,27 +337,27 @@ export const Checkout: React.FC<CheckoutProps> = ({ onBack, onSuccess }) => {
             ) : (
               <GlassCard className="p-6 mb-8">
                 <div className="text-center">
-                  <h2 className="text-xl font-semibold mb-4">Already have an account?</h2>
+                  <h2 className="text-xl font-semibold mb-4">{t('shop.checkout.haveAccount')}</h2>
                   <p className="text-muted-foreground mb-4">
-                    Sign in to use your saved information and track your orders.
+                    {t('shop.checkout.signInBenefits')}
                   </p>
                   <div className="flex flex-col sm:flex-row gap-4 justify-center">
                     <LoginDialog>
                       <GlassButton variant="outline" className="flex items-center gap-2">
                         <LogIn className="h-4 w-4" />
-                        Sign In
+                        {t('shop.checkout.signIn')}
                       </GlassButton>
                     </LoginDialog>
                     <LoginDialog defaultTab="signup">
                       <GlassButton variant="ghost" className="flex items-center gap-2">
                         <UserPlus className="h-4 w-4" />
-                        Create Account
+                        {t('shop.checkout.createAccount')}
                       </GlassButton>
                     </LoginDialog>
                   </div>
                   <div className="mt-4 pt-4 border-t border-border/50">
                     <p className="text-sm text-muted-foreground">
-                      New customers can continue as guest below
+                      {t('shop.checkout.newCustomersContinue')}
                     </p>
                   </div>
                 </div>
@@ -369,52 +370,52 @@ export const Checkout: React.FC<CheckoutProps> = ({ onBack, onSuccess }) => {
                 <GlassCard className="p-6">
                   <div className="flex items-center gap-2 mb-6">
                     <MapPin className="h-5 w-5 text-primary" />
-                    <h2 className="text-xl font-semibold">Shipping Address</h2>
+                    <h2 className="text-xl font-semibold">{t('shop.checkout.shippingAddress')}</h2>
                   </div>
                   
                   <div className="space-y-4">
                     <div className="grid md:grid-cols-4 gap-4">
-                      <FormField
-                        control={form.control}
-                        name="street"
-                        render={({ field }) => (
-                        <FormItem className="md:col-span-2">
-                          <FormLabel>Street Address *</FormLabel>
-                          <FormControl>
-                            <Input {...field} className="glass-input" />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                        )}
-                      />
-                      
-                      <FormField
-                        control={form.control}
-                        name="number"
-                        render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>Number *</FormLabel>
-                          <FormControl>
-                            <Input {...field} className="glass-input" />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                        )}
-                      />
-                      
-                      <FormField
-                        control={form.control}
-                        name="complement"
-                        render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>Apartment/Suite</FormLabel>
-                          <FormControl>
-                            <Input {...field} className="glass-input" />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                        )}
-                      />
+                        <FormField
+                          control={form.control}
+                          name="street"
+                          render={({ field }) => (
+                          <FormItem className="md:col-span-2">
+                            <FormLabel>{t('shop.checkout.streetAddress')} *</FormLabel>
+                            <FormControl>
+                              <Input {...field} className="glass-input" />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                          )}
+                        />
+                        
+                        <FormField
+                          control={form.control}
+                          name="number"
+                          render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>{t('shop.checkout.number')} *</FormLabel>
+                            <FormControl>
+                              <Input {...field} className="glass-input" />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                          )}
+                        />
+                        
+                        <FormField
+                          control={form.control}
+                          name="complement"
+                          render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>{t('shop.checkout.apartmentSuite')}</FormLabel>
+                            <FormControl>
+                              <Input {...field} className="glass-input" />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                          )}
+                        />
                     </div>
                     
                     <div className="grid md:grid-cols-3 gap-4">
@@ -423,7 +424,7 @@ export const Checkout: React.FC<CheckoutProps> = ({ onBack, onSuccess }) => {
                         name="neighborhood"
                         render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Neighborhood *</FormLabel>
+                          <FormLabel>{t('shop.checkout.neighborhood')} *</FormLabel>
                           <FormControl>
                             <Input {...field} className="glass-input" />
                           </FormControl>
@@ -437,7 +438,7 @@ export const Checkout: React.FC<CheckoutProps> = ({ onBack, onSuccess }) => {
                         name="city"
                         render={({ field }) => (
                         <FormItem>
-                          <FormLabel>City *</FormLabel>
+                          <FormLabel>{t('shop.checkout.city')} *</FormLabel>
                           <FormControl>
                             <Input {...field} className="glass-input" />
                           </FormControl>
@@ -451,7 +452,7 @@ export const Checkout: React.FC<CheckoutProps> = ({ onBack, onSuccess }) => {
                         name="state"
                         render={({ field }) => (
                         <FormItem>
-                          <FormLabel>State *</FormLabel>
+                          <FormLabel>{t('shop.checkout.state')} *</FormLabel>
                           <FormControl>
                             <Input {...field} className="glass-input" placeholder="CA" />
                           </FormControl>
@@ -466,7 +467,7 @@ export const Checkout: React.FC<CheckoutProps> = ({ onBack, onSuccess }) => {
                       name="zipCode"
                       render={({ field }) => (
                         <FormItem className="md:w-48">
-                          <FormLabel>ZIP Code *</FormLabel>
+                          <FormLabel>{t('shop.checkout.zipCode')} *</FormLabel>
                           <FormControl>
                             <Input {...field} className="glass-input" placeholder="12345" />
                           </FormControl>
@@ -481,7 +482,7 @@ export const Checkout: React.FC<CheckoutProps> = ({ onBack, onSuccess }) => {
                 <GlassCard className="p-6">
                   <div className="flex items-center gap-2 mb-6">
                     <CreditCard className="h-5 w-5 text-primary" />
-                    <h2 className="text-xl font-semibold">Payment Method</h2>
+                    <h2 className="text-xl font-semibold">{t('shop.checkout.paymentMethod')}</h2>
                   </div>
                   
                   <FormField

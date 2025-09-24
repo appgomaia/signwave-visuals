@@ -623,6 +623,66 @@
       "trade_shows": "Feiras Comerciais",
       "interior_signage": "Sinalização Interna",
       "outdoor_advertising": "Publicidade Externa"
+    },
+    "productDetails": {
+      "backToProducts": "Voltar aos Produtos",
+      "quantity": "Quantidade",
+      "min": "Mín",
+      "max": "Máx",
+      "addToCart": "Adicionar ao Carrinho",
+      "deliveryIn": "Entrega em {{days}} dias",
+      "warrantyIncluded": "Garantia Inclusa",
+      "premiumQuality": "Qualidade Premium",
+      "tabs": {
+        "description": "Descrição",
+        "specifications": "Especificações",
+        "installation": "Instalação",
+        "warranty": "Garantia"
+      },
+      "noDescription": "Descrição detalhada do produto não disponível.",
+      "material": "Material",
+      "dimensions": "Dimensões",
+      "technicalSpecs": "Especificações Técnicas",
+      "defaultInstallationInfo": "Informações de instalação serão fornecidas junto com o produto. Nossa equipe técnica está disponível para suporte completo.",
+      "defaultWarrantyInfo": "Este produto possui garantia de qualidade e suporte técnico. Entre em contato para mais informações sobre nossa política de garantia."
+    },
+    "cart": {
+      "title_one": "Seu Carrinho ({{count}} item)",
+      "title_other": "Seu Carrinho ({{count}} itens)",
+      "description": "Revise seus itens antes de finalizar a compra",
+      "empty": "Seu carrinho está vazio",
+      "emptyDescription": "Adicione alguns produtos para começar suas compras",
+      "continueShopping": "Continuar Comprando",
+      "itemTotal": "Total",
+      "total": "Total",
+      "checkout": "Finalizar Compra"
+    },
+    "checkout": {
+      "title": "Finalizar Compra",
+      "back": "Voltar",
+      "emptyCart": "Carrinho Vazio",
+      "emptyCartDescription": "Adicione produtos ao seu carrinho antes de finalizar a compra.",
+      "backToShopping": "Voltar às Compras",
+      "welcomeBack": "Bem-vindo de volta!",
+      "customer": "Cliente",
+      "email": "Email",
+      "phone": "Telefone",
+      "company": "Empresa",
+      "signOutGuest": "Sair e finalizar como convidado",
+      "haveAccount": "Já tem uma conta?",
+      "signInBenefits": "Faça login para usar suas informações salvas e acompanhar seus pedidos.",
+      "signIn": "Entrar",
+      "createAccount": "Criar Conta",
+      "newCustomersContinue": "Novos clientes podem continuar como convidado abaixo",
+      "shippingAddress": "Endereço de Entrega",
+      "streetAddress": "Endereço",
+      "number": "Número",
+      "apartmentSuite": "Apartamento/Suíte",
+      "neighborhood": "Bairro",
+      "city": "Cidade",
+      "state": "Estado",
+      "zipCode": "CEP",
+      "paymentMethod": "Método de Pagamento"
     }
   }
 }
