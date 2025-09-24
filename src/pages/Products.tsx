@@ -9,6 +9,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { useCart } from "@/hooks/useCart";
 import { ProductCard } from "@/components/ecommerce/ProductCard";
 import { Select, SelectTrigger, SelectContent, SelectItem, SelectValue } from "@/components/ui/select";
+import { useTranslation } from "react-i18next";
 interface Product {
   id: string;
   name: string;
@@ -40,6 +41,13 @@ export default function Products({ onProductSelect, useLayout = true }: Products
   const [selectedCategory, setSelectedCategory] = useState("All Products");
   const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
   const { addItem } = useCart();
+  const { t } = useTranslation('content');
+
+  const slugify = (s: string) => s?.toLowerCase().replace(/[^a-z0-9]+/g, '_').replace(/^_|_$/g, '') || '';
+  const getCategoryLabel = (name: string) => {
+    if (name === 'All Products') return t('shop.allProducts');
+    return t(`shop.categories.${slugify(name)}`, { defaultValue: name });
+  };
 
   const formatPrice = (price: number) => {
     return new Intl.NumberFormat('en-US', {
@@ -107,11 +115,10 @@ export default function Products({ onProductSelect, useLayout = true }: Products
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12 sm:mb-16">
           <h1 className="text-3xl sm:text-4xl lg:text-6xl font-bold mb-4 sm:mb-6">
-            Our <span className="text-gradient">Products</span>
+            {t('shop.title')}
           </h1>
           <p className="text-base sm:text-lg lg:text-xl text-muted-foreground max-w-3xl mx-auto">
-            Discover our comprehensive range of professional signage solutions, 
-            from custom business signs to digital displays.
+            {t('shop.subtitle')}
           </p>
         </div>
 
@@ -123,7 +130,7 @@ export default function Products({ onProductSelect, useLayout = true }: Products
               <div className="relative">
                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-muted-foreground" />
                 <Input
-                  placeholder="Search products..."
+                  placeholder={t('shop.searchPlaceholder')}
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
                   className="pl-10 glass-input"
@@ -135,12 +142,12 @@ export default function Products({ onProductSelect, useLayout = true }: Products
             <div className="block sm:hidden">
               <Select value={selectedCategory} onValueChange={setSelectedCategory}>
                 <SelectTrigger className="w-full">
-                  <SelectValue placeholder="Select category" />
+                  <SelectValue placeholder={t('shop.selectCategory')} />
                 </SelectTrigger>
                 <SelectContent className="z-50 bg-background/95 backdrop-blur-xl border border-border shadow-glass">
                   {categories.map((category: any) => (
                     <SelectItem key={category.id || category.name} value={category.name}>
-                      {category.name}
+                      {getCategoryLabel(category.name)}
                     </SelectItem>
                   ))}
                 </SelectContent>
@@ -157,7 +164,7 @@ export default function Products({ onProductSelect, useLayout = true }: Products
                   onClick={() => setSelectedCategory(category.name)}
                   disabled={isLoading}
                 >
-                  {category.name}
+                  {getCategoryLabel(category.name)}
                 </GlassButton>
               ))}
             </div>
@@ -168,7 +175,7 @@ export default function Products({ onProductSelect, useLayout = true }: Products
                 variant={viewMode === "grid" ? "default" : "outline"}
                 size="icon"
                 onClick={() => setViewMode("grid")}
-                aria-label="Grid view"
+                aria-label={t('shop.gridView')}
               >
                 <Grid className="h-4 w-4" />
               </GlassButton>
@@ -176,7 +183,7 @@ export default function Products({ onProductSelect, useLayout = true }: Products
                 variant={viewMode === "list" ? "default" : "outline"}
                 size="icon"
                 onClick={() => setViewMode("list")}
-                aria-label="List view"
+                aria-label={t('shop.listView')}
               >
                 <List className="h-4 w-4" />
               </GlassButton>
@@ -188,7 +195,7 @@ export default function Products({ onProductSelect, useLayout = true }: Products
         {isLoading && (
           <div className="flex justify-center items-center py-16">
             <Loader2 className="h-8 w-8 animate-spin text-primary" />
-            <span className="ml-2 text-lg text-muted-foreground">Loading products...</span>
+            <span className="ml-2 text-lg text-muted-foreground">{t('shop.loading')}</span>
           </div>
         )}
 
@@ -213,11 +220,11 @@ export default function Products({ onProductSelect, useLayout = true }: Products
         )}
 
         {!isLoading && filteredProducts.length === 0 && (
-          <div className="text-center py-16">
-            <p className="text-xl text-muted-foreground">
-              No products found matching your criteria.
-            </p>
-          </div>
+      <div className="text-center py-16">
+        <p className="text-xl text-muted-foreground">
+          {t('shop.noResults')}
+        </p>
+      </div>
         )}
       </div>
     </section>

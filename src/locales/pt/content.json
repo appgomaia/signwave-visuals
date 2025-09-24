@@ -593,5 +593,36 @@
     "orderPlaced": "Pedido Realizado com Sucesso!",
     "orderConfirmation": "Obrigado pelo seu pedido. Enviaremos um email de confirmação com detalhes de rastreamento em breve.",
     "continueShopping": "Continuar Comprando"
+  },
+  "shop": {
+    "title": "Nossos Produtos",
+    "subtitle": "Descubra nossa linha de soluções profissionais de sinalização.",
+    "searchPlaceholder": "Buscar produtos...",
+    "selectCategory": "Selecione a categoria",
+    "allProducts": "Todos os Produtos",
+    "gridView": "Visualização em grade",
+    "listView": "Visualização em lista",
+    "loading": "Carregando produtos...",
+    "noResults": "Nenhum produto encontrado para o seu critério.",
+    "perUnit": "por {{unit}}",
+    "productCard": {
+      "viewDetailsLong": "Ver Detalhes",
+      "viewShort": "Ver",
+      "addToCartLong": "Adicionar ao Carrinho",
+      "addShort": "Adicionar",
+      "info": {
+        "fastDelivery": "Entrega Rápida",
+        "warrantyIncluded": "Garantia Inclusa",
+        "professionalInstallation": "Instalação Profissional"
+      }
+    },
+    "categories": {
+      "business_signs": "Placas Comerciais",
+      "digital_displays": "Displays Digitais",
+      "vehicle_wraps": "Adesivação de Veículos",
+      "trade_shows": "Feiras Comerciais",
+      "interior_signage": "Sinalização Interna",
+      "outdoor_advertising": "Publicidade Externa"
+    }
   }
 }

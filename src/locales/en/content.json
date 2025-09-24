@@ -672,5 +672,36 @@
     "orderPlaced": "Order Successfully Placed!",
     "orderConfirmation": "Thank you for your order. We'll send you a confirmation email with tracking details shortly.",
     "continueShopping": "Continue Shopping"
+  },
+  "shop": {
+    "title": "Our Products",
+    "subtitle": "Discover our range of professional signage solutions.",
+    "searchPlaceholder": "Search products...",
+    "selectCategory": "Select category",
+    "allProducts": "All Products",
+    "gridView": "Grid view",
+    "listView": "List view",
+    "loading": "Loading products...",
+    "noResults": "No products found matching your criteria.",
+    "perUnit": "per {{unit}}",
+    "productCard": {
+      "viewDetailsLong": "View Details",
+      "viewShort": "View",
+      "addToCartLong": "Add to Cart",
+      "addShort": "Add",
+      "info": {
+        "fastDelivery": "Fast Delivery",
+        "warrantyIncluded": "Warranty Included",
+        "professionalInstallation": "Professional Installation"
+      }
+    },
+    "categories": {
+      "business_signs": "Business Signs",
+      "digital_displays": "Digital Displays",
+      "vehicle_wraps": "Vehicle Wraps",
+      "trade_shows": "Trade Shows",
+      "interior_signage": "Interior Signage",
+      "outdoor_advertising": "Outdoor Advertising"
+    }
   }
 }

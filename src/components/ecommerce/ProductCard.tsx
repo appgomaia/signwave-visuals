@@ -4,6 +4,7 @@ import { useCart } from '@/hooks/useCart';
 import { GlassCard } from '@/components/ui/glass-card';
 import { GlassButton } from '@/components/ui/glass-button';
 import { Badge } from '@/components/ui/badge';
+import { useTranslation } from 'react-i18next';
 
 interface Product {
   id: string;
@@ -28,12 +29,14 @@ export const ProductCard: React.FC<ProductCardProps> = ({
   viewMode = 'grid' 
 }) => {
   const { addItem } = useCart();
+  const { t, i18n } = useTranslation('content');
+
+  const slugify = (s: string) => s?.toLowerCase().replace(/[^a-z0-9]+/g, '_').replace(/^_|_$/g, '') || '';
 
   const formatPrice = (price: number) => {
-    return new Intl.NumberFormat('en-US', {
-      style: 'currency',
-      currency: 'USD'
-    }).format(price);
+    const locale = i18n.language === 'pt' ? 'pt-BR' : i18n.language === 'es' ? 'es-ES' : 'en-US';
+    const currency = i18n.language === 'pt' ? 'BRL' : 'USD';
+    return new Intl.NumberFormat(locale, { style: 'currency', currency }).format(price);
   };
 
   const handleAddToCart = () => {
@@ -76,7 +79,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
             variant="secondary" 
             className="absolute top-2 left-2 bg-background/90 backdrop-blur-sm text-xs"
           >
-            {product.categories?.name || product.category}
+            {t(`shop.categories.${slugify(product.categories?.name || product.category || '')}` as any, { defaultValue: product.categories?.name || product.category })}
           </Badge>
         )}
 
@@ -112,11 +115,11 @@ export const ProductCard: React.FC<ProductCardProps> = ({
             <span className="text-xl sm:text-2xl font-bold text-gradient">
               {formatPrice(product.price)}
             </span>
-            {product.unit && (
-              <span className="text-xs text-muted-foreground">
-                por {product.unit}
-              </span>
-            )}
+              {product.unit && (
+                <span className="text-xs text-muted-foreground">
+                  {t('shop.perUnit', { unit: product.unit })}
+                </span>
+              )}
           </div>
           
           <div className="flex flex-col sm:flex-row gap-2 sm:gap-2">
@@ -129,9 +132,9 @@ export const ProductCard: React.FC<ProductCardProps> = ({
               >
                 <Eye className="h-4 w-4 mr-2" />
                 <span className="hidden sm:inline">
-                  {viewMode === 'list' ? 'Ver Detalhes' : 'Ver'}
+                  {viewMode === 'list' ? t('shop.productCard.viewDetailsLong') : t('shop.productCard.viewShort')}
                 </span>
-                <span className="sm:hidden">Ver</span>
+                <span className="sm:hidden">{t('shop.productCard.viewShort')}</span>
               </GlassButton>
             )}
             <GlassButton 
@@ -142,9 +145,9 @@ export const ProductCard: React.FC<ProductCardProps> = ({
             >
               <ShoppingCart className="h-4 w-4 mr-2" />
               <span className="hidden sm:inline">
-                {viewMode === 'list' ? 'Adicionar ao Carrinho' : 'Adicionar'}
+                {viewMode === 'list' ? t('shop.productCard.addToCartLong') : t('shop.productCard.addShort')}
               </span>
-              <span className="sm:hidden">Adicionar</span>
+              <span className="sm:hidden">{t('shop.productCard.addShort')}</span>
             </GlassButton>
           </div>
         </div>
@@ -163,9 +166,9 @@ export const ProductCard: React.FC<ProductCardProps> = ({
         {/* Additional Info for List View */}
         {viewMode === 'list' && (
           <div className="flex flex-wrap items-center gap-2 sm:gap-4 mt-4 text-xs text-muted-foreground">
-            <span>✓ Entrega Rápida</span>
-            <span>✓ Garantia Inclusa</span>
-            <span className="hidden sm:inline">✓ Instalação Profissional</span>
+            <span>✓ {t('shop.productCard.info.fastDelivery')}</span>
+            <span>✓ {t('shop.productCard.info.warrantyIncluded')}</span>
+            <span className="hidden sm:inline">✓ {t('shop.productCard.info.professionalInstallation')}</span>
           </div>
         )}
       </div>

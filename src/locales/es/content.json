@@ -593,5 +593,36 @@
     "orderPlaced": "¡Pedido Realizado con Éxito!",
     "orderConfirmation": "Gracias por su pedido. Le enviaremos un email de confirmación con detalles de seguimiento pronto.",
     "continueShopping": "Continuar Comprando"
+  },
+  "shop": {
+    "title": "Nuestros Productos",
+    "subtitle": "Descubre nuestra gama de soluciones profesionales de señalización.",
+    "searchPlaceholder": "Buscar productos...",
+    "selectCategory": "Selecciona la categoría",
+    "allProducts": "Todos los Productos",
+    "gridView": "Vista de cuadrícula",
+    "listView": "Vista de lista",
+    "loading": "Cargando productos...",
+    "noResults": "No se encontraron productos que coincidan con tu criterio.",
+    "perUnit": "por {{unit}}",
+    "productCard": {
+      "viewDetailsLong": "Ver Detalles",
+      "viewShort": "Ver",
+      "addToCartLong": "Agregar al Carrito",
+      "addShort": "Agregar",
+      "info": {
+        "fastDelivery": "Entrega Rápida",
+        "warrantyIncluded": "Garantía Incluida",
+        "professionalInstallation": "Instalación Profesional"
+      }
+    },
+    "categories": {
+      "business_signs": "Letreros Comerciales",
+      "digital_displays": "Pantallas Digitales",
+      "vehicle_wraps": "Vinilado de Vehículos",
+      "trade_shows": "Ferias Comerciales",
+      "interior_signage": "Señalización Interior",
+      "outdoor_advertising": "Publicidad Exterior"
+    }
   }
 }
