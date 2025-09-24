@@ -667,5 +667,10 @@
       "sendFailed": "Failed to send message. Please try again.",
       "summaryFailed": "Failed to generate project summary. Please try again."
     }
+  },
+  "ecommerce": {
+    "orderPlaced": "Order Successfully Placed!",
+    "orderConfirmation": "Thank you for your order. We'll send you a confirmation email with tracking details shortly.",
+    "continueShopping": "Continue Shopping"
   }
 }

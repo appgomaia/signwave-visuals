@@ -588,5 +588,10 @@
       "sendFailed": "Error al enviar mensaje. Inténtalo de nuevo.",
       "summaryFailed": "Error al generar resumen del proyecto. Inténtalo de nuevo."
     }
+  },
+  "ecommerce": {
+    "orderPlaced": "¡Pedido Realizado con Éxito!",
+    "orderConfirmation": "Gracias por su pedido. Le enviaremos un email de confirmación con detalles de seguimiento pronto.",
+    "continueShopping": "Continuar Comprando"
   }
 }
