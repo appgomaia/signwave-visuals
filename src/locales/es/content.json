@@ -595,7 +595,7 @@
     "continueShopping": "Continuar Comprando"
   },
   "shop": {
-    "title": "Nuestros Productos",
+    "title": "Nuestros <span class='text-gradient'>Productos</span>",
     "subtitle": "Descubre nuestra gama de soluciones profesionales de señalización.",
     "searchPlaceholder": "Buscar productos...",
     "selectCategory": "Selecciona la categoría",
@@ -647,8 +647,8 @@
       "defaultWarrantyInfo": "Este producto cuenta con garantía de calidad y soporte técnico. Contáctanos para más información sobre nuestra política de garantía."
     },
     "cart": {
-      "title_one": "Tu Carrito ({{count}} artículo)",
-      "title_other": "Tu Carrito ({{count}} artículos)",
+      "title": "Tu Carrito ({{count}} artículo)",
+      "title_plural": "Tu Carrito ({{count}} artículos)",
       "description": "Revisa tus artículos antes de finalizar",
       "empty": "Tu carrito está vacío",
       "emptyDescription": "Agrega algunos productos para empezar a comprar",
@@ -682,7 +682,47 @@
       "city": "Ciudad",
       "state": "Estado",
       "zipCode": "Código Postal",
-      "paymentMethod": "Método de Pago"
+      "paymentMethod": "Método de Pago",
+      "subtotal": "Subtotal",
+      "total": "Total",
+      "shipping": "Envío",
+      "free": "Gratis",
+      "termsAgreement": "Al completar tu compra, aceptas nuestros términos de uso y política de privacidad.",
+      "processing": "Procesando...",
+      "placeOrder": "Realizar Pedido",
+      "signInToOrder": "Inicia sesión para realizar pedido",
+      "orderSummary": "Resumen del Pedido",
+      "signInRequired": "Inicio de sesión requerido",
+      "signInRequiredDescription": "Por favor, inicia sesión para realizar tu pedido. Tu carrito está guardado.",
+      "errorProcessing": "Error al procesar pedido",
+      "errorDescription": "Por favor, intenta de nuevo o contáctanos.",
+      "cardNumber": "Número de Tarjeta",
+      "cardholderName": "Nombre del Titular",
+      "expiryDate": "Fecha de Vencimiento",
+      "cvv": "CVV",
+      "notes": "Notas (Opcional)",
+      "placeholders": {
+        "cardNumber": "1234 5678 9012 3456",
+        "cardholderName": "Juan Pérez",
+        "expiryDate": "MM/AA",
+        "cvv": "123",
+        "paypalEmail": "tu-email@paypal.com",
+        "additionalInfo": "Información adicional sobre tu pedido..."
+      },
+      "validation": {
+        "streetRequired": "La dirección debe tener al menos 5 caracteres",
+        "numberRequired": "El número es requerido",
+        "neighborhoodRequired": "El barrio es requerido",
+        "cityRequired": "La ciudad es requerida",
+        "stateRequired": "El estado es requerido",
+        "zipCodeRequired": "El código postal debe tener al menos 5 dígitos",
+        "cardNumberRequired": "El número de tarjeta es requerido",
+        "cardholderRequired": "El nombre del titular es requerido",
+        "expiryRequired": "La fecha de vencimiento es requerida",
+        "cvvRequired": "El CVV es requerido",
+        "paypalEmailRequired": "El email de PayPal es requerido",
+        "validEmailRequired": "Por favor, ingresa una dirección de email válida"
+      }
     }
   }
 }

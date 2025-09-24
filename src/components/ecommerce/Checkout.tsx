@@ -17,15 +17,15 @@ import { supabase } from '@/integrations/supabase/client';
 import { LoginDialog } from '@/components/auth/LoginDialog';
 import { useTranslation } from 'react-i18next';
 
-const checkoutSchema = z.object({
+const getCheckoutSchema = (t: any) => z.object({
   // Shipping Address
-  street: z.string().min(5, 'Address must be at least 5 characters'),
-  number: z.string().min(1, 'Number is required'),
+  street: z.string().min(5, t('shop.checkout.validation.streetRequired')),
+  number: z.string().min(1, t('shop.checkout.validation.numberRequired')),
   complement: z.string().optional(),
-  neighborhood: z.string().min(2, 'Neighborhood is required'),
-  city: z.string().min(2, 'City is required'),
-  state: z.string().min(2, 'State is required'),
-  zipCode: z.string().min(5, 'ZIP code must be at least 5 digits'),
+  neighborhood: z.string().min(2, t('shop.checkout.validation.neighborhoodRequired')),
+  city: z.string().min(2, t('shop.checkout.validation.cityRequired')),
+  state: z.string().min(2, t('shop.checkout.validation.stateRequired')),
+  zipCode: z.string().min(5, t('shop.checkout.validation.zipCodeRequired')),
   
   // Payment
   paymentMethod: z.enum(['credit_card', 'paypal']),
@@ -46,28 +46,28 @@ const checkoutSchema = z.object({
     if (!data.cardNumber || data.cardNumber.trim() === '') {
       ctx.addIssue({
         code: z.ZodIssueCode.custom,
-        message: "Card number is required",
+        message: t('shop.checkout.validation.cardNumberRequired'),
         path: ["cardNumber"]
       });
     }
     if (!data.cardName || data.cardName.trim() === '') {
       ctx.addIssue({
         code: z.ZodIssueCode.custom,
-        message: "Cardholder name is required",
+        message: t('shop.checkout.validation.cardholderRequired'),
         path: ["cardName"]
       });
     }
     if (!data.cardExpiry || data.cardExpiry.trim() === '') {
       ctx.addIssue({
         code: z.ZodIssueCode.custom,
-        message: "Expiry date is required",
+        message: t('shop.checkout.validation.expiryRequired'),
         path: ["cardExpiry"]
       });
     }
     if (!data.cardCvv || data.cardCvv.trim() === '') {
       ctx.addIssue({
         code: z.ZodIssueCode.custom,
-        message: "CVV is required",
+        message: t('shop.checkout.validation.cvvRequired'),
         path: ["cardCvv"]
       });
     }
@@ -77,20 +77,20 @@ const checkoutSchema = z.object({
     if (!data.paypalEmail || data.paypalEmail.trim() === '') {
       ctx.addIssue({
         code: z.ZodIssueCode.custom,
-        message: "PayPal email is required",
+        message: t('shop.checkout.validation.paypalEmailRequired'),
         path: ["paypalEmail"]
       });
     } else if (!z.string().email().safeParse(data.paypalEmail).success) {
       ctx.addIssue({
         code: z.ZodIssueCode.custom,
-        message: "Please enter a valid email address",
+        message: t('shop.checkout.validation.validEmailRequired'),
         path: ["paypalEmail"]
       });
     }
   }
 });
 
-type CheckoutForm = z.infer<typeof checkoutSchema>;
+type CheckoutForm = z.infer<ReturnType<typeof getCheckoutSchema>>;
 
 interface CheckoutProps {
   onBack: () => void;
@@ -100,6 +100,8 @@ interface CheckoutProps {
 export const Checkout: React.FC<CheckoutProps> = ({ onBack, onSuccess }) => {
   const { state, clearCart } = useCart();
   const { t, i18n } = useTranslation('content');
+  
+  const checkoutSchema = getCheckoutSchema(t);
   
   // Check auth state and fetch customer data
   useEffect(() => {
@@ -145,7 +147,7 @@ export const Checkout: React.FC<CheckoutProps> = ({ onBack, onSuccess }) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   
   const form = useForm<CheckoutForm>({
-    resolver: zodResolver(checkoutSchema),
+    resolver: zodResolver(getCheckoutSchema(t)),
     defaultValues: {
       // Shipping
       street: '',
@@ -176,8 +178,8 @@ export const Checkout: React.FC<CheckoutProps> = ({ onBack, onSuccess }) => {
   const onSubmit = async (data: CheckoutForm) => {
     if (state.items.length === 0) {
       toast({
-        title: "Empty Cart",
-        description: "Add items to cart before checkout.",
+        title: t('shop.checkout.emptyCart'),
+        description: t('shop.checkout.emptyCartDescription'),
         variant: "destructive"
       });
       return;
@@ -188,8 +190,8 @@ export const Checkout: React.FC<CheckoutProps> = ({ onBack, onSuccess }) => {
     const authUser = authData?.user;
     if (!authUser) {
       toast({
-        title: "Sign in required",
-        description: "Please sign in to place your order. Your cart is saved.",
+        title: t('shop.checkout.signInRequired'),
+        description: t('shop.checkout.signInRequiredDescription'),
         variant: "destructive",
       });
       return;
@@ -256,8 +258,8 @@ export const Checkout: React.FC<CheckoutProps> = ({ onBack, onSuccess }) => {
     } catch (error: any) {
       console.error('Checkout error:', error);
       toast({
-        title: "Error processing order",
-        description: error.message || "Please try again or contact us.",
+        title: t('shop.checkout.errorProcessing'),
+        description: error.message || t('shop.checkout.errorDescription'),
         variant: "destructive"
       });
     } finally {
@@ -521,12 +523,12 @@ export const Checkout: React.FC<CheckoutProps> = ({ onBack, onSuccess }) => {
                           name="cardNumber"
                           render={({ field }) => (
                             <FormItem className="md:col-span-2">
-                              <FormLabel>Card Number *</FormLabel>
+                              <FormLabel>{t('shop.checkout.cardNumber')} *</FormLabel>
                               <FormControl>
                                 <Input 
                                   {...field} 
                                   className="glass-input" 
-                                  placeholder="1234 5678 9012 3456"
+                                  placeholder={t('shop.checkout.placeholders.cardNumber')}
                                   maxLength={19}
                                 />
                               </FormControl>
@@ -540,9 +542,9 @@ export const Checkout: React.FC<CheckoutProps> = ({ onBack, onSuccess }) => {
                           name="cardName"
                           render={({ field }) => (
                             <FormItem className="md:col-span-2">
-                              <FormLabel>Cardholder Name *</FormLabel>
+                              <FormLabel>{t('shop.checkout.cardholderName')} *</FormLabel>
                               <FormControl>
-                                <Input {...field} className="glass-input" placeholder="John Doe" />
+                                <Input {...field} className="glass-input" placeholder={t('shop.checkout.placeholders.cardholderName')} />
                               </FormControl>
                               <FormMessage />
                             </FormItem>
@@ -554,12 +556,12 @@ export const Checkout: React.FC<CheckoutProps> = ({ onBack, onSuccess }) => {
                           name="cardExpiry"
                           render={({ field }) => (
                             <FormItem>
-                              <FormLabel>Expiry Date *</FormLabel>
+                              <FormLabel>{t('shop.checkout.expiryDate')} *</FormLabel>
                               <FormControl>
                                 <Input 
                                   {...field} 
                                   className="glass-input" 
-                                  placeholder="MM/YY"
+                                  placeholder={t('shop.checkout.placeholders.expiryDate')}
                                   maxLength={5}
                                 />
                               </FormControl>
@@ -573,12 +575,12 @@ export const Checkout: React.FC<CheckoutProps> = ({ onBack, onSuccess }) => {
                           name="cardCvv"
                           render={({ field }) => (
                             <FormItem>
-                              <FormLabel>CVV *</FormLabel>
+                              <FormLabel>{t('shop.checkout.cvv')} *</FormLabel>
                               <FormControl>
                                 <Input 
                                   {...field} 
                                   className="glass-input" 
-                                  placeholder="123"
+                                  placeholder={t('shop.checkout.placeholders.cvv')}
                                   maxLength={4}
                                 />
                               </FormControl>
@@ -611,7 +613,7 @@ export const Checkout: React.FC<CheckoutProps> = ({ onBack, onSuccess }) => {
                                 {...field} 
                                 type="email"
                                 className="glass-input" 
-                                placeholder="your-email@paypal.com"
+                                placeholder={t('shop.checkout.placeholders.paypalEmail')}
                               />
                             </FormControl>
                             <FormMessage />
@@ -632,12 +634,12 @@ export const Checkout: React.FC<CheckoutProps> = ({ onBack, onSuccess }) => {
                     name="notes"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Notes (Optional)</FormLabel>
+                        <FormLabel>{t('shop.checkout.notes')}</FormLabel>
                         <FormControl>
                           <Textarea 
                             {...field} 
                             className="glass-input min-h-20"
-                            placeholder="Additional information about your order..."
+                            placeholder={t('shop.checkout.placeholders.additionalInfo')}
                           />
                         </FormControl>
                         <FormMessage />
@@ -647,14 +649,14 @@ export const Checkout: React.FC<CheckoutProps> = ({ onBack, onSuccess }) => {
                 </GlassCard>
 
                 {/* Submit Button */}
-<GlassButton 
-  type="submit" 
-  className="w-full" 
-  size="lg"
-  disabled={isSubmitting || !user}
->
-  {isSubmitting ? "Processing..." : user ? "Place Order" : "Sign in to place order"}
-</GlassButton>
+                <GlassButton 
+                  type="submit" 
+                  className="w-full" 
+                  size="lg"
+                  disabled={isSubmitting || !user}
+                >
+                  {isSubmitting ? t('shop.checkout.processing') : user ? t('shop.checkout.placeOrder') : t('shop.checkout.signInToOrder')}
+                </GlassButton>
               </form>
             </Form>
           </div>
@@ -662,7 +664,7 @@ export const Checkout: React.FC<CheckoutProps> = ({ onBack, onSuccess }) => {
           {/* Order Summary */}
           <div className="lg:col-span-1">
             <GlassCard className="p-6 sticky top-8">
-              <h2 className="text-xl font-semibold mb-6">Order Summary</h2>
+              <h2 className="text-xl font-semibold mb-6">{t('shop.checkout.orderSummary')}</h2>
               
               <div className="space-y-4">
                 {state.items.map((item) => (
@@ -692,22 +694,22 @@ export const Checkout: React.FC<CheckoutProps> = ({ onBack, onSuccess }) => {
               
               <div className="border-t border-border/50 pt-4 mt-6">
                 <div className="flex justify-between items-center text-sm mb-2">
-                  <span>Subtotal:</span>
+                  <span>{t('shop.checkout.subtotal')}:</span>
                   <span>{formatPrice(state.total)}</span>
                 </div>
                 <div className="flex justify-between items-center text-sm mb-2">
-                  <span>Frete:</span>
-                  <span className="text-success">Grátis</span>
+                  <span>{t('shop.checkout.shipping')}:</span>
+                  <span className="text-success">{t('shop.checkout.free')}</span>
                 </div>
                 <div className="flex justify-between items-center text-lg font-bold pt-2 border-t border-border/30">
-                  <span>Total:</span>
+                  <span>{t('shop.checkout.total')}:</span>
                   <span className="text-gradient">{formatPrice(state.total)}</span>
                 </div>
               </div>
               
               <div className="mt-6 p-4 bg-muted/20 rounded-lg">
                 <p className="text-xs text-muted-foreground">
-                  Ao finalizar a compra, você concorda com nossos termos de uso e política de privacidade.
+                  {t('shop.checkout.termsAgreement')}
                 </p>
               </div>
             </GlassCard>

@@ -674,7 +674,7 @@
     "continueShopping": "Continue Shopping"
   },
   "shop": {
-    "title": "Our Products",
+    "title": "Our <span class='text-gradient'>Products</span>",
     "subtitle": "Discover our range of professional signage solutions.",
     "searchPlaceholder": "Search products...",
     "selectCategory": "Select category",
@@ -726,8 +726,8 @@
       "defaultWarrantyInfo": "This product comes with quality warranty and technical support. Contact us for more information about our warranty policy."
     },
     "cart": {
-      "title_one": "Your Cart ({{count}} item)",
-      "title_other": "Your Cart ({{count}} items)",
+      "title": "Your Cart ({{count}} item)",
+      "title_plural": "Your Cart ({{count}} items)",
       "description": "Review your items before checkout",
       "empty": "Your cart is empty",
       "emptyDescription": "Add some products to start shopping",
@@ -761,7 +761,47 @@
       "city": "City",
       "state": "State",
       "zipCode": "ZIP Code",
-      "paymentMethod": "Payment Method"
+      "paymentMethod": "Payment Method",
+      "subtotal": "Subtotal",
+      "total": "Total",
+      "shipping": "Shipping",
+      "free": "Free",
+      "termsAgreement": "By completing your purchase, you agree to our terms of use and privacy policy.",
+      "processing": "Processing...",
+      "placeOrder": "Place Order",
+      "signInToOrder": "Sign in to place order",
+      "orderSummary": "Order Summary",
+      "signInRequired": "Sign in required",
+      "signInRequiredDescription": "Please sign in to place your order. Your cart is saved.",
+      "errorProcessing": "Error processing order",
+      "errorDescription": "Please try again or contact us.",
+      "cardNumber": "Card Number",
+      "cardholderName": "Cardholder Name",
+      "expiryDate": "Expiry Date",
+      "cvv": "CVV",
+      "notes": "Notes (Optional)",
+      "placeholders": {
+        "cardNumber": "1234 5678 9012 3456",
+        "cardholderName": "John Doe",
+        "expiryDate": "MM/YY",
+        "cvv": "123",
+        "paypalEmail": "your-email@paypal.com",
+        "additionalInfo": "Additional information about your order..."
+      },
+      "validation": {
+        "streetRequired": "Address must be at least 5 characters",
+        "numberRequired": "Number is required",
+        "neighborhoodRequired": "Neighborhood is required",
+        "cityRequired": "City is required",
+        "stateRequired": "State is required",
+        "zipCodeRequired": "ZIP code must be at least 5 digits",
+        "cardNumberRequired": "Card number is required",
+        "cardholderRequired": "Cardholder name is required",
+        "expiryRequired": "Expiry date is required",
+        "cvvRequired": "CVV is required",
+        "paypalEmailRequired": "PayPal email is required",
+        "validEmailRequired": "Please enter a valid email address"
+      }
     }
   }
 }

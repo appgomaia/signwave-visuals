@@ -595,7 +595,7 @@
     "continueShopping": "Continuar Comprando"
   },
   "shop": {
-    "title": "Nossos Produtos",
+    "title": "Nossos <span class='text-gradient'>Produtos</span>",
     "subtitle": "Descubra nossa linha de soluções profissionais de sinalização.",
     "searchPlaceholder": "Buscar produtos...",
     "selectCategory": "Selecione a categoria",
@@ -647,12 +647,12 @@
       "defaultWarrantyInfo": "Este produto possui garantia de qualidade e suporte técnico. Entre em contato para mais informações sobre nossa política de garantia."
     },
     "cart": {
-      "title_one": "Seu Carrinho ({{count}} item)",
-      "title_other": "Seu Carrinho ({{count}} itens)",
+      "title": "Seu Carrinho ({{count}} item)",
+      "title_plural": "Seu Carrinho ({{count}} itens)",
       "description": "Revise seus itens antes de finalizar a compra",
       "empty": "Seu carrinho está vazio",
       "emptyDescription": "Adicione alguns produtos para começar suas compras",
-      "continueShopping": "Continuar Comprando",
+      "continueShopping": "Continue Comprando",
       "itemTotal": "Total",
       "total": "Total",
       "checkout": "Finalizar Compra"
@@ -682,7 +682,47 @@
       "city": "Cidade",
       "state": "Estado",
       "zipCode": "CEP",
-      "paymentMethod": "Método de Pagamento"
+      "paymentMethod": "Método de Pagamento",
+      "subtotal": "Subtotal",
+      "total": "Total",
+      "shipping": "Frete",
+      "free": "Grátis",
+      "termsAgreement": "Ao finalizar a compra, você concorda com nossos termos de uso e política de privacidade.",
+      "processing": "Processando...",
+      "placeOrder": "Finalizar Pedido",
+      "signInToOrder": "Faça login para fazer pedido",
+      "orderSummary": "Resumo do Pedido",
+      "signInRequired": "Login necessário",
+      "signInRequiredDescription": "Por favor, faça login para fazer seu pedido. Seu carrinho está salvo.",
+      "errorProcessing": "Erro ao processar pedido",
+      "errorDescription": "Por favor, tente novamente ou entre em contato conosco.",
+      "cardNumber": "Número do Cartão",
+      "cardholderName": "Nome do Portador",
+      "expiryDate": "Data de Vencimento",
+      "cvv": "CVV",
+      "notes": "Observações (Opcional)",
+      "placeholders": {
+        "cardNumber": "1234 5678 9012 3456",
+        "cardholderName": "João Silva",
+        "expiryDate": "MM/AA",
+        "cvv": "123",
+        "paypalEmail": "seu-email@paypal.com",
+        "additionalInfo": "Informações adicionais sobre seu pedido..."
+      },
+      "validation": {
+        "streetRequired": "Endereço deve ter pelo menos 5 caracteres",
+        "numberRequired": "Número é obrigatório",
+        "neighborhoodRequired": "Bairro é obrigatório",
+        "cityRequired": "Cidade é obrigatória",
+        "stateRequired": "Estado é obrigatório",
+        "zipCodeRequired": "CEP deve ter pelo menos 5 dígitos",
+        "cardNumberRequired": "Número do cartão é obrigatório",
+        "cardholderRequired": "Nome do portador é obrigatório",
+        "expiryRequired": "Data de vencimento é obrigatória",
+        "cvvRequired": "CVV é obrigatório",
+        "paypalEmailRequired": "Email do PayPal é obrigatório",
+        "validEmailRequired": "Por favor, insira um endereço de email válido"
+      }
     }
   }
 }
