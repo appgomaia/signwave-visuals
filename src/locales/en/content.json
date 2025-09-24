@@ -801,7 +801,18 @@
         "cvvRequired": "CVV is required",
         "paypalEmailRequired": "PayPal email is required",
         "validEmailRequired": "Please enter a valid email address"
-      }
+      },
+      "paymentOptions": {
+        "creditCard": "Credit Card (Test Mode)",
+        "paypal": "PayPal"
+      },
+      "sections": {
+        "creditCardInfo": "Credit Card Information",
+        "paypalInfo": "PayPal Information"
+      },
+      "paypalEmail": "PayPal Email Address",
+      "paypalRedirect": "You will be redirected to PayPal to complete your payment securely.",
+      "testModeHint": "Test Mode: Use card 4242 4242 4242 4242, any name, any future date, CVV 123."
     }
   }
 }

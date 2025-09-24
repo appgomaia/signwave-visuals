@@ -722,7 +722,18 @@
         "cvvRequired": "CVV é obrigatório",
         "paypalEmailRequired": "Email do PayPal é obrigatório",
         "validEmailRequired": "Por favor, insira um endereço de email válido"
-      }
+      },
+      "paymentOptions": {
+        "creditCard": "Cartão de Crédito (Modo de Teste)",
+        "paypal": "PayPal"
+      },
+      "sections": {
+        "creditCardInfo": "Informações do Cartão de Crédito",
+        "paypalInfo": "Informações do PayPal"
+      },
+      "paypalEmail": "Email do PayPal",
+      "paypalRedirect": "Você será redirecionado ao PayPal para concluir seu pagamento com segurança.",
+      "testModeHint": "Modo de teste: Use o cartão 4242 4242 4242 4242, qualquer nome, data futura, CVV 123."
     }
   }
 }

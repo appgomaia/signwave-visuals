@@ -500,11 +500,11 @@ export const Checkout: React.FC<CheckoutProps> = ({ onBack, onSuccess }) => {
                           >
                             <div className="flex items-center space-x-2 p-3 rounded-lg border border-border/50 hover:border-primary/50">
                               <RadioGroupItem value="credit_card" id="credit_card" />
-                              <Label htmlFor="credit_card" className="flex-1 cursor-pointer">Credit Card (Test Mode)</Label>
+                              <Label htmlFor="credit_card" className="flex-1 cursor-pointer">{t('shop.checkout.paymentOptions.creditCard')}</Label>
                             </div>
                             <div className="flex items-center space-x-2 p-3 rounded-lg border border-border/50 hover:border-primary/50">
                               <RadioGroupItem value="paypal" id="paypal" />
-                              <Label htmlFor="paypal" className="flex-1 cursor-pointer">PayPal</Label>
+                              <Label htmlFor="paypal" className="flex-1 cursor-pointer">{t('shop.checkout.paymentOptions.paypal')}</Label>
                             </div>
                           </RadioGroup>
                         </FormControl>
@@ -516,7 +516,7 @@ export const Checkout: React.FC<CheckoutProps> = ({ onBack, onSuccess }) => {
                   {/* Dynamic Payment Fields */}
                   {form.watch('paymentMethod') === 'credit_card' && (
                     <div className="mt-6 pt-6 border-t border-border/50">
-                      <h3 className="text-lg font-medium mb-4">Credit Card Information</h3>
+                      <h3 className="text-lg font-medium mb-4">{t('shop.checkout.sections.creditCardInfo')}</h3>
                       <div className="grid md:grid-cols-2 gap-4">
                         <FormField
                           control={form.control}
@@ -590,24 +590,20 @@ export const Checkout: React.FC<CheckoutProps> = ({ onBack, onSuccess }) => {
                         />
                       </div>
                       <p className="text-sm text-muted-foreground mt-4">
-                        ⚠️ Test Mode: <br/>
-                        • Card Number: 4242 4242 4242 4242<br/>
-                        • Cardholder Name: Any name<br/>
-                        • Expiry Date: Any future date (e.g., 12/25)<br/>
-                        • CVV: Any 3 digits (e.g., 123)
+                        {t('shop.checkout.testModeHint')}
                       </p>
                     </div>
                   )}
                   
                   {form.watch('paymentMethod') === 'paypal' && (
                     <div className="mt-6 pt-6 border-t border-border/50">
-                      <h3 className="text-lg font-medium mb-4">PayPal Information</h3>
+                      <h3 className="text-lg font-medium mb-4">{t('shop.checkout.sections.paypalInfo')}</h3>
                       <FormField
                         control={form.control}
                         name="paypalEmail"
                         render={({ field }) => (
                           <FormItem>
-                            <FormLabel>PayPal Email Address *</FormLabel>
+                            <FormLabel>{t('shop.checkout.paypalEmail')} *</FormLabel>
                             <FormControl>
                               <Input 
                                 {...field} 
@@ -621,7 +617,7 @@ export const Checkout: React.FC<CheckoutProps> = ({ onBack, onSuccess }) => {
                         )}
                       />
                       <p className="text-sm text-muted-foreground mt-4">
-                        You will be redirected to PayPal to complete your payment securely.
+                        {t('shop.checkout.paypalRedirect')}
                       </p>
                     </div>
                   )}
