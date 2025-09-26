@@ -14,7 +14,7 @@ ENV NPM_CONFIG_AUDIT=false
 COPY package*.json ./
 
 # Install dependencies with optimizations
-RUN npm ci --only=production --legacy-peer-deps --no-optional
+RUN npm ci --legacy-peer-deps --no-optional
 
 # Copy source code
 COPY . .
