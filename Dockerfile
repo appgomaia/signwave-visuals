@@ -1,5 +1,5 @@
 # Multi-stage build for React + Nginx
-FROM node:20-alpine AS builder
+FROM node:20-slim AS builder
 
 # Set working directory
 WORKDIR /app
@@ -13,8 +13,9 @@ ENV NPM_CONFIG_AUDIT=false
 # Copy package files
 COPY package*.json ./
 
-# Install dependencies with optimizations
-RUN npm ci --include=dev --legacy-peer-deps --no-optional
+# Clear npm cache and install dependencies
+RUN npm cache clean --force
+RUN npm ci --include=dev --legacy-peer-deps
 
 # Copy source code
 COPY . .
