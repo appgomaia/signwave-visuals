@@ -5,7 +5,7 @@ FROM node:20-alpine AS builder
 WORKDIR /app
 
 # Set environment variables for build
-ENV NODE_ENV=production
+ENV NODE_ENV=development
 ENV NPM_CONFIG_LOGLEVEL=warn
 ENV NPM_CONFIG_FUND=false
 ENV NPM_CONFIG_AUDIT=false
@@ -14,7 +14,7 @@ ENV NPM_CONFIG_AUDIT=false
 COPY package*.json ./
 
 # Install dependencies with optimizations
-RUN npm ci --legacy-peer-deps --no-optional
+RUN npm ci --include=dev --legacy-peer-deps --no-optional
 
 # Copy source code
 COPY . .
