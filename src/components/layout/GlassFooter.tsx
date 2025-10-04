@@ -11,6 +11,7 @@ import {
   Linkedin 
 } from "lucide-react";
 import { GlassCard } from "@/components/ui/glass-card";
+import { useCompanyInfo } from "@/hooks/useCompanyInfo";
 
 const footerSections = {
   services: [
@@ -47,6 +48,8 @@ const socialLinks = [
 ];
 
 export const GlassFooter = () => {
+  const { data: companyInfo } = useCompanyInfo();
+  
   return (
     <footer className="relative mt-32">
       {/* Background */}
@@ -62,7 +65,9 @@ export const GlassFooter = () => {
                 <div className="p-2 rounded-lg bg-gradient-primary shadow-glow">
                   <Zap className="h-6 w-6 text-white" />
                 </div>
-                <span className="text-2xl font-bold text-gradient">FBRSigns</span>
+                <span className="text-2xl font-bold text-gradient">
+                  {companyInfo?.company_name || "FBRSigns"}
+                </span>
               </div>
               <p className="text-muted-foreground mb-6 leading-relaxed">
                 Transforming your vision into stunning visual communication solutions. 
@@ -71,18 +76,24 @@ export const GlassFooter = () => {
               
               {/* Contact Info */}
               <div className="space-y-3">
-                <div className="flex items-center space-x-3">
-                  <Phone className="h-4 w-4 text-primary" />
-                  <span className="text-sm">(555) 123-4567</span>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <Mail className="h-4 w-4 text-primary" />
-                  <span className="text-sm">info@fbrsigns.com</span>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <MapPin className="h-4 w-4 text-primary" />
-                  <span className="text-sm">123 Business Ave, City, ST 12345</span>
-                </div>
+                {companyInfo?.company_phone && (
+                  <div className="flex items-center space-x-3">
+                    <Phone className="h-4 w-4 text-primary" />
+                    <span className="text-sm">{companyInfo.company_phone}</span>
+                  </div>
+                )}
+                {companyInfo?.company_email && (
+                  <div className="flex items-center space-x-3">
+                    <Mail className="h-4 w-4 text-primary" />
+                    <span className="text-sm">{companyInfo.company_email}</span>
+                  </div>
+                )}
+                {companyInfo?.company_address && (
+                  <div className="flex items-center space-x-3">
+                    <MapPin className="h-4 w-4 text-primary" />
+                    <span className="text-sm">{companyInfo.company_address}</span>
+                  </div>
+                )}
               </div>
             </div>
 
@@ -161,7 +172,7 @@ export const GlassFooter = () => {
           {/* Bottom Bar */}
           <div className="border-t border-glass-neutral/20 pt-8 flex flex-col md:flex-row justify-between items-center">
             <p className="text-sm text-muted-foreground mb-4 md:mb-0">
-              © 2024 FBRSigns. All rights reserved.
+              © 2024 {companyInfo?.company_name || "FBRSigns"}. All rights reserved.
             </p>
             <div className="flex space-x-6">
               <Link to="/terms-of-service" className="text-sm text-muted-foreground hover:text-primary transition-colors duration-200">

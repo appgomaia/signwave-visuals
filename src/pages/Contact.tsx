@@ -17,6 +17,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { useCompanyInfo } from "@/hooks/useCompanyInfo";
 
 const contactInfo = [
   {
@@ -61,6 +62,8 @@ const serviceTypes = [
 
 export default function Contact() {
   const { t } = useTranslation();
+  const { data: companyInfo, isLoading } = useCompanyInfo();
+  
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -77,19 +80,25 @@ export default function Contact() {
     {
       icon: MapPin,
       title: t('content:contact.info.office.title'),
-      details: ["123 Business Avenue", "Suite 100", "Your City, ST 12345"],
+      details: companyInfo?.company_address 
+        ? companyInfo.company_address.split(',').map(part => part.trim())
+        : ["123 Business Avenue", "Suite 100", "Your City, ST 12345"],
       action: t('content:contact.info.office.action')
     },
     {
       icon: Phone,
       title: t('content:contact.info.phone.title'),
-      details: ["Main: (555) 123-4567", "Emergency: (555) 987-6543", "Toll Free: (800) 555-0123"],
+      details: companyInfo?.company_phone 
+        ? [companyInfo.company_phone]
+        : ["Main: (555) 123-4567"],
       action: t('content:contact.info.phone.action')
     },
     {
       icon: Mail,
       title: t('content:contact.info.email.title'),
-      details: ["info@fbrsigns.com", "support@fbrsigns.com", "sales@fbrsigns.com"],
+      details: companyInfo?.company_email 
+        ? [companyInfo.company_email]
+        : ["info@fbrsigns.com"],
       action: t('content:contact.info.email.action')
     },
     {
@@ -341,8 +350,7 @@ export default function Contact() {
                       <MapPin className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
                       <p className="text-muted-foreground">Interactive Map</p>
                       <p className="text-sm text-muted-foreground">
-                        123 Business Avenue, Suite 100<br />
-                        Your City, ST 12345
+                        {companyInfo?.company_address || "123 Business Avenue, Suite 100, Your City, ST 12345"}
                       </p>
                     </div>
                   </div>
@@ -376,11 +384,11 @@ export default function Contact() {
                   <div className="space-y-3">
                     <GlassButton variant="outline" size="lg" className="w-full justify-start">
                       <Phone className="mr-3 h-5 w-5" />
-                      Call: (555) 123-4567
+                      Call: {companyInfo?.company_phone || "(555) 123-4567"}
                     </GlassButton>
                     <GlassButton variant="outline" size="lg" className="w-full justify-start">
                       <Mail className="mr-3 h-5 w-5" />
-                      Email: info@fbrsigns.com
+                      Email: {companyInfo?.company_email || "info@fbrsigns.com"}
                     </GlassButton>
                   </div>
                 </GlassCard>
