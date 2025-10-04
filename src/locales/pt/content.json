@@ -49,22 +49,22 @@
     "customSigns": {
       "name": "Placas Comerciais Personalizadas",
       "description": "Sinalização profissional de fachada que faz seu negócio se destacar",
-      "price": "A partir de R$ 299"
+      "price": "A partir de $299"
     },
     "digitalLED": {
       "name": "Displays LED Digitais", 
       "description": "Sinalização digital moderna para conteúdo dinâmico e máximo impacto",
-      "price": "A partir de R$ 899"
+      "price": "A partir de $899"
     },
     "vehicleWraps": {
       "name": "Adesivação de Veículos",
       "description": "Transforme seu veículo em um outdoor móvel para seu negócio", 
-      "price": "A partir de R$ 1.299"
+      "price": "A partir de $1.299"
     },
     "tradeShow": {
       "name": "Displays para Feiras",
       "description": "Displays portáteis e profissionais que atraem atenção em eventos",
-      "price": "A partir de R$ 489"
+      "price": "A partir de $489"
     },
     "viewDetails": "Ver Detalhes",
     "viewAllProducts": "Ver Todos os Produtos"
@@ -75,7 +75,7 @@
     "design": {
       "title": "Serviços de Design",
       "description": "Design personalizado de logotipo, marca e layout adaptado às necessidades do seu negócio.",
-      "startingPrice": "R$ 599",
+      "startingPrice": "$199",
       "features": [
         "Design de Logotipo Personalizado",
         "Desenvolvimento de Identidade da Marca", 
@@ -93,7 +93,7 @@
     "production": {
       "title": "Serviços de Produção", 
       "description": "Impressão e fabricação de última geração usando materiais premium e tecnologia de ponta.",
-      "startingPrice": "R$ 899",
+      "startingPrice": "$299",
       "features": [
         "Impressão Digital",
         "Corte e Aplicação de Vinil",
@@ -111,7 +111,7 @@
     "installation": {
       "title": "Serviços de Instalação",
       "description": "Instalação profissional por técnicos certificados garantindo posicionamento perfeito e conformidade de segurança.",
-      "startingPrice": "R$ 449",
+      "startingPrice": "$149",
       "features": [
         "Montagem Profissional",
         "Conexões Elétricas",
@@ -129,7 +129,7 @@
     "maintenance": {
       "title": "Manutenção e Suporte",
       "description": "Serviços de manutenção contínua para manter sua sinalização perfeita e funcionando de forma otimizada.",
-      "startingPrice": "R$ 299/mês",
+      "startingPrice": "$99/mês",
       "features": [
         "Limpeza Regular",
         "Serviços de Reparo",
@@ -499,12 +499,12 @@
     "budget": "Orçamento Estimado",
     "selectBudget": "Selecionar faixa de orçamento",
     "budgetRanges": [
-      "Abaixo de R$ 500",
-      "R$ 500 - R$ 1.000",
-      "R$ 1.000 - R$ 2.500",
-      "R$ 2.500 - R$ 5.000",
-      "R$ 5.000 - R$ 10.000",
-      "Acima de R$ 10.000"
+      "Abaixo de $500",
+      "$500 - $1.000",
+      "$1.000 - $2.500",
+      "$2.500 - $5.000",
+      "$5.000 - $10.000",
+      "Acima de $10.000"
     ],
     "timeline": "Cronograma Desejado",
     "selectTimeline": "Selecionar cronograma",

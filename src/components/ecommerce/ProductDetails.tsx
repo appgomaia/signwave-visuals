@@ -42,8 +42,7 @@ export const ProductDetails: React.FC<ProductDetailsProps> = ({ product, onBack 
 
   const formatPrice = (price: number) => {
     const locale = i18n.language === 'pt' ? 'pt-BR' : i18n.language === 'es' ? 'es-ES' : 'en-US';
-    const currency = i18n.language === 'pt' ? 'BRL' : 'USD';
-    return new Intl.NumberFormat(locale, { style: 'currency', currency }).format(price);
+    return new Intl.NumberFormat(locale, { style: 'currency', currency: 'USD' }).format(price);
   };
 
   const allImages = [
